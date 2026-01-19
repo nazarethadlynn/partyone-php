@@ -111,3 +111,141 @@ function prevImage() {
   currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
   updateMainImage();
 }
+
+
+
+
+
+document.addEventListener("scroll", () => {
+  const fixedBar = document.getElementById("fixedBuyBar");
+  const marker = document.getElementById("pageEndMarker");
+  const bookingBtn = document.getElementById("openAddonsModal");
+
+  if (!fixedBar || !marker || !bookingBtn) return;
+
+  const markerRect = marker.getBoundingClientRect();
+
+  /* Show fixed bar ONLY when footer area is visible */
+  if (markerRect.top <= window.innerHeight) {
+    fixedBar.style.display = "block";
+  } else {
+    fixedBar.style.display = "none";
+  }
+});
+
+
+  const toggleBtn = document.getElementById("toggleReviews");
+  const extraReviews = document.querySelector(".extra-reviews");
+
+  toggleBtn.addEventListener("click", () => {
+    const isOpen = extraReviews.style.display === "block";
+
+    extraReviews.style.display = isOpen ? "none" : "block";
+    toggleBtn.textContent = isOpen
+      ? "Read More Reviews"
+      : "Show Less Reviews";
+  });
+
+
+
+
+
+
+
+
+
+  
+document.addEventListener("DOMContentLoaded", () => {
+  const modal = document.getElementById("addonsModal");
+  const openBtn = document.getElementById("openAddonsModal");
+  const closeBtn = document.getElementById("closeAddons");
+
+  /* OPEN MODAL */
+  openBtn?.addEventListener("click", () => {
+    modal.style.display = "flex";
+  });
+
+  /* CLOSE MODAL */
+  closeBtn?.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+
+  modal.addEventListener("click", e => {
+    if (e.target === modal) modal.style.display = "none";
+  });
+
+  /* ADD BUTTON TOGGLE */
+  document.querySelectorAll(".add-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      btn.classList.toggle("added");
+      btn.textContent = btn.classList.contains("added") ? "ADDED ✓" : "ADD";
+    });
+  });
+
+  /* TABS FILTER */
+  document.querySelectorAll(".tab").forEach(tab => {
+    tab.addEventListener("click", () => {
+      document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+      tab.classList.add("active");
+
+      const category = tab.dataset.tab;
+
+      document.querySelectorAll(".addon-card").forEach(card => {
+        card.style.display =
+          card.dataset.category.includes(category) || category === "popular"
+            ? "block"
+            : "none";
+      });
+    });
+  });
+});
+
+
+
+
+
+const mainProduct = {
+  name: "Neon Ring Birthday Decoration",
+  price: 5499,
+  image: "../assets/images/birthday-decor/birthday1.jpg"
+};
+
+document.querySelector(".book-btn").addEventListener("click", () => {
+  localStorage.setItem("mainProduct", JSON.stringify(mainProduct));
+
+  // reset addons every fresh product selection
+  if (!localStorage.getItem("selectedAddons")) {
+    localStorage.setItem("selectedAddons", JSON.stringify([]));
+  }
+
+  document.getElementById("addonsModal").style.display = "flex";
+});
+
+
+let selectedAddons = JSON.parse(localStorage.getItem("selectedAddons")) || [];
+
+document.querySelectorAll(".addon-card").forEach(card => {
+  const btn = card.querySelector(".add-btn");
+
+  btn.addEventListener("click", () => {
+    const addon = {
+      name: card.querySelector("h4").innerText,
+      price: parseInt(card.querySelector("p").innerText.replace("₹","")),
+      image: card.querySelector("img").src
+    };
+
+    const exists = selectedAddons.find(a => a.name === addon.name);
+
+    if (exists) {
+      selectedAddons = selectedAddons.filter(a => a.name !== addon.name);
+      btn.innerText = "ADD";
+      btn.style.background = "#ff4d6d";
+    } else {
+      selectedAddons.push(addon);
+      btn.innerText = "ADDED ✓";
+      btn.style.background = "#22c55e";
+    }
+
+    localStorage.setItem("selectedAddons", JSON.stringify(selectedAddons));
+  });
+});

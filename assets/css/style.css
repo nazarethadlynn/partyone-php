@@ -1621,18 +1621,10 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
 /* ================= PRODUCT PAGE LAYOUT ================= */
 
-.product-image-column {
-  position: relative;
-}
-
-.product-image-sticky {
-  position: sticky;
-  top: 120px; /* below header */
-}
 
 .product-image-sticky img {
   width: 100%;
-  max-width: 520px; /* makes image slightly smaller */
+  max-width: 520px; 
   border-radius: 16px;
 }
 
@@ -1643,30 +1635,6 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   gap: 32px;
 }
 
-/* Ensure sticky stops naturally */
-.product-details-column::after {
-  content: "";
-  display: block;
-  height: 1px;
-}
-.product-details-column {
-  max-width: 480px;   /* narrows right side */
-}
-
-
-
-/* ================= LEFT IMAGE COLUMN ================= */
-
-.product-image-column {
-  width: 100%;
-  align-self: flex-start;          /* IMPORTANT for sticky inside flex */
-}
-
-/* Sticky wrapper */
-.product-image-sticky {
-  position: sticky;
-  top: 120px;                      /* header height */
-}
 
 /* Card */
 .image-card {
@@ -1894,9 +1862,8 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
 
 
-
-
 /* ================= ADDONS MODAL ================= */
+
 .addons-overlay {
   position: fixed;
   inset: 0;
@@ -1908,29 +1875,30 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 }
 
 .addons-modal {
-  width: 90%;
+  width: 92%;
   max-width: 1100px;
   background: #fff;
-  border-radius: 18px;
-  padding: 20px;
+  border-radius: 22px;
+  padding: 22px;
+  max-height: 85vh;
   display: flex;
   flex-direction: column;
-  max-height: 85vh;
 }
 
 /* Tabs */
 .addons-tabs {
   display: flex;
   gap: 10px;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
 .addons-tabs .tab {
-  padding: 6px 14px;
-  border-radius: 8px;
-  border: 1px solid #eee;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
   background: #fff;
   cursor: pointer;
+  font-size: 14px;
 }
 
 .addons-tabs .tab.active {
@@ -1950,59 +1918,543 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 /* Card */
 .addon-card {
   border: 1px solid #eee;
-  border-radius: 14px;
-  padding: 10px;
+  border-radius: 16px;
+  padding: 12px;
   text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.addon-card:hover {
+  transform: translateY(-4px);
 }
 
 .addon-card img {
   width: 100%;
   height: 140px;
   object-fit: contain;
+  border-radius: 10px;
 }
 
 .addon-card h4 {
   font-size: 14px;
-  margin: 6px 0;
+  margin: 8px 0 4px;
 }
 
 .addon-card p {
-  font-weight: 600;
+  font-weight: 700;
+  margin-bottom: 6px;
 }
 
+/* Add button */
 .add-btn {
   background: #ff4d6d;
   color: #fff;
   border: none;
-  padding: 6px;
+  padding: 8px;
   width: 100%;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
+  font-weight: 600;
+}
+
+.add-btn.added {
+  background: #22c55e;
 }
 
 /* Footer */
 .addons-footer {
   display: flex;
   justify-content: space-between;
-  margin-top: 14px;
+  margin-top: 18px;
 }
 
 .close-btn {
-  padding: 10px 16px;
-  border-radius: 8px;
-  background: #eee;
+  padding: 10px 18px;
+  border-radius: 10px;
+  background: #e5e7eb;
   border: none;
+  cursor: pointer;
 }
 
 .proceed-btn {
   background: #22c55e;
   color: #fff;
-  padding: 10px 18px;
-  border-radius: 10px;
+  padding: 10px 22px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ================= SMART STICKY BUY BUTTON ================= */
+
+.booking-card {
+  position: relative;
+}
+
+/* Wrapper controls sticky behavior */
+.buy-btn-wrapper {
+  position: sticky;
+  bottom: 16px;                 /* spacing from bottom of card */
+  background: #ffffff;
+  padding-top: 12px;
+  z-index: 10;
+}
+
+/* Button styling remains unchanged */
+.buy-btn-wrapper .book-btn {
+  width: 100%;
+}
+
+
+
+/* ================= TRUST BRAND CARD ================= */
+
+.trust-brand-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 22px;
+  margin-top: 24px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+}
+
+.trust-brand-card h3 {
+  font-size: 14px;
+  color: #16a34a;
+  margin: 0;
+}
+
+.trust-brand-card h2 {
+  font-size: 22px;
+  margin: 4px 0 12px;
+}
+
+.trust-brand-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.trust-brand-card ul li {
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.recent-work-btn {
+  display: block;
+  margin-top: 14px;
+  padding: 10px;
+  background: linear-gradient(to right, #fde2e8, #fff);
+  border-radius: 12px;
+  text-align: center;
+  text-decoration: none;
+  color: #e11d48;
+  font-weight: 600;
+}
+
+
+
+
+/* ================= RATINGS & REVIEWS ================= */
+
+.ratings-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 32px;
+  margin-top: 24px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+}
+
+/* HEADER */
+.ratings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ratings-summary h2 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.rating-line {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.rating-value {
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.rating-star {
+  font-size: 22px;
+  color: #16a34a;
+}
+
+.rating-count {
+  font-size: 14px;
+  color: #9ca3af;
+  margin-left: 6px;
+}
+
+.write-review {
+  font-size: 15px;
+  color: #111;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* IMAGE STRIP */
+.review-thumbs {
+  display: flex;
+  gap: 14px;
+  margin: 22px 0 28px;
+}
+
+.review-thumbs img {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+/* REVIEW ITEM */
+.review-item {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+/* EXACT PROFILE ICON */
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.avatar svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: #9ca3af;
+  stroke-width: 1.8;
+}
+
+/* REVIEW BODY */
+.review-body {
+  flex: 1;
+}
+
+.review-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.review-name {
+  font-size: 15px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.verified {
+  font-size: 13px;
+  color: #2563eb;
+}
+
+.user-rating {
+  margin-left: 6px;
+  font-size: 13px;
+  background: #dcfce7;
+  color: #166534;
+  padding: 2px 8px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.review-location {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.review-body p {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #374151;
+  line-height: 1.6;
+}
+
+/* DIVIDER */
+.ratings-card hr {
+  border: none;
+  border-top: 1px solid #e5e7eb;
+  margin: 18px 0;
+}
+
+/* READ MORE */
+.read-more-reviews {
+  display: block;
+  text-align: center;
+  margin-top: 22px;
+  color: #e11d48;
+  font-weight: 600;
   text-decoration: none;
 }
-.mobile-error {
+
+/* HIDDEN REVIEWS */
+.extra-reviews {
+  display: none;
+}
+
+/* READ MORE BUTTON */
+.read-more-reviews {
+  display: block;
+  margin: 22px auto 0;
+  background: none;
+  border: none;
+  color: #e11d48;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+
+
+
+
+/* ================= FINAL GUARANTEED STICKY IMAGE FIX ================= */
+
+/* MAIN GRID */
+.product-layout {
+  max-width: 1200px;
+  margin: 40px auto;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 40px;
+  align-items: start; /* IMPORTANT */
+}
+
+/* LEFT COLUMN */
+.product-image-column {
+  position: relative;
+  align-self: stretch;   /* 🔥 THIS IS THE KEY */
+}
+
+/* STICKY IMAGE WRAPPER */
+.product-image-sticky {
+  position: sticky;
+  top: 140px;            /* matches header height */
+}
+
+/* RIGHT COLUMN DEFINES SCROLL END */
+.product-details-column {
+  position: relative;
+}
+
+
+/* ================= SIMILAR PRODUCTS ================= */
+
+.similar-products {
+  width: 100%;
+  padding: 48px 64px 64px;
+  background: #ffffff;
+}
+
+/* Header */
+.similar-header {
+  max-width: 1320px;
+  margin: 0 auto 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.similar-header h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #e11d48;
+}
+
+.similar-header .view-all {
+  background: #6b7280;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+/* Slider */
+.similar-slider {
+  max-width: 1320px;
+  margin: 0 auto;
+  display: flex;
+  gap: 26px;
+  overflow-x: auto;
+  padding-bottom: 16px;
+  scroll-behavior: smooth;
+}
+
+.similar-slider::-webkit-scrollbar {
+  height: 6px;
+}
+.similar-slider::-webkit-scrollbar-thumb {
+  background: #e5e7eb;
+  border-radius: 10px;
+}
+
+/* Card */
+.product-card {
+  min-width: 270px;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 14px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 45px rgba(0,0,0,0.12);
+}
+
+/* Image (PERFECTLY SAME SIZE) */
+.card-img {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #f3f4f6;
+}
+
+.card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Wishlist */
+.wishlist {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: 34px;
+  height: 34px;
+  background: #fff;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+}
+
+.wishlist.active {
+  color: #e11d48;
+}
+
+/* Discount */
+.discount {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #e11d48;
+  color: #fff;
   font-size: 12px;
-  color: #dc2626;
-  margin-top: 4px;
+  padding: 6px 10px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+/* Title */
+.product-card h4 {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 14px 4px 6px;
+  line-height: 1.4;
+}
+
+/* Price */
+.price-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 4px 6px;
+}
+
+.price {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.strike {
+  color: #9ca3af;
+  text-decoration: line-through;
+  font-size: 14px;
+}
+
+/* Rating */
+.rating {
+  font-size: 14px;
+  color: #f59e0b;
+  margin: 0 4px 14px;
+}
+
+/* Actions */
+.card-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: auto;
+}
+
+.cart-btn {
+  width: 44px;
+  height: 44px;
+  background: #f3f4f6;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.book-btn {
+  flex: 1;
+  height: 44px;
+  border-radius: 999px;
+  border: none;
+  background: #e11d48;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.book-btn:hover {
+  background: #be123c;
 }
