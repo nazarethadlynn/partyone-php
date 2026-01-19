@@ -1,25 +1,42 @@
-window.onload = function () {
-  openCityPopup();
-};
+document.addEventListener("DOMContentLoaded", () => {
+  const page = document.body.dataset.page;
+
+  // Show popup ONLY on index page & only once
+  if (page === "index" && !localStorage.getItem("citySelected")) {
+    openCityPopup();
+  }
+});
 
 function openCityPopup() {
-  const popup = document.getElementById("cityPopup");
-  if (popup) popup.style.display = "flex";
+  document.getElementById("cityPopup").style.display = "flex";
 }
 
-function closePopup() {
+function closeCityPopup() {
   document.getElementById("cityPopup").style.display = "none";
 }
 
 function setCity(city) {
-  // Update header button
-  document.getElementById("cityBtn").innerText = "📍 " + city;
+  // Save to PHP session
+  fetch("/PARTYONE-PHP/public/set-city.php", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: `city=${encodeURIComponent(city)}`,
+  })
+    .then((res) => res.json())
+    .then(() => {
+      // Update header city
+      const headerCity = document.getElementById("headerCityText");
+      if (headerCity) headerCity.textContent = city;
 
-  // 🔥 UPDATE STRAP TEXT
-  const strapCity = document.getElementById("currentCityText");
-  if (strapCity) {
-    strapCity.innerText = city;
-  }
+      // Update strap city
+      const strapCity = document.getElementById("currentCityText");
+      if (strapCity) strapCity.textContent = city;
 
-  closePopup();
+      // Mark selected (prevents popup on refresh)
+      localStorage.setItem("citySelected", "yes");
+
+      closeCityPopup();
+    });
 }
