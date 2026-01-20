@@ -91,13 +91,17 @@
 
 </footer>
 
+<script src="../assets/js/footer.js"></script>
+<script src="../assets/js/footer-subscribe.js"></script>
+<script src="../assets/js/products.js"></script>
+<script src="../assets/js/search.js"></script>
+<script src="../assets/js/book-now.js"></script>
 
-<script src="/js/footer.js"></script>
-<script src="/assets/js/footer-subscribe.js"></script>
-<!-- ================= END FOOTER ================= -->
- <script src="/assets/js/product-filter.js"></script>
-<script src="/assets/js/search.js"></script>
-<script src="/PARTYONE-PHP/assets/js/book-now.js"></script>
+
+
+
+
+
 
 </body>
 </html>

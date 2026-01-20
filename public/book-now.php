@@ -571,6 +571,6 @@ function changeMainImage(el) {
 
 
 
-<script src="/assets/js/wishlist.js"></script>
+<script src="../assets/js/wishlist.js"></script>
 
 <?php include '../includes/footer.php'; ?>
