@@ -1,6 +1,31 @@
 <?php include '../includes/header.php'; ?>
 
 <style>
+  /* CART HEADER BAR */
+.cart-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.cart-back {
+  font-size: 22px;
+  cursor: pointer;
+  user-select: none;
+  line-height: 1;
+}
+
+.cart-back:hover {
+  opacity: 0.7;
+}
+
+
+
+
+
 body {
   background: #f8fafc;
   font-family: Inter, system-ui, sans-serif;
@@ -36,38 +61,12 @@ body {
   font-weight: 700;
   margin-bottom: 20px;
 }
-.cart-item {
-  display: flex;
-  gap: 16px;
-  padding-bottom: 18px;
-  border-bottom: 1px solid #e5e7eb;
-  margin-bottom: 18px;
-}
-.cart-item img {
-  width: 88px;
-  height: 88px;
-  border-radius: 14px;
-  object-fit: cover;
-}
+
+
 .cart-info strong {
   font-size: 17px;
 }
-.cart-info .price {
-  font-weight: 700;
-  margin: 6px 0;
-}
-.date-pill {
-  background: #e0efff;
-  color: #2563eb;
-  padding: 6px 10px;
-  border-radius: 999px;
-  font-size: 13px;
-}
-.qty-box {
-  display: flex;
-  gap: 14px;
-  align-items: center;
-}
+
 .qty-btn {
   width: 28px;
   height: 28px;
@@ -84,19 +83,174 @@ body {
   cursor: pointer;
 }
 
-/* ADDONS */
+
+
+
+/* ============================= */
+/* MAIN PRODUCT – COLUMN LAYOUT */
+/* ============================= */
+
+.cart-item {
+  display: grid;
+  grid-template-columns: 88px 1fr auto auto; /* image | name | price | delete */
+  gap: 24px;
+  align-items: center;
+}
+
+
+/* Image box */
+.cart-item img {
+  width: 88px;
+  height: 88px;
+  border-radius: 14px;
+  object-fit: cover;
+}
+
+/* Product info */
+.cart-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Price column */
+.cart-price {
+  text-align: right;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+/* Delete column */
+.cart-actions {
+  text-align: right;
+}
+
+/* Qty spacing */
+.cart-info .qty-box {
+  margin-top: 6px;
+}
+
+
+
+
+
+
+
+/* ===== ADVANCED BILL SUMMARY (IMAGE 2 STYLE) ===== */
+
+.advanced-summary .highlight {
+  font-weight: 600;
+}
+
+.advanced-summary .info {
+  font-size: 11px;
+  border: 1px solid #d1d5db;
+  border-radius: 50%;
+  padding: 1px 6px;
+  margin-left: 4px;
+  color: #6b7280;
+}
+
+.green {
+  color: #16a34a;
+  font-weight: 700;
+}
+
+.red {
+  color: #ef4444;
+  font-weight: 700;
+}
+
+/* Wave grand total */
+.wave-total {
+  margin-top: 10px;
+  background: #ffedd5;
+  padding: 14px 16px;
+  border-radius: 14px;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  color: #0c0804;
+  position: relative;
+}
+
+/* Payment options */
+.payment-options {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 14px 0 4px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.payment-options label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.payment-options input {
+  accent-color: #100904;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ADDONS – PRICE NEAR DELETE */
+
 .addons-title {
   font-size: 17px;
   font-weight: 700;
   margin: 20px 0 10px;
 }
+
 .addon-row {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr auto auto; /* name | price | delete */
+  gap: 24px;
   align-items: center;
   padding: 12px 0;
   border-bottom: 1px dashed #e5e7eb;
 }
+
+/* Left side stays same */
+.addon-left {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* Price closer to delete */
+.addon-price {
+  font-weight: 600;
+  white-space: nowrap;
+  text-align: right;
+}
+
+/* Delete aligned tightly */
+.addon-delete {
+  text-align: right;
+}
+
+
+
+
+
 .addon-left {
   display: flex;
   gap: 12px;
@@ -108,52 +262,145 @@ body {
   border-radius: 10px;
 }
 
-/* RIGHT STACK */
+/* REMOVE GAP ABOVE & BELOW TRUST (LAST) CARD */
 .right-stack {
-  display: flex;
-  flex-direction: column;
   gap: 14px;
 }
 
-/* DELIVERY MINI CARD */
-.mini-card {
-  padding: 8px 12px;
-  border-radius: 12px;
+.right-stack .mini-card:last-child {
+  margin-top: -14px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* DELIVERY MINI CARD – COMPACT LIKE IMAGE 1 */
+.mini-card {
+  padding: 6px 10px;              /* reduced padding */
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(0,0,0,.05);
+}
+
+
+/* Row alignment */
 .delivery-row {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  gap: 12px;
   font-size: 13px;
   font-weight: 600;
+  white-space: nowrap;            /* prevents tall wrap */
 }
+
+/* Left side (icon + text) */
+.delivery-row span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+}
+
+/* Right action (Edit) */
 .delivery-row a {
-  color: #000;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #111827;
+  text-decoration: underline;
+  padding: 2px 4px;
+}
+
+
+/* Delivery icon (paper plane like reference) */
+.delivery-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;                 /* more space before text */
+}
+
+.delivery-icon {
+  font-size: 18px;           /* bigger icon */
+  color: #f97316;            /* same orange */
+  line-height: 1;
+}
+
+
+
+
+
+/* COUPON STRAP – EXACT IMAGE STYLE */
+.coupon-strap {
+  background: #e8f1ff;
+  border-radius: 12px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+ /* ✅ ADDED: slight spacing like Image 2 */
+  margin: 8px 0;
+}
+
+/* Left side */
+.coupon-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;              /* space before text */
+  font-weight: 600;
+  color: #2563eb;
+  font-size: 14px;
+}
+
+.coupon-icon {
+  font-size: 16px;
+  color: #2563eb;
+}
+
+/* Right side */
+.coupon-view-btn {
+  background: none;
+  border: none;
+  color: #2563eb;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.coupon-view-btn:hover {
   text-decoration: underline;
 }
 
-/* COUPON STRAP */
-.coupon-strap {
-  background: #e8f1ff;
-  color: #2563eb;
-  padding: 10px 14px;
-  border-radius: 12px;
-  font-weight: 600;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+
+
 
 /* ✅ BILL SUMMARY – CLEAN & TIGHT */
 .summary-card {
-  padding: 18px 18px 20px;   /* reduced side & bottom padding */
+  padding: 12px 18px 20px;   /* ⬅ reduced TOP padding only */
 }
 
 .summary-card h3 {
   font-size: 17px;
   font-weight: 700;
-  margin-bottom: 14px;
+  margin: 0 0 12px;          /* ⬅ removed top margin */
 }
+
+
+
 
 .summary-row {
   display: flex;
@@ -223,16 +470,26 @@ body {
 
 
 
-/* Overlay */
+
+/* OVERLAY – DARK + BLUR BACKGROUND */
 .login-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.45);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 9999;
+
+  /* Dark overlay */
+  background: rgba(0, 0, 0, 0.6);
+
+  /* Blur effect */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
+
+
+
 
 /* Modal */
 .login-modal {
@@ -316,13 +573,25 @@ body {
 
 .delivery-close {
   position: absolute;
-  top: 14px;
-  right: 14px;
+  top: -3px;          /* move slightly outside the card */
+  right: -3px;        /* extreme top-right */
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
   border: none;
-  background: none;
+  background: #ffffff;
   font-size: 20px;
   cursor: pointer;
+  line-height: 1;
+  z-index: 20;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
+
+.delivery-close:hover {
+  background: #f3f4f6;
+}
+
+
 
 .delivery-modal h2 {
   font-size: 22px;
@@ -492,6 +761,189 @@ body {
 
 
 
+
+
+/* =============================== */
+/* TRUST METRICS – FULL WIDTH BAR */
+/* =============================== */
+
+.trust-metrics {
+  background: #ffffff;
+  margin-top: 50px;
+  padding: 56px 20px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.trust-metrics h2 {
+  text-align: center;
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 42px;
+  color: #111827;
+}
+
+.trust-metrics h2 span {
+  color: #ec4899;
+  border-bottom: 3px solid #ec4899;
+  padding-bottom: 4px;
+}
+
+.trust-metrics-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+
+.trust-metric {
+  text-align: center;
+}
+
+/* =============================== */
+/* CIRCLED TRUST METRIC IMAGES */
+/* =============================== */
+
+.trust-metric img {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+
+  /* Circle frame */
+  border-radius: 50%;
+  border: 2px solid #f5c97a;
+
+  padding: 12px;
+  background: #fff;
+
+  display: inline-block;
+  margin-bottom: 16px;
+}
+
+
+
+
+
+
+.trust-metric h4 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #111827;
+}
+
+.trust-metric p {
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 1.4;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .trust-metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+  }
+}
+
+@media (max-width: 520px) {
+  .trust-metrics-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+/* PARTY LINKS SECTION */
+.party-links-section {
+  background: #fff;
+  padding: 48px 20px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.party-links-section h2 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 22px;
+  color: #111827;
+}
+
+/* CITY TABS */
+.party-city-tabs {
+  display: flex;
+  gap: 26px;
+  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 26px;
+  overflow-x: auto;
+}
+
+.party-city-tabs button {
+  background: none;
+  border: none;
+  padding: 10px 2px;
+  font-size: 15px;
+  cursor: pointer;
+  color: #6b7280;
+  border-bottom: 3px solid transparent;
+  white-space: nowrap;
+}
+
+.party-city-tabs button:hover {
+  color: #111827;
+}
+
+.party-city-tabs button.active {
+  color: #111827;
+  font-weight: 600;
+  border-bottom-color: #111827;
+}
+
+/* LINKS GRID */
+.party-links-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 18px 24px;
+}
+
+.party-links-grid a {
+  text-decoration: none;
+  color: #111827;
+  font-size: 14.5px;
+  line-height: 1.35;
+}
+
+.party-links-grid a span {
+  display: block;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.party-links-grid a:hover {
+  color: #ec4899;
+}
+
+.party-links-grid a:hover span {
+  color: #ec4899;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1000px) {
+  .party-links-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .party-links-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+
+
+
+
 </style>
 
 <div class="checkout-wrap">
@@ -499,7 +951,11 @@ body {
 
     <!-- LEFT -->
     <div class="checkout-card">
-      <h2>Order & Delivery Details</h2>
+        <div class="cart-header">
+  <span class="cart-back" onclick="goBack()">←</span>
+  <span>Cart</span>
+</div>
+
       <div id="productSection"></div>
       <div class="addons-title">Addons</div>
       <div id="addonsList"></div>
@@ -510,60 +966,109 @@ body {
 
       <div class="mini-card">
         <div class="delivery-row">
-          <span>📍 Delivery Details</span>
-          <a href="#">Login first</a>
+           <span class="delivery-left">
+  <i class="fa-solid fa-paper-plane delivery-icon"></i>
+  Delivery Details
+</span>
+
+          <a href="#">Edit</a>
         </div>
       </div>
 
-      <div class="coupon-strap">
-        <span>🏷 Coupon</span>
-        <span>View</span>
-      </div>
+    
 
-      <div class="summary-card">
-        <h3>🧾 Bill Summary</h3>
+<div class="coupon-strap" onclick="openCouponPopup()">
+  <div class="coupon-left">
+    <i class="fa-solid fa-tags coupon-icon"></i>
+    <span>Coupon</span>
+  </div>
 
-        <div class="summary-row">
-          <span>Base Total</span>
-          <span>₹<span id="baseTotal">0</span></span>
-        </div>
+  <button class="coupon-view-btn" type="button">
+    View
+  </button>
+</div>
 
-        <div class="summary-row">
-          <span>Addon Total</span>
-          <span>₹<span id="addonsTotal">0</span></span>
-        </div>
 
-        <div class="summary-divider"></div>
+      <div class="summary-card advanced-summary">
 
-        <div class="total-wave">
-          <span>Total Amount</span>
-          <span>₹<span id="grandTotal">0</span></span>
-        </div>
+  <h3>🧾 Bill Summary</h3>
 
-        <button class="pay-btn">Login to Proceed</button>
-      </div>
+  <div class="summary-row">
+    <span>Base Total</span>
+    <span>₹<span id="baseTotal">0</span></span>
+  </div>
 
-      
-<div class="mini-card">
-  <div class="trust-row">
+  <div class="summary-row">
+    <span>Addon Total</span>
+    <span>₹<span id="addonsTotal">0</span></span>
+  </div>
 
-    <div class="trust-item">
-      <img src="../assets/images/icons/no-hidden-charges.svg" alt="No Hidden Charges">
-      <span>No Hidden<br>Charges</span>
-    </div>
+  <div class="summary-row">
+    <span>Platform Charges</span>
+    <span>₹0</span>
+  </div>
 
-    <div class="trust-item">
-      <img src="../assets/images/icons/trusted-clients.svg" alt="Trusted Clients">
-      <span>5Lakh+<br>Trusted Clients</span>
-    </div>
+  <div class="summary-divider"></div>
 
-    <div class="trust-item">
-      <img src="../assets/images/icons/secure-payments.svg" alt="Secure Payments">
-      <span>100% Secure<br>Payments</span>
-    </div>
+  <div class="summary-row highlight">
+    <span>
+      Amount to Pay
+      <span class="info">?</span>
+    </span>
+    <span class="green">₹<span id="amountToPay">0</span></span>
+  </div>
 
+  <div class="summary-row">
+    <span>Amount Due</span>
+    <span class="red">₹<span id="amountDue">0</span></span>
+  </div>
+
+  <div class="wave-total">
+    <span>Grand Total</span>
+    <span>₹<span id="grandTotal">0</span></span>
+  </div>
+
+  <!-- PAYMENT OPTIONS -->
+  <div class="payment-options">
+    <span>Payment Options</span>
+
+    <label>
+      <input type="radio" name="paymentType" value="50" checked>
+      <span>50%</span>
+    </label>
+
+    <label>
+      <input type="radio" name="paymentType" value="100">
+      <span>100%</span>
+    </label>
+  </div>
+
+  <button class="pay-btn">Login to Proceed</button>
+
+<div class="summary-divider"></div>
+
+<div class="trust-row" style="margin-top: 4px;">
+  <div class="trust-item">
+    <img src="../assets/images/icons/no-hidden-charges.svg" alt="No Hidden Charges">
+    <span>No Hidden<br>Charges</span>
+  </div>
+
+  <div class="trust-item">
+    <img src="../assets/images/icons/trusted-clients.svg" alt="Trusted Clients">
+    <span>5Lakh+<br>Trusted Clients</span>
+  </div>
+
+  <div class="trust-item">
+    <img src="../assets/images/icons/secure-payments.svg" alt="Secure Payments">
+    <span>100% Secure<br>Payments</span>
   </div>
 </div>
+
+
+</div>
+
+
+
 
 
     </div>
@@ -587,40 +1092,43 @@ function renderCheckout() {
 
   if (product) {
     base = product.price;
-    productSection.innerHTML = `
-      <div class="cart-item">
-        <img src="${product.image}">
-        <div class="cart-info">
-          <strong>${product.name}</strong>
-          <div class="price">₹${product.price}</div>
-          <div class="date-pill">📅 Date & Time after login</div>
-          <div style="margin-top:10px;display:flex;justify-content:space-between">
-            <div class="qty-box">
-              <div class="qty-btn">−</div>
-              <strong>1</strong>
-              <div class="qty-btn">+</div>
-            </div>
-            <div class="delete-btn" onclick="removeProduct()">Delete</div>
-          </div>
-        </div>
-      </div>
-    `;
+productSection.innerHTML = `
+  <div class="cart-item">
+    <img src="${product.image}">
+
+    <div class="cart-info">
+      <strong>${product.name}</strong>
+    </div>
+
+    <div class="cart-price">
+      ₹${product.price}
+    </div>
+
+    <div class="cart-actions">
+      <span class="delete-btn" onclick="removeProduct()">Delete</span>
+    </div>
+  </div>
+`;
+
   }
 
   addons.forEach((a, i) => {
     addonsTotal += a.price;
     addonsList.innerHTML += `
-      <div class="addon-row">
-        <div class="addon-left">
-          <img src="${a.image}">
-          <span>${a.name}</span>
-        </div>
-        <div>
-          ₹${a.price}
-          <span class="delete-btn" onclick="removeAddon(${i})">Delete</span>
-        </div>
-      </div>
-    `;
+  <div class="addon-row">
+    <div class="addon-left">
+      <img src="${a.image}">
+      <span>${a.name}</span>
+    </div>
+
+    <div class="addon-price">₹${a.price}</div>
+
+    <div class="addon-delete">
+      <span class="delete-btn" onclick="removeAddon(${i})">Delete</span>
+    </div>
+  </div>
+`;
+
   });
 
   document.getElementById("baseTotal").innerText = base;
@@ -662,9 +1170,13 @@ function updatePopupAmount() {
 
 function openDeliveryPopup() {
   document.getElementById("deliveryPopup").style.display = "flex";
-  document.getElementById("popupTotal").innerText =
-    document.getElementById("grandTotal").innerText || 0;
+
+  // ✅ Use Amount To Pay (not Grand Total)
+  const payNow = document.getElementById("amountToPay")?.innerText || 0;
+  document.getElementById("popupTotal").innerText = payNow;
 }
+
+
 
 function closeDeliveryPopup() {
   document.getElementById("deliveryPopup").style.display = "none";
@@ -676,6 +1188,111 @@ document.querySelectorAll(".pay-btn, .delivery-row a").forEach(btn => {
     openDeliveryPopup();
   });
 });
+
+
+
+function updatePaymentSplit() {
+  const total = Number(document.getElementById("grandTotal").innerText) || 0;
+  const selected = document.querySelector('input[name="paymentType"]:checked')?.value || "50";
+
+  let payNow = selected === "50" ? Math.round(total / 2) : total;
+  let due = total - payNow;
+
+  // Update bill summary
+  document.getElementById("amountToPay").innerText = payNow;
+  document.getElementById("amountDue").innerText = due;
+
+  // ✅ UPDATE POPUP PAY NOW AMOUNT
+  const popupTotalEl = document.getElementById("popupTotal");
+  if (popupTotalEl) {
+    popupTotalEl.innerText = payNow;
+  }
+}
+
+/* Listen to payment option change */
+document.querySelectorAll('input[name="paymentType"]').forEach(radio => {
+  radio.addEventListener("change", updatePaymentSplit);
+});
+
+/* Call after render */
+setTimeout(updatePaymentSplit, 100);
+
+
+
+
+function openCouponPopup() {
+  document.getElementById("couponPopup").style.display = "flex";
+}
+
+function closeCouponPopup() {
+  document.getElementById("couponPopup").style.display = "none";
+}
+
+function goBack() {
+  history.back();
+}
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  const categories = [
+    "Birthday Decorations",
+    "Party Decorations",
+    "Candlelight Dinner",
+    "Personalised Gifts",
+    "Party Entertainment",
+    "Corporate Events",
+    "Food Catering",
+    "Photography Services",
+    "Anniversary Decorations",
+    "Baby Shower Celebration",
+    "Baby Welcome Decorations",
+    "Christmas/Xmas Decorations",
+    "Kids Birthday Celebration",
+    "First Birthday Decoration",
+    "Diwali Decorations",
+    "Haldi/Mehndi Decorations",
+    "Halloween Theme Decorations",
+    "Show More"
+  ];
+
+  const partyLinks = document.getElementById("partyLinks");
+  const cityTabs = document.querySelectorAll(".party-city-tabs button");
+
+  if (!partyLinks || !cityTabs.length) return;
+
+  function renderLinks(city) {
+    partyLinks.innerHTML = "";
+    categories.forEach(cat => {
+      partyLinks.innerHTML += `
+        <a href="/services/${cat.toLowerCase().replace(/ /g,'-')}-${city.toLowerCase().replace(/ /g,'-')}">
+          <strong>${cat}</strong>
+          ${cat !== "Show More" ? `<span>in ${city}</span>` : ``}
+        </a>
+      `;
+    });
+  }
+
+  // Initial load
+  renderLinks("Delhi NCR");
+
+  // City tab click
+  cityTabs.forEach(btn => {
+    btn.addEventListener("click", () => {
+      cityTabs.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      renderLinks(btn.dataset.city);
+    });
+  });
+
+});
+
+
+
 
 </script>
 
@@ -787,5 +1404,111 @@ document.querySelectorAll(".pay-btn, .delivery-row a").forEach(btn => {
 
 
 
+<!-- COUPON POPUP -->
+<div id="couponPopup" class="login-overlay" style="display:none;">
+  <div class="login-modal">
+
+    <button class="login-close" onclick="closeCouponPopup()">✕</button>
+
+    <h3>Available Coupons</h3>
+
+    <div style="border:1px dashed #d1d5db;padding:12px;border-radius:10px;margin-bottom:12px;">
+      <strong>PARTY500</strong>
+      <p style="font-size:13px;margin:4px 0;">
+        Get ₹500 off on orders above ₹5000
+      </p>
+      <button class="pay-btn" style="margin-top:6px;">
+        Apply Coupon
+      </button>
+    </div>
+
+    <div style="border:1px dashed #d1d5db;padding:12px;border-radius:10px;">
+      <strong>FIRST10</strong>
+      <p style="font-size:13px;margin:4px 0;">
+        Flat 10% off for first-time users
+      </p>
+      <button class="pay-btn" style="margin-top:6px;">
+        Apply Coupon
+      </button>
+    </div>
+
+  </div>
+</div>
+
+
+<section class="trust-metrics">
+  <h2>
+    Event Partner for over <span>1 Million+</span> Celebrations
+  </h2>
+
+  <div class="trust-metrics-grid">
+
+    <div class="trust-metric">
+      <img src="../assets/images/trust/medal.png" alt="1 Million Customers">
+      <h4>1 Million+</h4>
+      <p>Happy Customers over 10 Years</p>
+    </div>
+
+    <div class="trust-metric">
+      <img src="../assets/images/trust/google-reviews.png" alt="Google Reviews">
+      <h4>4.6 / 5 Rating</h4>
+      <p>from 5000+ Reviews on Google</p>
+    </div>
+
+    <div class="trust-metric">
+      <img src="../assets/images/trust/social-followers.png" alt="Social Media">
+      <h4>1 Lakh+</h4>
+      <p>Followers on Social Media</p>
+    </div>
+
+    <div class="trust-metric">
+      <img src="../assets/images/trust/top-brands.png" alt="Top Brands">
+      <h4>Top Brands</h4>
+      <p>Partnered with premium brands</p>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+<!-- PARTY LINKS SECTION -->
+<section class="party-links-section">
+  <h2>Host Your Next Party With Ease</h2>
+
+  <!-- CITY TABS -->
+  <div class="party-city-tabs">
+    <button class="active" data-city="Delhi NCR">Delhi NCR</button>
+    <button data-city="Gurgaon">Gurugram/Gurgaon</button>
+    <button data-city="Noida">Noida</button>
+    <button data-city="Bangalore">Bangalore</button>
+    <button data-city="Hyderabad">Hyderabad</button>
+    <button data-city="Mumbai">Mumbai</button>
+    <button data-city="Pune">Pune</button>
+    <button data-city="Ahmedabad">Ahmedabad</button>
+    <button data-city="Lucknow">Lucknow</button>
+    <button data-city="Chennai">Chennai</button>
+  </div>
+
+  <!-- LINKS GRID -->
+  <div class="party-links-grid" id="partyLinks"></div>
+</section>
+
+
+
+
+
+
+
+
+
+
 
 <?php include '../includes/footer.php'; ?>
+
+
+
+
+
+

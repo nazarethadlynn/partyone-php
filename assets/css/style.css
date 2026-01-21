@@ -142,76 +142,72 @@ body {
   cursor: pointer;
 }
 
+/* ===================== */
+/* MENU BAR – PILL STYLE */
+/* ===================== */
 
-/* ===============================
-   PROFESSIONAL PILL MENU HEADER
-================================ */
-
-/* Menu bar container */
 .menu-bar {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  padding: 12px 16px;
-  background: #fff1f1;
-  border-top: 1px solid #fde2e2;
-  border-bottom: 1px solid #fde2e2;
+  gap: 14px;
+  padding: 14px 20px;
+  background: #fff3f3;
 }
 
-/* Pill menu item */
+/* Menu item pill */
 .menu-item {
   position: relative;
-  padding: 10px 16px;
+  padding: 10px 18px;
   border-radius: 999px;
-  font-size: 14px;
+  font-size: 14.5px;
   font-weight: 600;
   color: #e11d48;
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: 6px;
-  transition: all 0.25s ease;
-  white-space: nowrap;
+
+  background: #ffffff;
+  border: 1px solid #fde2e2;
+
+  /* ❌ no overflow hidden */
+  transition: background 0.25s ease, border-color 0.25s ease;
 }
 
-/* Hover pill effect */
+/* Caret */
+.menu-item .caret {
+  font-size: 10px;
+  margin-top: 1px;
+}
+
+/* Hover state – CLEAN, NO BLEED */
 .menu-item:hover {
   background: #ffe4e6;
-  box-shadow: 0 4px 12px rgba(225, 29, 72, 0.15);
+  border-color: #fda4af;
 }
 
-/* Caret animation */
-.menu-item .caret {
-  font-size: 12px;
-  transition: transform 0.25s ease;
-}
+/* ===================== */
+/* DROPDOWN */
+/* ===================== */
 
-.menu-item:hover .caret {
-  transform: rotate(180deg);
-}
-
-/* Dropdown container */
 .menu-item .dropdown {
   position: absolute;
-  top: 120%;
-  left: 50%;
-  transform: translateX(-50%);
+  top: calc(100% + 10px);
+  left: 0;
+
+  background: #fff;
   min-width: 200px;
-  background: #ffffff;
   border-radius: 14px;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
   padding: 10px 0;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.25s ease;
-  z-index: 999;
+
+  box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+  display: none;
+  z-index: 1000;
 }
 
 /* Show dropdown on hover */
 .menu-item:hover .dropdown {
-  opacity: 1;
-  visibility: visible;
-  top: 135%;
+  display: block;
 }
 
 /* Dropdown links */
@@ -222,29 +218,14 @@ body {
   font-weight: 500;
   color: #111827;
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: background 0.2s ease;
 }
 
-/* Dropdown hover */
 .menu-item .dropdown a:hover {
-  background: #fff1f2;
+  background: #fef2f2;
   color: #e11d48;
 }
 
-/* Optional active page highlight */
-.menu-item.active {
-  background: #ffe4e6;
-  color: #be123c;
-  box-shadow: inset 0 0 0 1px #fecdd3;
-}
-
-/* Make menu responsive */
-@media (max-width: 1024px) {
-  .menu-bar {
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-}
 
 
 
