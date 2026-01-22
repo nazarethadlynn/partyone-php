@@ -156,3 +156,43 @@ document.querySelectorAll(".addon-card").forEach(card => {
     localStorage.setItem("selectedAddons", JSON.stringify(selectedAddons));
   });
 });
+
+
+
+
+const productImages = [
+  "../assets/images/birthday-decor/birthday1.jpg",
+  "../assets/images/birthday-decor/birthday2.jpg",
+  "../assets/images/birthday-decor/birthday3.jpg",
+  "../assets/images/birthday-decor/birthday4.webp",
+  "../assets/images/birthday-decor/birthday5.jpg"
+];
+
+let currentImageIndex = 0;
+
+function changeMainImage(el) {
+  const mainImg = document.getElementById("mainProductImage");
+
+  // if number is passed (your current HTML)
+  if (typeof el === "number") {
+    currentImageIndex = el;
+    mainImg.src = productImages[el];
+    return;
+  }
+
+  // if element is passed
+  mainImg.src = el.src;
+}
+
+function nextImage() {
+  currentImageIndex = (currentImageIndex + 1) % productImages.length;
+  document.getElementById("mainProductImage").src =
+    productImages[currentImageIndex];
+}
+
+function prevImage() {
+  currentImageIndex =
+    (currentImageIndex - 1 + productImages.length) % productImages.length;
+  document.getElementById("mainProductImage").src =
+    productImages[currentImageIndex];
+}

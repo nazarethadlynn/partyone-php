@@ -19,10 +19,9 @@
 
       <div class="footer-subscribe">
         <div class="subscribe-row">
-          <input type="email" id="subscribeEmail" placeholder="name@email.com">
+          <input type="email" id="subscribeEmail" placeholder="Enter your email...">
           <button id="subscribeBtn">Subscribe</button>
         </div>
-        <small class="subscribe-hint">Enter your email...</small>
       </div>
 
     </div>

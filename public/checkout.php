@@ -942,6 +942,108 @@ body {
 
 
 
+/* ADDON TITLE + QTY BELOW TITLE */
+.addon-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* INLINE QTY CONTROLS */
+.addon-qty {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.addon-qty strong {
+  min-width: 16px;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* ================= ADDONS MODAL – MOBILE FINAL FIX ================= */
+@media (max-width: 768px) {
+
+  /* Modal bottom sheet */
+  .addons-modal {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 92vh;
+    padding: 14px;
+  }
+
+  /* 🔥 FORCE REAL GRID */
+  .addons-modal .addons-content {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    grid-auto-flow: row !important;
+
+    gap: 10px;
+    width: 100%;
+    flex: 1;
+    overflow-y: auto;
+    padding-bottom: 90px;
+  }
+
+  /* 🔥 REMOVE FULL-WIDTH OVERRIDES */
+  .addons-modal .addon-card {
+    width: auto !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    display: block !important;
+
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 8px;
+    text-align: center;
+  }
+
+  /* Image */
+  .addons-modal .addon-card img {
+    width: 100%;
+    height: 90px;
+    object-fit: contain;
+    border-radius: 10px;
+  }
+
+  /* Title */
+  .addons-modal .addon-card h4 {
+    font-size: 12px;
+    line-height: 1.25;
+    margin: 6px 0 4px;
+  }
+
+  /* Price */
+  .addons-modal .addon-card p {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  /* Button */
+  .addons-modal .addon-card .add-btn {
+    width: 100%;
+    height: 32px;
+    font-size: 12px;
+    border-radius: 8px;
+  }
+
+  /* Footer stays fixed */
+  .addons-footer {
+    position: sticky;
+    bottom: 0;
+    background: #fff;
+    padding: 10px 0 6px;
+    z-index: 20;
+  }
+}
+
+
+
+
+
 
 
 </style>
@@ -1049,7 +1151,7 @@ body {
 
 <div class="trust-row" style="margin-top: 4px;">
   <div class="trust-item">
-    <img src="../assets/images/icons/no-hidden-charges.svg" alt="No Hidden Charges">
+    <img src="../assets/images/icons/no-hidden-charges.avif" alt="No Hidden Charges">
     <span>No Hidden<br>Charges</span>
   </div>
 
@@ -1113,22 +1215,36 @@ productSection.innerHTML = `
   }
 
   addons.forEach((a, i) => {
-    addonsTotal += a.price;
-    addonsList.innerHTML += `
-  <div class="addon-row">
-    <div class="addon-left">
-      <img src="${a.image}">
-      <span>${a.name}</span>
+  if (!a.qty) a.qty = 1;
+
+  const itemTotal = a.price * a.qty;
+  addonsTotal += itemTotal;
+
+  addonsList.innerHTML += `
+    <div class="addon-row">
+
+      <div class="addon-left">
+        <img src="${a.image}">
+
+        <div class="addon-info">
+          <span>${a.name}</span>
+
+          <div class="addon-qty">
+            <span class="qty-btn" onclick="decreaseAddonQty(${i})">−</span>
+            <strong>${a.qty}</strong>
+            <span class="qty-btn" onclick="increaseAddonQty(${i})">+</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="addon-price">₹${itemTotal}</div>
+
+      <div class="addon-delete">
+        <span class="delete-btn" onclick="removeAddon(${i})">Delete</span>
+      </div>
+
     </div>
-
-    <div class="addon-price">₹${a.price}</div>
-
-    <div class="addon-delete">
-      <span class="delete-btn" onclick="removeAddon(${i})">Delete</span>
-    </div>
-  </div>
-`;
-
+  `;
   });
 
   document.getElementById("baseTotal").innerText = base;
@@ -1141,6 +1257,20 @@ function removeAddon(i) {
   localStorage.setItem("selectedAddons", JSON.stringify(addons));
   renderCheckout();
 }
+function increaseAddonQty(i) {
+  addons[i].qty += 1;
+  localStorage.setItem("selectedAddons", JSON.stringify(addons));
+  renderCheckout();
+}
+
+function decreaseAddonQty(i) {
+  if (addons[i].qty > 1) {
+    addons[i].qty -= 1;
+    localStorage.setItem("selectedAddons", JSON.stringify(addons));
+    renderCheckout();
+  }
+}
+
 function removeProduct() {
   localStorage.removeItem("mainProduct");
   product = null;
