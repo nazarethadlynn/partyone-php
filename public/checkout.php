@@ -966,6 +966,673 @@ body {
 
 
 
+
+/* ================================================= */
+/* =============== MOBILE RESPONSIVE FIX ============ */
+/* ================================================= */
+@media (max-width: 768px) {
+
+  /* PAGE WRAP */
+  .checkout-wrap {
+    margin: 12px auto;
+    padding: 0 12px;
+  }
+
+  /* GRID → SINGLE COLUMN */
+  .checkout-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  /* LEFT CARD */
+  .checkout-card {
+    padding: 18px;
+  }
+
+  /* CART ITEM STACK */
+  .cart-item {
+    grid-template-columns: 64px 1fr;
+    grid-template-rows: auto auto;
+    gap: 12px;
+  }
+
+  .cart-price,
+  .cart-actions {
+    grid-column: span 2;
+    text-align: right;
+  }
+
+  .cart-item img {
+    width: 64px;
+    height: 64px;
+  }
+
+  /* ADDONS STACK */
+  .addon-row {
+    grid-template-columns: 1fr auto;
+    gap: 10px;
+  }
+
+  .addon-price {
+    grid-column: 2;
+    text-align: right;
+  }
+
+  .addon-delete {
+    grid-column: span 2;
+    text-align: right;
+  }
+
+  /* RIGHT STACK */
+  .right-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  /* DELIVERY CARD */
+  .mini-card {
+    padding: 10px 12px;
+  }
+
+  .delivery-row {
+    font-size: 13px;
+  }
+
+  /* SUMMARY CARD */
+  .summary-card {
+    padding: 14px 16px 18px;
+  }
+
+  .summary-row {
+    font-size: 14px;
+  }
+
+  /* PAY BUTTON */
+  .pay-btn {
+    padding: 14px;
+    font-size: 15px;
+    border-radius: 12px;
+  }
+
+  /* TRUST ICONS */
+  .trust-row {
+    gap: 6px;
+  }
+
+  .trust-item img {
+    width: 22px;
+    height: 22px;
+  }
+
+  .trust-item {
+    font-size: 12px;
+  }
+
+  /* DELIVERY POPUP */
+  .delivery-modal {
+    width: 94vw;
+    max-height: 92vh;
+    margin: 16px auto;
+    padding: 18px;
+    overflow-y: auto;
+  }
+
+  .delivery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .delivery-field.full {
+    grid-column: span 1;
+  }
+
+  /* POPUP PAY BUTTON */
+  .popup-pay-btn {
+    height: 46px;
+    font-size: 15px;
+  }
+
+  /* COUPON / LOGIN MODALS */
+  .login-modal {
+    width: 92vw;
+    padding: 20px;
+  }
+
+  /* TRUST METRICS */
+  .trust-metrics {
+    padding: 36px 16px;
+  }
+
+  .trust-metrics-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  /* PARTY LINKS */
+  .party-links-section {
+    padding: 32px 16px;
+  }
+
+  .party-links-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .party-city-tabs {
+    gap: 18px;
+  }
+}
+
+/* EXTRA SMALL PHONES */
+@media (max-width: 420px) {
+
+  .cart-header {
+    font-size: 18px;
+  }
+
+  .checkout-card h2 {
+    font-size: 20px;
+  }
+
+  .summary-card h3 {
+    font-size: 16px;
+  }
+
+  .pay-btn {
+    font-size: 14px;
+    padding: 12px;
+  }
+}
+
+
+
+/* ================================================= */
+/* DELIVERY POPUP – MOBILE FULL FIT (NO CLIPPING) */
+/* ================================================= */
+@media (max-width: 768px) {
+
+  /* Overlay with guaranteed visible background */
+  .delivery-overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 0; /* equal top & bottom background gap */
+  }
+
+  /* Popup container */
+  .delivery-modal {
+    width: 88vw;
+    max-width: 340px;              /* 🔑 slightly smaller */
+    max-height: calc(100vh - 64px);/* 🔑 never touches edges */
+
+    margin: 0 auto;
+    padding: 12px 14px 16px;       /* 🔑 compact vertical spacing */
+
+    border-radius: 16px;
+    background: #fff;
+
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;              /* ❌ no scrollbar */
+  }
+
+  /* Header */
+  .delivery-header {
+    margin-bottom: 8px;
+  }
+
+  .delivery-header h2 {
+    font-size: 18px;
+  }
+
+  .delivery-header img {
+    height: 28px;
+  }
+
+  /* Form */
+  .delivery-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .delivery-field {
+    gap: 4px;
+    font-size: 12px;
+  }
+
+  .delivery-field input,
+  .delivery-field select {
+    height: 34px;
+    font-size: 12.5px;
+  }
+
+  .delivery-field textarea {
+    height: 56px;
+    font-size: 12.5px;
+  }
+
+  .delivery-field.full {
+    grid-column: span 1;
+  }
+
+  /* Pay button */
+  .popup-pay-btn {
+    margin-top: 8px;
+    height: 40px;
+    font-size: 14px;
+    border-radius: 12px;
+  }
+
+  /* Secure payment box */
+  .secure-payment-box {
+    margin-top: 8px;
+    padding: 8px;
+  }
+
+  .secure-title {
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+
+  .trust-logos img {
+    height: 20px;
+  }
+
+  .payment-methods img {
+    height: 18px;
+  }
+
+  /* ✅ TERMS — ALWAYS VISIBLE */
+  .popup-terms {
+    margin-top: 6px;
+    font-size: 10.8px;
+    line-height: 1.35;
+    text-align: center;
+  }
+}
+
+/* ================================================= */
+/* DELIVERY HEADER – BACK ARROW + TITLE */
+/* ================================================= */
+
+.delivery-back {
+  font-size: 22px;
+  font-weight: 700;
+  cursor: pointer;
+  user-select: none;
+  line-height: 1;
+}
+
+.delivery-back:hover {
+  opacity: 0.7;
+}
+
+.delivery-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  row-gap: 4px;
+  column-gap: 10px;
+  align-items: start;
+}
+
+.delivery-header .delivery-back {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.delivery-header h2 {
+  grid-column: 1;
+  grid-row: 2;
+  margin: 0;
+}
+
+.delivery-header img {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: start;
+}
+
+
+
+
+
+
+
+
+
+
+/* ================================================= */
+/* FORCE CITY + VENUE SIDE-BY-SIDE ON MOBILE */
+/* ================================================= */
+@media (max-width: 768px) {
+
+  /* Keep City & Venue in two columns */
+  .delivery-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Make full-width fields truly full */
+  .delivery-field.full {
+    grid-column: span 2;
+  }
+
+  /* Slight spacing tweak so it matches Image 1 */
+  .delivery-field select {
+    height: 38px;
+  }
+}
+
+
+
+
+
+
+
+
+/* ================================================= */
+/* MOBILE FINAL FIX – ALL FIELDS FIT INSIDE CARD */
+/* ================================================= */
+@media (max-width: 768px) {
+
+  /* Card padding reduced */
+  .delivery-modal {
+    padding: 8px 10px 12px;
+  }
+
+  /* Keep City + Venue side-by-side */
+  .delivery-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 5px 6px;
+  }
+
+  /* Full-width rows */
+  .delivery-field.full {
+    grid-column: span 2;
+  }
+
+  /* Labels smaller */
+  .delivery-field label {
+    font-size: 10.8px;
+    line-height: 1.1;
+  }
+
+  /* Inputs & selects tighter */
+  .delivery-field input,
+  .delivery-field select {
+    height: 26px;
+    font-size: 11px;
+    padding: 0 8px;
+    border-radius: 8px;
+  }
+
+  /* Textarea smaller */
+  .delivery-field textarea {
+    height: 42px;
+    font-size: 11px;
+    padding: 6px 8px;
+    border-radius: 8px;
+  }
+
+  /* Remove extra vertical gaps */
+  .delivery-field {
+    gap: 2px;
+  }
+
+  /* Pay button compact */
+  .popup-pay-btn {
+    height: 34px;
+    font-size: 12.8px;
+    margin-top: 6px;
+    border-radius: 10px;
+  }
+
+  /* Secure payment box compact */
+  .secure-payment-box {
+    margin-top: 6px;
+    padding: 6px;
+    border-radius: 10px;
+  }
+
+  .secure-title {
+    font-size: 11.8px;
+    margin-bottom: 4px;
+  }
+
+  .trust-logos img {
+    height: 15px;
+  }
+
+  .payment-methods img {
+    height: 14px;
+  }
+
+  /* Terms smallest safe size */
+  .popup-terms {
+    font-size: 9.8px;
+    margin-top: 4px;
+    line-height: 1.25;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+/* ================================================= */
+/* 🚨 MOBILE FORCE OVERRIDE – EVERYTHING FITS INSIDE */
+/* ================================================= */
+@media (max-width: 768px) {
+
+  /* Force modal size */
+  .delivery-overlay .delivery-modal {
+    width: 86vw !important;
+    max-width: 330px !important;
+    padding: 8px 10px 12px !important;
+    overflow: hidden !important;
+  }
+
+  /* Force 2-column grid */
+  .delivery-overlay .delivery-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 4px 6px !important;
+  }
+
+  /* Full-width rows */
+  .delivery-overlay .delivery-field.full {
+    grid-column: span 2 !important;
+  }
+
+  /* Labels */
+  .delivery-overlay .delivery-field label {
+    font-size: 10.5px !important;
+    line-height: 1.1 !important;
+  }
+
+  /* Inputs & selects */
+  .delivery-overlay .delivery-field input,
+  .delivery-overlay .delivery-field select {
+    height: 26px !important;
+    font-size: 11px !important;
+    padding: 0 8px !important;
+    border-radius: 8px !important;
+  }
+
+  /* Textarea */
+  .delivery-overlay .delivery-field textarea {
+    height: 40px !important;
+    font-size: 11px !important;
+    padding: 6px 8px !important;
+    border-radius: 8px !important;
+  }
+
+  /* Field spacing */
+  .delivery-overlay .delivery-field {
+    gap: 2px !important;
+  }
+
+  /* Pay button */
+  .delivery-overlay .popup-pay-btn {
+    height: 34px !important;
+    font-size: 12.5px !important;
+    margin-top: 6px !important;
+    border-radius: 10px !important;
+  }
+
+  /* Secure payment box */
+  .delivery-overlay .secure-payment-box {
+    margin-top: 6px !important;
+    padding: 6px !important;
+    border-radius: 10px !important;
+  }
+
+  .delivery-overlay .secure-title {
+    font-size: 11.5px !important;
+    margin-bottom: 4px !important;
+  }
+
+  .delivery-overlay .trust-logos img {
+    height: 14px !important;
+  }
+
+  .delivery-overlay .payment-methods img {
+    height: 13px !important;
+  }
+
+  /* Terms */
+  .delivery-overlay .popup-terms {
+    font-size: 9.8px !important;
+    line-height: 1.25 !important;
+    margin-top: 4px !important;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ================================================= */
+/* ✅ FINAL MOBILE OVERRIDE – PERFECT FIT INSIDE CARD */
+/* ================================================= */
+@media (max-width: 768px) {
+
+  /* Modal container */
+  .delivery-overlay .delivery-modal {
+    width: 86vw;
+    max-width: 328px;
+    padding: 10px 12px 14px;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  /* Grid layout */
+  .delivery-overlay .delivery-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 8px;
+    width: 100%;
+  }
+
+  /* Full width rows */
+  .delivery-overlay .delivery-field.full {
+    grid-column: span 2;
+  }
+
+  /* Labels */
+  .delivery-overlay .delivery-field label {
+    font-size: 11px;
+    line-height: 1.1;
+  }
+
+  /* INPUTS & SELECTS */
+  .delivery-overlay .delivery-field input,
+  .delivery-overlay .delivery-field select {
+    width: 100%;
+    height: 28px;
+    font-size: 11.5px;
+    padding: 0 8px;
+    border-radius: 8px;
+    box-sizing: border-box;
+  }
+
+  /* TEXTAREA */
+  .delivery-overlay .delivery-field textarea {
+    width: 100%;
+    height: 44px;
+    font-size: 11.5px;
+    padding: 6px 8px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    resize: none;
+  }
+
+  /* Reduce vertical gaps */
+  .delivery-overlay .delivery-field {
+    gap: 3px;
+  }
+
+  /* PAY BUTTON */
+  .delivery-overlay .popup-pay-btn {
+    height: 36px;
+    font-size: 13px;
+    margin-top: 8px;
+    border-radius: 10px;
+  }
+
+  /* SECURE PAYMENT BOX */
+  .delivery-overlay .secure-payment-box {
+    margin-top: 8px;
+    padding: 8px;
+    border-radius: 10px;
+  }
+
+  .delivery-overlay .secure-title {
+    font-size: 12.5px;
+    margin-bottom: 6px;
+  }
+
+  .delivery-overlay .trust-logos img {
+    height: 16px;
+  }
+
+  .delivery-overlay .payment-methods img {
+    height: 15px;
+  }
+
+  /* TERMS */
+  .delivery-overlay .popup-terms {
+    font-size: 10.5px;
+    line-height: 1.3;
+    margin-top: 6px;
+    text-align: center;
+  }
+}
+
+
+
+
 </style>
 
 <div class="checkout-wrap">
@@ -1344,6 +2011,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+function closeDeliveryPopup() {
+  document.getElementById("deliveryPopup").style.display = "none";
+}
+
+
+
 </script>
 
 
@@ -1352,13 +2025,21 @@ document.addEventListener("DOMContentLoaded", function () {
 <div id="deliveryPopup" class="delivery-overlay">
   <div class="delivery-modal">
 
-    <button class="delivery-close" onclick="closeDeliveryPopup()">✕</button>
+    <!-- <button class="delivery-close" onclick="closeDeliveryPopup()">✕</button> -->
 
     <!-- LOGO (UNCHANGED) -->
-<div class="delivery-header">
+<!-- <div class="delivery-header">
   <h2>Delivery <span>Details</span></h2>
   <img src="../assets/images/LOGO.svg" alt="Logo">
+</div> -->
+<div class="delivery-header">
+  <span class="delivery-back" onclick="closeDeliveryPopup()">←</span>
+
+  <h2>Delivery <span>Details</span></h2>
+
+  <img src="../assets/images/LOGO.svg" alt="Logo">
 </div>
+
 
     <div class="delivery-grid">
 
@@ -1391,10 +2072,23 @@ document.addEventListener("DOMContentLoaded", function () {
         <textarea placeholder="Enter address" required></textarea>
       </div>
 
+
       <div class="delivery-field">
-        <label>City *</label>
-        <input type="text" value="Bangalore" required>
-      </div>
+  <label>City *</label>
+  <select required>
+    <option value="">Select city</option>
+    <option value="Bangalore">Bangalore</option>
+    <option value="Delhi NCR">Delhi NCR</option>
+    <option value="Mumbai">Mumbai</option>
+    <option value="Pune">Pune</option>
+    <option value="Hyderabad">Hyderabad</option>
+    <option value="Chennai">Chennai</option>
+    <option value="Kolkata">Kolkata</option>
+    <option value="Ahmedabad">Ahmedabad</option>
+  </select>
+</div>
+
+
 
       <div class="delivery-field">
         <label>Venue</label>

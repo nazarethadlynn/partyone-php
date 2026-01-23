@@ -201,15 +201,31 @@ function prevImage() {
 
 
 /* Prevent background scroll when modal is open (mobile fix) */
+// const addonsModal = document.getElementById('addonsModal');
+// const openAddonsBtn = document.getElementById('openAddonsModal');
+// const closeAddonsBtn = document.getElementById('closeAddons');
+
+// openAddonsBtn.addEventListener('click', () => {
+//   document.body.style.overflow = 'hidden';
+// });
+
+// closeAddonsBtn.addEventListener('click', () => {
+//   document.body.style.overflow = '';
+// });
+
+/* Prevent background scroll when modal is open (mobile fix) */
 const addonsModal = document.getElementById('addonsModal');
 const openAddonsBtn = document.getElementById('openAddonsModal');
 const closeAddonsBtn = document.getElementById('closeAddons');
 
-openAddonsBtn.addEventListener('click', () => {
-  document.body.style.overflow = 'hidden';
-});
+if (openAddonsBtn) {
+  openAddonsBtn.addEventListener('click', () => {
+    document.body.style.overflow = 'hidden';
+  });
+}
 
-closeAddonsBtn.addEventListener('click', () => {
-  document.body.style.overflow = '';
-});
-
+if (closeAddonsBtn) {
+  closeAddonsBtn.addEventListener('click', () => {
+    document.body.style.overflow = '';
+  });
+}

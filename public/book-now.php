@@ -383,7 +383,7 @@ function changeMainImage(el) {
 
       <div class="addon-card" data-category="rose popular">
         <img src="../assets/images/addons/rose-petals.jpg">
-        <h4>Rose Petals(25 pcs)</h4>
+        <h4>Rose Petals</h4>
         <p>₹499</p>
         <button class="add-btn">ADD</button>
       </div>
