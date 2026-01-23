@@ -422,7 +422,7 @@ function changeMainImage(el) {
     <div class="addons-footer">
       <button class="close-btn" id="closeAddons">Close</button>
       <a href="/PARTYONE-PHP/public/checkout.php" class="proceed-btn">
-        Proceed to Cart →
+        Proceed  to  Cart→
       </a>
     </div>
 

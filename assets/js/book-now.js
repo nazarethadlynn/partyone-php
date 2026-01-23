@@ -196,3 +196,20 @@ function prevImage() {
   document.getElementById("mainProductImage").src =
     productImages[currentImageIndex];
 }
+
+
+
+
+/* Prevent background scroll when modal is open (mobile fix) */
+const addonsModal = document.getElementById('addonsModal');
+const openAddonsBtn = document.getElementById('openAddonsModal');
+const closeAddonsBtn = document.getElementById('closeAddons');
+
+openAddonsBtn.addEventListener('click', () => {
+  document.body.style.overflow = 'hidden';
+});
+
+closeAddonsBtn.addEventListener('click', () => {
+  document.body.style.overflow = '';
+});
+
