@@ -207,6 +207,208 @@ if (session_status() === PHP_SESSION_NONE) {
 .mobile-item.active + .mobile-submenu {
   display: block;
 }
+
+
+
+
+
+
+
+
+
+/* LOGIN MODAL MOBILE FIX */
+@media (max-width: 768px) {
+  .login-modal {
+    width: 90vw;
+    max-width: 360px;
+    border-radius: 16px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ================= LOGIN POPUP – FINAL FIX ================= */
+
+/* Overlay */
+.login-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(6px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+}
+
+/* Modal Card */
+.login-modal {
+  background: #fff;
+  width: 380px;
+  max-width: 92vw;
+  padding: 26px 24px 28px;
+  border-radius: 18px;
+  position: relative;
+  box-shadow: 0 20px 50px rgba(0,0,0,.25);
+  animation: popupFade .35s ease;
+}
+
+/* Close button */
+.login-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Headings */
+.login-modal h3 {
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 6px;
+}
+
+.login-modal p {
+  text-align: center;
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 20px;
+}
+
+/* Phone field */
+.login-phone {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1.5px solid #e5e7eb;
+  padding-bottom: 8px;
+  margin-bottom: 22px;
+}
+
+.login-phone span {
+  font-size: 14px;
+  color: #374151;
+}
+
+.login-phone input {
+  border: none;
+  outline: none;
+  font-size: 15px;
+  flex: 1;
+}
+
+/* Button */
+.login-modal .pay-btn {
+  width: 100%;
+  height: 46px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+/* Desktop animation */
+@keyframes popupFade {
+  from {
+    opacity: 0;
+    transform: scale(.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ================= MOBILE SLIDE-UP ================= */
+@media (max-width: 768px) {
+
+  .login-overlay {
+    align-items: flex-end;
+  }
+
+  .login-modal {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 20px 20px 0 0;
+    animation: slideUp .35s ease;
+    padding: 22px 20px 26px;
+  }
+
+  @keyframes slideUp {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ================= MOBILE LOGIN CTA (SIDE MENU) ================= */
+
+.mobile-login-cta {
+  margin-top: 22px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #e11d48, #fb7185);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(225,29,72,.35);
+}
+
+.mobile-login-cta i {
+  font-size: 18px;
+}
+
+.mobile-login-cta span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* subtle tap feedback */
+.mobile-login-cta:active {
+  transform: scale(.97);
+}
+
 </style>
 
 </head>
@@ -228,7 +430,7 @@ if (session_status() === PHP_SESSION_NONE) {
 <button class="city-btn" onclick="openCityPopup()">
       📍 <span id="headerCityText"><?= $_SESSION['city'] ?? 'Bangalore' ?></span>
     </button>
-    <a href="/PARTYONE-PHP/public/cart.php" class="cart-btn">
+    <a href="/PARTYONE-PHP/public/checkout.php" class="cart-btn">
       <i class="fa-solid fa-bag-shopping"></i>
     </a>
 
@@ -248,7 +450,7 @@ if (session_status() === PHP_SESSION_NONE) {
   <!-- ✅ DESKTOP HEADER LINKS (UNCHANGED) -->
   <div class="right-links">
     <a href="#">HELP CENTER</a>
-    <a href="#">LOG IN</a>
+    <a href="javascript:void(0)" onclick="openLogin()">LOG IN</a>
     <button class="city-btn" onclick="openCityPopup()">
       📍 <span id="headerCityText"><?= $_SESSION['city'] ?? 'Bangalore' ?></span>
     </button>
@@ -357,6 +559,21 @@ if (session_status() === PHP_SESSION_NONE) {
     <a href="#">New Year</a>
   </div>
 
+
+<!-- 
+  <div class="mobile-item" onclick="openLogin()">
+  <span><i class="fa-regular fa-user"></i> Login</span>
+</div> -->
+
+<div class="mobile-login-cta" onclick="openLogin()">
+  <span>
+    <i class="fa-regular fa-user"></i>
+    Login / Signup
+  </span>
+  <i class="fa-solid fa-arrow-right"></i>
+</div>
+
+
 </div>
 </header>
 
@@ -367,7 +584,62 @@ function toggleMobileMenu() {
 function toggleSub(el) {
   el.classList.toggle("active");
 }
+
+
+
+
+
+
+
+
+
+
+
+function openLogin() {
+  document.getElementById("loginPopup").style.display = "flex";
+  document.getElementById("mobileMenu")?.classList.remove("open");
+}
+
+function closeLogin() {
+  document.getElementById("loginPopup").style.display = "none";
+}
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- LOGIN POPUP -->
+<div id="loginPopup" class="login-overlay">
+  <div class="login-modal">
+
+    <button class="login-close" onclick="closeLogin()">✕</button>
+
+    <img src="../assets/images/login/login-icon.svg"
+         alt="Login"
+         style="height:52px;margin:0 auto 14px;display:block;">
+
+    <h3>Please Enter mobile no</h3>
+    <p>Login to explore great services</p>
+
+    <div class="login-phone">
+      <span>+91</span>
+      <input type="tel" placeholder="Enter mobile number">
+    </div>
+
+    <button class="pay-btn">Send OTP</button>
+
+  </div>
+</div>
 
 </body>
 </html>

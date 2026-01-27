@@ -357,80 +357,90 @@ function changeMainImage(el) {
 </script>
 
 
+
+
+
 <!-- ================= ADD-ONS MODAL ================= -->
 <div class="addons-overlay" id="addonsModal">
-
   <div class="addons-modal">
 
-    <!-- TABS -->
-    <div class="addons-tabs">
-      <button class="tab active" data-tab="popular">Popular</button>
-      <button class="tab" data-tab="baby">Baby Shower</button>
-      <button class="tab" data-tab="rose">Rose Petals</button>
-      <button class="tab" data-tab="cake">Baby Shower Cake</button>
-    </div>
+    <!-- HEADER -->
+<div class="addons-header">
+  <h3>Enhance Your Celebration</h3>
 
-    <!-- ADDONS GRID -->
-    <div class="addons-content">
-
-      <!-- CARD -->
-      <div class="addon-card" data-category="popular baby">
-        <img src="../assets/images/addons/u-shape-balloon.jpg">
-        <h4>U-Shape Arch</h4>
-        <p>₹2499</p>
-        <button class="add-btn">ADD</button>
-      </div>
-
-      <div class="addon-card" data-category="rose popular">
-        <img src="../assets/images/addons/rose-petals.jpg">
-        <h4>Rose Petals</h4>
-        <p>₹499</p>
-        <button class="add-btn">ADD</button>
-      </div>
-
-      <div class="addon-card" data-category="rose">
-        <img src="../assets/images/addons/rose-path.webp">
-        <h4>Rose Petals Path</h4>
-        <p>₹799</p>
-        <button class="add-btn">ADD</button>
-      </div>
-
-      <div class="addon-card" data-category="popular">
-        <img src="../assets/images/addons/fairy-light.jpg">
-        <h4>Fairy Light (1 pc)</h4>
-        <p>₹249</p>
-        <button class="add-btn">ADD</button>
-      </div>
-
-      <div class="addon-card" data-category="baby">
-        <img src="../assets/images/addons/baby-shower-props.jpg">
-        <h4>Baby Shower Props</h4>
-        <p>₹499</p>
-        <button class="add-btn">ADD</button>
-      </div>
-
-      <div class="addon-card" data-category="cake popular">
-        <img src="../assets/images/addons/welcome-board.jpg">
-        <h4>Customized Board</h4>
-        <p>₹1999</p>
-        <button class="add-btn">ADD</button>
-      </div>
-
-    </div>
-
-    <!-- FOOTER -->
-    <div class="addons-footer">
-      <button class="close-btn" id="closeAddons">Close</button>
-      <a href="/PARTYONE-PHP/public/checkout.php" class="proceed-btn">
-        Proceed  to  Cart→
-      </a>
-    </div>
-
-  </div>
+  <button
+    class="addons-close-btn"
+    id="closeAddons"
+    aria-label="Close add-ons"
+  >
+    ✕
+  </button>
 </div>
 
 
+    <!-- SEARCH -->
+    <div class="addons-search-wrap">
+      <input type="text" placeholder="Search add-ons…" class="addons-search">
+    </div>
 
+    <!-- FILTER TABS -->
+    <div class="addons-tabs">
+      <button class="tab active" data-filter="all">Popular</button>
+      <button class="tab" data-filter="babyshower">Baby Shower</button>
+      <button class="tab" data-filter="rosepetals">Rose Petals</button>
+      <button class="tab" data-filter="babyshowercake">Baby Shower Cake</button>
+    </div>
+
+
+<div class="addons-content">
+
+  <!-- Baby Shower item -->
+  <div class="addon-card" data-category="popular babyshower">
+    <img src="../assets/images/addons/u-shape-balloon.jpg">
+    <h4>U-Shape Arch</h4>
+    <p>₹2499</p>
+    <button class="add-btn">ADD</button>
+  </div>
+
+  <!-- Rose Petals -->
+  <div class="addon-card" data-category="popular rosepetals">
+    <img src="../assets/images/addons/rose-petals.jpg">
+    <h4>Rose Petals</h4>
+    <p>₹499</p>
+    <button class="add-btn">ADD</button>
+  </div>
+
+  <!-- Fairy Light (popular only) -->
+  <div class="addon-card" data-category="popular">
+    <img src="../assets/images/addons/fairy-light.jpg">
+    <h4>Fairy Light</h4>
+    <p>₹249</p>
+    <button class="add-btn">ADD</button>
+  </div>
+
+  <!-- Rose Path -->
+  <div class="addon-card" data-category="popular rosepetals">
+    <img src="../assets/images/addons/rose-path.webp">
+    <h4>Rose Path</h4>
+    <p>₹799</p>
+    <button class="add-btn">ADD</button>
+  </div>
+
+</div>
+
+    <!-- FOOTER -->
+<div class="addons-footer">
+  <button class="close-btn" id="skipToCheckout" type="button">
+    Skip for now
+  </button>
+
+  <a href="/PARTYONE-PHP/public/checkout.php" class="proceed-btn">
+    Proceed to Cart →
+  </a>
+</div>
+
+  </div>
+</div>
 
 
 
@@ -571,6 +581,70 @@ function changeMainImage(el) {
 
 
 
+
+
+
+
+
+<!-- ================= PROMO IMAGE BANNERS ================= -->
+<section class="promo-banners">
+
+  <!-- LEFT IMAGE BANNER -->
+  <a href="#" class="promo-image-banner">
+    <img
+      src="../assets/images/anniversarybanner.jpg"
+      alt="Celebrate Birthday Banner"
+    />
+  </a>
+
+  <!-- RIGHT IMAGE BANNER -->
+  <a href="#" class="promo-image-banner">
+    <img
+      src="../assets/images/kidsbanner.png"
+      alt="Extraordinary Birthday Banner"
+    />
+  </a>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
 <script src="../assets/js/wishlist.js"></script>
+
+
+
+
+
+<!-- ================= PARTY LINKS SECTION ================= -->
+<section class="party-links-section">
+  <h2>Host Your Next Party With Ease</h2>
+
+  <!-- CITY TABS -->
+  <div class="party-city-tabs">
+    <button class="active" data-city="Delhi NCR">Delhi NCR</button>
+    <button data-city="Gurugram/Gurgaon">Gurugram/Gurgaon</button>
+    <button data-city="Noida">Noida</button>
+    <button data-city="Bangalore">Bangalore</button>
+    <button data-city="Hyderabad">Hyderabad</button>
+    <button data-city="Mumbai">Mumbai</button>
+    <button data-city="Pune">Pune</button>
+    <button data-city="Ahmedabad">Ahmedabad</button>
+    <button data-city="Lucknow">Lucknow</button>
+    <button data-city="Chennai">Chennai</button>
+  </div>
+
+  <!-- LINKS GRID -->
+  <div class="party-links-grid" id="partyLinks"></div>
+</section>
+
 
 <?php include '../includes/footer.php'; ?>

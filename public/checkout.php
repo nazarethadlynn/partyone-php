@@ -1633,6 +1633,453 @@ body {
 
 
 
+
+
+
+
+
+
+/* ================================================= */
+/* 🚨 FINAL OVERRIDE – FORCE BIGGER DELIVERY CARD (MOBILE ONLY) */
+/* ================================================= */
+@media (max-width: 768px) {
+
+  /* FORCE bigger popup card */
+  .delivery-overlay > .delivery-modal {
+    width: 96vw !important;        /* ⬅ almost full screen */
+    max-width: 420px !important;   /* ⬅ BIGGER card */
+    padding: 18px 18px 20px !important;
+    border-radius: 20px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Make content breathe */
+  .delivery-overlay .delivery-grid {
+    gap: 12px 12px !important;
+  }
+
+  /* Labels */
+  .delivery-overlay .delivery-field label {
+    font-size: 12.5px !important;
+  }
+
+  /* Inputs & selects */
+  .delivery-overlay .delivery-field input,
+  .delivery-overlay .delivery-field select {
+    height: 40px !important;
+    font-size: 13.5px !important;
+    padding: 0 12px !important;
+    border-radius: 12px !important;
+  }
+
+  /* Address textarea */
+  .delivery-overlay .delivery-field textarea {
+    height: 78px !important;
+    font-size: 13.5px !important;
+    padding: 10px 12px !important;
+    border-radius: 12px !important;
+  }
+
+  /* Pay button */
+  .delivery-overlay .popup-pay-btn {
+    height: 46px !important;
+    font-size: 16px !important;
+    border-radius: 14px !important;
+    margin-top: 14px !important;
+  }
+
+  /* Secure payments box */
+  .delivery-overlay .secure-payment-box {
+    padding: 14px !important;
+    margin-top: 14px !important;
+    border-radius: 14px !important;
+  }
+
+  .delivery-overlay .secure-title {
+    font-size: 14.5px !important;
+  }
+
+  .delivery-overlay .trust-logos img {
+    height: 24px !important;
+  }
+
+  .delivery-overlay .payment-methods img {
+    height: 22px !important;
+  }
+
+  /* Terms text */
+  .delivery-overlay .popup-terms {
+    font-size: 12px !important;
+    line-height: 1.45 !important;
+    margin-top: 10px !important;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =============================== */
+/* 🎉 PARTY LINKS – PREMIUM CARD UI */
+/* =============================== */
+
+.party-links-section {
+  background: #fff;
+  padding: 60px 20px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.party-links-section h2 {
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 28px;
+  color: #0f172a;
+}
+
+/* ===== CITY PILLS ===== */
+.party-city-tabs {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 30px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+.party-city-tabs button {
+  background: #f1f5f9;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #475569;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.party-city-tabs button:hover {
+  background: #fee2e2;
+  color: #e11d48;
+  transform: translateY(-1px);
+}
+
+.party-city-tabs button.active {
+  background: #e11d48;
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(225,29,72,.25);
+}
+
+/* ===== GRID ===== */
+.party-links-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+/* ===== CARD ===== */
+.party-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 18px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.05);
+  border: 1px solid #f1f5f9;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.party-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent, rgba(236,72,153,0.08), transparent);
+  opacity: 0;
+  transition: .3s;
+}
+
+.party-card:hover::after {
+  opacity: 1;
+}
+
+.party-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 16px 40px rgba(0,0,0,.12);
+  border-color: #fbcfe8;
+}
+
+/* ICON CIRCLE */
+.party-icon {
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 12px;
+  background: #fff1f2;
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+  color: #e11d48;
+  box-shadow: 0 6px 14px rgba(225,29,72,.18);
+}
+
+/* TEXT */
+.party-text strong {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f172a;
+  display: block;
+}
+
+.party-text span {
+  font-size: 13px;
+  color: #64748b;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1000px) {
+  .party-links-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .party-links-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 420px) {
+  .party-links-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ================================================= */
+/* 📱 PARTY LINKS – FORCE 2 PER ROW (MOBILE ONLY) */
+/* ================================================= */
+@media (max-width: 640px) {
+
+  /* SECTION */
+  .party-links-section {
+    padding: 28px 14px;
+  }
+
+  .party-links-section h2 {
+    font-size: 20px;
+    margin-bottom: 18px;
+  }
+
+  /* CITY TABS */
+  .party-city-tabs {
+    gap: 10px;
+    margin-bottom: 18px;
+    overflow-x: auto;
+  }
+
+  /* ✅ FORCE GRID LAYOUT */
+  .party-links-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+  }
+
+  /* ✅ FORCE CARD TO FIT GRID CELL */
+  .party-card {
+    width: 100% !important;
+    min-width: 0 !important;
+    padding: 14px 12px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 6px 18px rgba(0,0,0,.06);
+  }
+
+  /* Disable hover jump on mobile */
+  .party-card:hover {
+    transform: none;
+  }
+
+  /* ICON */
+  .party-icon {
+    min-width: 36px;
+    min-height: 36px;
+    font-size: 16px;
+    border-radius: 10px;
+  }
+
+  /* TEXT */
+  .party-text strong {
+    font-size: 14px;
+    line-height: 1.2;
+  }
+
+  .party-text span {
+    font-size: 12px;
+  }
+}
+
+/* VERY SMALL PHONES → FALLBACK TO 1 PER ROW */
+@media (max-width: 360px) {
+  .party-links-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ================================================= */
+/* 📱 HARD OVERRIDE – 2 ITEMS PER ROW (MOBILE ONLY) */
+/* ================================================= */
+@media (max-width: 768px) {
+
+  /* FORCE grid */
+  .party-links-section .party-links-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+
+  /* FORCE card to NOT stretch full row */
+  .party-links-section .party-card {
+    width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+
+    padding: 14px 12px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* Icon */
+  .party-links-section .party-icon {
+    min-width: 36px;
+    min-height: 36px;
+    font-size: 16px;
+  }
+
+  /* Text */
+  .party-links-section .party-text strong {
+    font-size: 14px;
+    line-height: 1.2;
+  }
+
+  .party-links-section .party-text span {
+    font-size: 12px;
+  }
+}
+
+/* 🚫 CANCEL old 1-column rule */
+@media (max-width: 420px) {
+  .party-links-section .party-links-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ================================================= */
+/* 📱 TRUST METRICS – FORCE 2 PER ROW (MOBILE ONLY) */
+/* ================================================= */
+@media (max-width: 520px) {
+
+  /* FORCE GRID TO 2 COLUMNS */
+  .trust-metrics-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+  }
+
+  /* Center each badge nicely */
+  .trust-metric {
+    text-align: center;
+  }
+
+  /* Slightly smaller images for mobile balance */
+  .trust-metric img {
+    width: 72px;
+    height: 72px;
+    margin-bottom: 12px;
+  }
+
+  .trust-metric h4 {
+    font-size: 15px;
+  }
+
+  .trust-metric p {
+    font-size: 12.5px;
+    line-height: 1.4;
+  }
+}
+
 </style>
 
 <div class="checkout-wrap">
@@ -1765,12 +2212,21 @@ body {
   </div>
 </div>
 
+
+
+
+
+
+
+
+
 <script>
 let product = JSON.parse(localStorage.getItem("mainProduct"));
 let addons = JSON.parse(localStorage.getItem("selectedAddons")) || [];
 
 const productSection = document.getElementById("productSection");
 const addonsList = document.getElementById("addonsList");
+const addonsTitle = document.querySelector(".addons-title"); // ✅ added
 
 function renderCheckout() {
   productSection.innerHTML = "";
@@ -1794,12 +2250,26 @@ productSection.innerHTML = `
     </div>
 
     <div class="cart-actions">
-      <span class="delete-btn" onclick="removeProduct()">Delete</span>
+      <span class="delete-btn" onclick="removeProduct()">Remove</span>
     </div>
   </div>
 `;
 
   }
+
+
+
+
+    /* ========================= */
+  /* ✅ ADDONS TITLE VISIBILITY */
+  /* ========================= */
+  if (addons.length === 0) {
+    addonsTitle.style.display = "none";
+  } else {
+    addonsTitle.style.display = "block";
+  }
+
+
 
   addons.forEach((a, i) => {
   if (!a.qty) a.qty = 1;
@@ -1827,7 +2297,7 @@ productSection.innerHTML = `
       <div class="addon-price">₹${itemTotal}</div>
 
       <div class="addon-delete">
-        <span class="delete-btn" onclick="removeAddon(${i})">Delete</span>
+        <span class="delete-btn" onclick="removeAddon(${i})">Remove</span>
       </div>
 
     </div>
@@ -1957,24 +2427,24 @@ function goBack() {
 document.addEventListener("DOMContentLoaded", function () {
 
   const categories = [
-    "Birthday Decorations",
-    "Party Decorations",
-    "Candlelight Dinner",
-    "Personalised Gifts",
-    "Party Entertainment",
-    "Corporate Events",
-    "Food Catering",
-    "Photography Services",
-    "Anniversary Decorations",
-    "Baby Shower Celebration",
-    "Baby Welcome Decorations",
-    "Christmas/Xmas Decorations",
-    "Kids Birthday Celebration",
-    "First Birthday Decoration",
-    "Diwali Decorations",
-    "Haldi/Mehndi Decorations",
-    "Halloween Theme Decorations",
-    "Show More"
+    { name:"Birthday Decorations", icon:"🎂" },
+    { name:"Party Decorations", icon:"🏛️" },
+    { name:"Candlelight Dinner", icon:"🕯️" },
+    { name:"Personalised Gifts", icon:"🎁" },
+    { name:"Party Entertainment", icon:"🎤" },
+    { name:"Corporate Events", icon:"🏢" },
+    // { name:"Food Catering", icon:"🍽️" },
+    { name:"Photography Services", icon:"📸" },
+    { name:"Anniversary Decorations", icon:"❤️" },
+    { name:"Baby Shower Celebration", icon:"👶" },
+    // { name:"Baby Welcome Decorations", icon:"🍼" },
+    // { name:"Christmas/Xmas Decorations", icon:"🎄" },
+    // { name:"Kids Birthday Celebration", icon:"🧒" },
+    // { name:"First Birthday Decoration", icon:"✨" },
+    // { name:"Diwali Decorations", icon:"🪔" },
+    // { name:"Haldi/Mehndi Decorations", icon:"🎨" },
+    // { name:"Halloween Theme Decorations", icon:"🎃" },
+    { name:"Show More", icon:"➕" }
   ];
 
   const partyLinks = document.getElementById("partyLinks");
@@ -1986,18 +2456,24 @@ document.addEventListener("DOMContentLoaded", function () {
     partyLinks.innerHTML = "";
     categories.forEach(cat => {
       partyLinks.innerHTML += `
-        <a href="/services/${cat.toLowerCase().replace(/ /g,'-')}-${city.toLowerCase().replace(/ /g,'-')}">
-          <strong>${cat}</strong>
-          ${cat !== "Show More" ? `<span>in ${city}</span>` : ``}
+        <a class="party-card" href="/services/${cat.name.toLowerCase().replace(/ /g,'-')}-${city.toLowerCase().replace(/ /g,'-')}">
+          
+          <div class="party-icon">${cat.icon}</div>
+
+          <div class="party-text">
+            <strong>${cat.name}</strong>
+            ${cat.name !== "Show More" ? `<span>in ${city}</span>` : ``}
+          </div>
+
         </a>
       `;
     });
   }
 
-  // Initial load
+  /* Initial */
   renderLinks("Delhi NCR");
 
-  // City tab click
+  /* Tabs */
   cityTabs.forEach(btn => {
     btn.addEventListener("click", () => {
       cityTabs.forEach(b => b.classList.remove("active"));
@@ -2007,6 +2483,10 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 });
+
+
+
+
 
 
 
@@ -2024,14 +2504,6 @@ function closeDeliveryPopup() {
 <!-- DELIVERY + PAYMENT POPUP -->
 <div id="deliveryPopup" class="delivery-overlay">
   <div class="delivery-modal">
-
-    <!-- <button class="delivery-close" onclick="closeDeliveryPopup()">✕</button> -->
-
-    <!-- LOGO (UNCHANGED) -->
-<!-- <div class="delivery-header">
-  <h2>Delivery <span>Details</span></h2>
-  <img src="../assets/images/LOGO.svg" alt="Logo">
-</div> -->
 <div class="delivery-header">
   <span class="delivery-back" onclick="closeDeliveryPopup()">←</span>
 
@@ -2182,19 +2654,19 @@ function closeDeliveryPopup() {
 
 <section class="trust-metrics">
   <h2>
-    Event Partner for over <span>1 Million+</span> Celebrations
+   An Elite Partner for over <span>1Million+</span> Celebrations
   </h2>
 
   <div class="trust-metrics-grid">
 
     <div class="trust-metric">
-      <img src="../assets/images/trust/medal.png" alt="1 Million Customers">
+      <img src="../assets/images/trust/medal.svg" alt="1 Million Customers">
       <h4>1 Million+</h4>
       <p>Happy Customers over 10 Years</p>
     </div>
 
     <div class="trust-metric">
-      <img src="../assets/images/trust/google-reviews.png" alt="Google Reviews">
+      <img src="../assets/images/trust/google-reviews.svg" alt="Google Reviews">
       <h4>4.6 / 5 Rating</h4>
       <p>from 5000+ Reviews on Google</p>
     </div>
@@ -2217,7 +2689,8 @@ function closeDeliveryPopup() {
 
 
 
-<!-- PARTY LINKS SECTION -->
+
+ <!-- PARTY LINKS SECTION -->
 <section class="party-links-section">
   <h2>Host Your Next Party With Ease</h2>
 
@@ -2238,11 +2711,6 @@ function closeDeliveryPopup() {
   <!-- LINKS GRID -->
   <div class="party-links-grid" id="partyLinks"></div>
 </section>
-
-
-
-
-
 
 
 
