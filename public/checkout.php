@@ -2080,6 +2080,96 @@ body {
   }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* TERMS CHECKBOX */
+.popup-checkbox {
+  margin-top: 12px;
+  font-size: 13px;
+  color: #374151;
+  text-align: center;
+}
+
+.popup-checkbox label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.popup-checkbox input {
+  width: 16px;
+  height: 16px;
+  accent-color: #22c55e;
+}
+
+.popup-checkbox a {
+  color: #6366f1;
+  text-decoration: none;
+}
+
+/* DISABLED PAY BUTTON */
+.popup-pay-btn:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* ================================================= */
+/* ✅ MOBILE – CENTER ONLY THE SECOND LINE */
+/* ================================================= */
+@media (max-width: 768px) {
+
+  .popup-checkbox {
+    text-align: left;            /* first line stays natural */
+    padding: 0 6px;
+  }
+
+  .popup-checkbox label {
+    align-items: flex-start;     /* checkbox aligns to first line */
+    justify-content: flex-start;
+  }
+
+  .popup-checkbox input {
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+
+  .popup-checkbox span {
+    display: inline-block;
+    font-size: 12px;
+    line-height: 1.4;
+    text-align: center;          /* ✅ second line centered */
+  }
+}
+
+.delivery-modal {
+  pointer-events: auto;
+}
+
+.delivery-overlay {
+  pointer-events: auto;
+}
+
 </style>
 
 <div class="checkout-wrap">
@@ -2179,7 +2269,7 @@ body {
     </label>
   </div>
 
-  <button class="pay-btn">Login to Proceed</button>
+  <button class="pay-btn">Proceed to Pay</button>
 
 <div class="summary-divider"></div>
 
@@ -2336,20 +2426,20 @@ function removeProduct() {
 
 renderCheckout();
 
-document.querySelectorAll(".pay-btn, .delivery-row a").forEach(btn => {
-  btn.addEventListener("click", e => {
-    e.preventDefault();
-    openDeliveryPopup();
-  });
-});
+// document.querySelectorAll(".pay-btn, .delivery-row a").forEach(btn => {
+//   btn.addEventListener("click", e => {
+//     e.preventDefault();
+//     openDeliveryPopup();
+//   });
+// });
 
 
 
 
-function updatePopupAmount() {
-  const total = document.getElementById("grandTotal")?.innerText || 0;
-  document.getElementById("popupPayAmount").innerText = total;
-}
+// function updatePopupAmount() {
+//   const total = document.getElementById("grandTotal")?.innerText || 0;
+//   document.getElementById("popupPayAmount").innerText = total;
+// }
 
 
 
@@ -2375,6 +2465,7 @@ document.querySelectorAll(".pay-btn, .delivery-row a").forEach(btn => {
     openDeliveryPopup();
   });
 });
+
 
 
 
@@ -2491,11 +2582,70 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-function closeDeliveryPopup() {
-  document.getElementById("deliveryPopup").style.display = "none";
-}
+// function closeDeliveryPopup() {
+//   document.getElementById("deliveryPopup").style.display = "none";
+// }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const checkbox = document.getElementById("acceptTerms");
+  const payBtn = document.getElementById("popupPayBtn");
+
+  if (!checkbox || !payBtn) return;
+
+  // Disable initially
+  payBtn.disabled = true;
+
+  checkbox.addEventListener("change", function () {
+    payBtn.disabled = !this.checked;
+  });
+});
+
+
+
+
+
+/* ========================================= */
+/* PAY NOW BUTTON → REDIRECT TO payment.php */
+/* ========================================= */
+document.addEventListener("click", function (e) {
+  const payBtn = e.target.closest("#popupPayBtn");
+  if (!payBtn) return;
+
+  if (payBtn.disabled) return;
+
+  const amountEl = document.getElementById("popupTotal");
+  const amount = amountEl ? amountEl.innerText : 0;
+
+  localStorage.setItem("payNowAmount", amount);
+
+  // ✅ CORRECT PATH
+  window.location.href = "payment.php";
+});
 
 </script>
 
@@ -2575,10 +2725,12 @@ function closeDeliveryPopup() {
 
   
 
-   <!-- PAYMENT SECTION (IMAGE 2 STYLE) -->
-    <button class="popup-pay-btn">
-      Pay Now ₹<span id="popupTotal">0</span>
-    </button>
+
+<button class="popup-pay-btn" id="popupPayBtn" disabled>
+  Pay Now ₹<span id="popupTotal">0</span>
+</button>
+
+
 
 <!-- SECURE PAYMENTS -->
 <div class="secure-payment-box">
@@ -2604,16 +2756,18 @@ function closeDeliveryPopup() {
 
 </div>
 
-<!-- TERMS -->
-<div class="popup-terms">
-  By continuing I agree to Party one's
-  <a href="#">Terms & Conditions</a> and
-  <a href="#">Privacy Policy</a>
+<!-- TERMS CHECKBOX -->
+<div class="popup-checkbox">
+  <label>
+    <input type="checkbox" id="acceptTerms">
+    <span>
+      I agree to Party One’s
+      <a href="#" target="_blank">Terms & Conditions</a>
+      and
+      <a href="#" target="_blank">Privacy Policy</a>.
+    </span>
+  </label>
 </div>
-
-
-
-
 
   </div>
 </div>
