@@ -430,58 +430,78 @@ include '../includes/header.php';
 
 
 
-
-
-
-/* ================= CATEGORY FILTER CARDS (IMAGE STYLE) ================= */
+/* ================= CATEGORY FILTER CARDS (PROFESSIONAL) ================= */
 .category-cards {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 26px;
-  margin-bottom: 40px;
+  gap: 28px;
+  margin-bottom: 42px;
 }
 
 .category-card {
   position: relative;
-  height: 220px;
-  border-radius: 22px;
+  height: 230px;
+  border-radius: 24px;
   overflow: hidden;
   cursor: pointer;
-  transition: .25s ease;
+  background: #000;
+  box-shadow: 0 10px 30px rgba(0,0,0,.18);
+  transition: transform .25s ease, box-shadow .25s ease;
 }
 
+/* IMAGE */
 .category-card img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform .4s ease;
 }
 
-.category-card::after {
+/* DARK OVERLAY */
+.category-card::before {
   content: '';
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(0,0,0,.65),
-    rgba(0,0,0,.1)
+    rgba(0,0,0,.75),
+    rgba(0,0,0,.15)
   );
+  z-index: 1;
 }
 
+/* TITLE BADGE */
 .category-card span {
   position: absolute;
-  left: 20px;
-  bottom: 18px;
+  left: 16px;
+  bottom: 16px;
   z-index: 2;
+  background: rgba(0,0,0,.55);
+  backdrop-filter: blur(6px);
+  padding: 10px 16px;
+  border-radius: 999px;
   color: #fff;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 800;
+  letter-spacing: .3px;
 }
 
+/* HOVER EFFECT */
 .category-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 18px 40px rgba(0,0,0,.35);
+  box-shadow: 0 22px 45px rgba(0,0,0,.35);
+}
+
+.category-card:hover img {
+  transform: scale(1.05);
+}
+
+/* ACTIVE (WHEN FILTERED) */
+.category-card.active {
+  outline: 3px solid #e11d48;
+  outline-offset: -3px;
 }
 
 /* MOBILE */
@@ -489,7 +509,65 @@ include '../includes/header.php';
   .category-cards {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .category-card {
+    height: 200px;
+  }
 }
+
+
+/* ================= COLORED GRADIENT BORDERS ================= */
+
+/* Base gradient border */
+.category-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  padding: 2px; /* border thickness */
+  background: linear-gradient(135deg, #ffffff40, #ffffff10);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* LIVE FOOD STALLS – warm red/orange */
+.category-card[data-type="eatables"]::after {
+  background: linear-gradient(
+    135deg,
+    #f43f5e,
+    #fb923c
+  );
+}
+
+/* LIVE CARTOON / ENTERTAINMENT – purple/pink */
+.category-card[data-type="magic"]::after {
+  background: linear-gradient(
+    135deg,
+    #a855f7,
+    #ec4899
+  );
+}
+
+/* ARCADE GAMES – neon blue/cyan */
+.category-card[data-type="games"]::after {
+  background: linear-gradient(
+    135deg,
+    #38bdf8,
+    #22d3ee
+  );
+}
+
+/* OPTIONAL: softer shadow when active */
+.category-card.active {
+  box-shadow: 0 0 0 3px rgba(225,29,72,.45),
+              0 22px 45px rgba(0,0,0,.35);
+}
+
 
 
 </style>
@@ -1035,25 +1113,36 @@ function filterProducts() {
 
 
 
+/* ================= CATEGORY CARD FILTER (FULL WORKING) ================= */
+
 document.querySelectorAll('.category-card').forEach(card => {
   card.addEventListener('click', () => {
     const type = card.dataset.type;
 
-    // Update filter pills visually
+    /* 1️⃣ REMOVE ACTIVE STATE FROM ALL CATEGORY CARDS */
+    document.querySelectorAll('.category-card')
+      .forEach(c => c.classList.remove('active'));
+
+    /* 2️⃣ SET ACTIVE STATE ON CLICKED CARD */
+    card.classList.add('active');
+
+    /* 3️⃣ UPDATE TYPE FILTER PILLS VISUALLY */
     document.querySelectorAll('#typeFilters .filter-pill')
       .forEach(btn => {
         btn.classList.toggle('active', btn.dataset.type === type);
       });
 
-    activeType = type;
+    /* 4️⃣ UPDATE GLOBAL ACTIVE TYPE */
+    activeType = type || '';
+
+    /* 5️⃣ FILTER PRODUCTS (USING YOUR EXISTING FUNCTION) */
     filterProducts();
 
-    // Smooth scroll to products
+    /* 6️⃣ SMOOTH SCROLL TO PRODUCTS */
     document.querySelector('.products-grid')
       .scrollIntoView({ behavior: 'smooth' });
   });
 });
-
 
 </script>
 
