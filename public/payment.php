@@ -686,6 +686,43 @@ document.getElementById("upiQr").src =
 `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(
 `upi://pay?pa=${UPI_ID}&pn=${MERCHANT_NAME}&am=${amount}&cu=INR`
 )}`;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function collectDeliveryDetails() {
+  const popup = document.getElementById("deliveryPopup");
+
+  return {
+    name: popup.querySelector('input[placeholder="Enter name"]').value.trim(),
+    email: popup.querySelector('input[type="email"]').value.trim(),
+    mobile: popup.querySelector('input[placeholder="Enter phone number"]').value.trim(),
+    occasion: popup.querySelector('select').value,
+    address: popup.querySelector('textarea').value.trim(),
+    city: popup.querySelector('select[required]').value,
+    venue: popup.querySelectorAll('select')[1].value
+  };
+}
 </script>
 
 </body>

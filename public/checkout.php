@@ -2426,23 +2426,6 @@ function removeProduct() {
 
 renderCheckout();
 
-// document.querySelectorAll(".pay-btn, .delivery-row a").forEach(btn => {
-//   btn.addEventListener("click", e => {
-//     e.preventDefault();
-//     openDeliveryPopup();
-//   });
-// });
-
-
-
-
-// function updatePopupAmount() {
-//   const total = document.getElementById("grandTotal")?.innerText || 0;
-//   document.getElementById("popupPayAmount").innerText = total;
-// }
-
-
-
 
 
 function openDeliveryPopup() {
@@ -2582,35 +2565,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-// function closeDeliveryPopup() {
-//   document.getElementById("deliveryPopup").style.display = "none";
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 document.addEventListener("DOMContentLoaded", function () {
   const checkbox = document.getElementById("acceptTerms");
   const payBtn = document.getElementById("popupPayBtn");
@@ -2645,6 +2599,78 @@ document.addEventListener("click", function (e) {
 
   // ✅ CORRECT PATH
   window.location.href = "payment.php";
+});
+
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  const popup = document.getElementById("deliveryPopup");
+  if (!popup) return;
+
+  const checkbox = document.getElementById("acceptTerms");
+  const payBtn = document.getElementById("popupPayBtn");
+
+  // Required fields
+  const nameInput    = popup.querySelector('input[placeholder="Enter name"]');
+  const emailInput   = popup.querySelector('input[type="email"]');
+  const mobileInput  = popup.querySelector('input[placeholder="Enter phone number"]');
+  const addressInput = popup.querySelector('textarea');
+  const citySelect   = popup.querySelector('select[required]');
+
+  // Disable checkbox & pay button initially
+  checkbox.disabled = true;
+  payBtn.disabled = true;
+
+  function isValidEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  function isValidMobile(mobile) {
+    return /^[6-9]\d{9}$/.test(mobile);
+  }
+
+  function validateForm() {
+    const isValid =
+      nameInput.value.trim() !== "" &&
+      isValidEmail(emailInput.value.trim()) &&
+      isValidMobile(mobileInput.value.trim()) &&
+      addressInput.value.trim() !== "" &&
+      citySelect.value.trim() !== "";
+
+    // Enable checkbox only when form is valid
+    checkbox.disabled = !isValid;
+
+    // If form becomes invalid again → reset checkbox & pay button
+    if (!isValid) {
+      checkbox.checked = false;
+      payBtn.disabled = true;
+    }
+  }
+
+  // Listen to all required fields
+  [
+    nameInput,
+    emailInput,
+    mobileInput,
+    addressInput,
+    citySelect
+  ].forEach(field => {
+    field.addEventListener("input", validateForm);
+    field.addEventListener("change", validateForm);
+  });
+
+  // Existing logic: checkbox controls Pay button
+  checkbox.addEventListener("change", function () {
+    payBtn.disabled = !this.checked;
+  });
+
 });
 
 </script>

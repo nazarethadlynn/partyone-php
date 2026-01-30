@@ -501,13 +501,20 @@ if (session_status() === PHP_SESSION_NONE) {
     </div>
   </div>
 
-  <div class="menu-item">Kid's Celebrations <span class="caret">▾</span>
-    <div class="dropdown">
+  <!-- <div class="menu-item">Kid's Activities <span class="caret"></span> -->
+    <!-- <div class="dropdown">
       <a href="/PARTYONE-PHP/public/kids-cartoon-themes.php">Cartoon Themes</a>
       <a href="/PARTYONE-PHP/public/kids-balloon-parties.php">Balloon Parties</a>
       <a href="/PARTYONE-PHP/public/kids-magic-shows.php">Magic Shows</a>
-    </div>
-  </div>
+    </div> -->
+  <!-- </div> -->
+   <div class="menu-item">
+  <a href="/PARTYONE-PHP/public/kids-activities.php"
+     style="text-decoration:none;color:inherit;">
+     Kid's Activities
+  </a>
+</div>
+
 
   <div class="menu-item">Corporate Events <span class="caret">▾</span>
     <div class="dropdown">
@@ -559,11 +566,12 @@ if (session_status() === PHP_SESSION_NONE) {
     <a href="#">New Year</a>
   </div>
 
+  <a href="/PARTYONE-PHP/public/kids-activities.php"
+   style="display:block;padding:14px 0;font-weight:600;">
+   Kid's Activities
+</a>
 
-<!-- 
-  <div class="mobile-item" onclick="openLogin()">
-  <span><i class="fa-regular fa-user"></i> Login</span>
-</div> -->
+
 
 <div class="mobile-login-cta" onclick="openLogin()">
   <span>
