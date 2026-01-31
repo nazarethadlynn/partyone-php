@@ -648,7 +648,10 @@ body{
     <strong>₹<span id="barAmount">0</span></strong><br>
     <small>View Details ↑</small>
   </div>
-  <button>Continue</button>
+  <!-- <button>Continue</button> -->
+   <button onclick="window.location.href='payment-success.php'">Continue</button>
+
+
 </div>
 
 
@@ -710,19 +713,6 @@ document.getElementById("upiQr").src =
 
 
 
-function collectDeliveryDetails() {
-  const popup = document.getElementById("deliveryPopup");
-
-  return {
-    name: popup.querySelector('input[placeholder="Enter name"]').value.trim(),
-    email: popup.querySelector('input[type="email"]').value.trim(),
-    mobile: popup.querySelector('input[placeholder="Enter phone number"]').value.trim(),
-    occasion: popup.querySelector('select').value,
-    address: popup.querySelector('textarea').value.trim(),
-    city: popup.querySelector('select[required]').value,
-    venue: popup.querySelectorAll('select')[1].value
-  };
-}
 </script>
 
 </body>

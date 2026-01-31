@@ -434,7 +434,7 @@ function changeMainImage(el) {
     Skip for now
   </button>
 
-  <a href="/PARTYONE-PHP/public/checkout.php" class="proceed-btn">
+  <a href="/PARTYONE-PHP/public/cart.php" class="proceed-btn">
     Proceed to Cart →
   </a>
 </div>

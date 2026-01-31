@@ -570,6 +570,78 @@ include '../includes/header.php';
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ================= IMAGE-1 STYLE PRODUCT CARDS ================= */
+
+/* Horizontal scroll row */
+.products-grid {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  scroll-snap-type: x mandatory;
+}
+
+/* Hide scrollbar (clean look) */
+.products-grid::-webkit-scrollbar {
+  display: none;
+}
+.products-grid {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Card sizing */
+.product {
+  min-width: 260px;
+  max-width: 260px;
+  flex-direction: column;
+  scroll-snap-align: start;
+}
+
+/* Image on top */
+.product-img {
+  width: 100%;
+  height: 200px;
+}
+
+/* Body below image */
+.product-body {
+  padding: 14px 16px 16px;
+}
+
+/* Book Now button same as Image-1 */
+.product-footer a {
+  padding: 14px 0;
+  font-size: 15px;
+}
+
+/* Desktop – allow wrap if needed */
+@media (min-width: 1200px) {
+  .products-grid {
+    flex-wrap: wrap;
+    overflow-x: visible;
+  }
+}
+
+
 </style>
 
 <div class="kids-wrap">
@@ -600,9 +672,9 @@ include '../includes/header.php';
     <span>Live Cartoon Characters</span>
   </div>
 
-  <div class="category-card" data-type="magic">
-    <img src="../assets/images/kids/categories/eatbles.jpg" />
-    <span>Eatables</span>
+  <div class="category-card" data-type="decor">
+    <img src="../assets/images/kids/categories/decors.jpg" />
+    <span>Decorations</span>
   </div>
 
   <div class="category-card" data-type="games">
@@ -615,8 +687,6 @@ include '../includes/header.php';
 
 
 <div class="filters-box modern-filters">
-
-  <!-- BUDGET -->
   <div class="filter-row" id="priceFilters">
     <span class="filter-label">Filter by Budget</span>
 
@@ -625,23 +695,10 @@ include '../includes/header.php';
     <button class="filter-pill" data-price="mid">₹3000 – 6999</button>
     <button class="filter-pill" data-price="high">₹7000 Above</button>
   </div>
-
-  <!-- TYPE -->
-  <div class="filter-row" id="typeFilters">
-    <span class="filter-label">Filter by Activity Type</span>
-
-    <button class="filter-pill active" data-type="">All</button>
-    <button class="filter-pill" data-type="games">Games</button>
-    <button class="filter-pill" data-type="magic">Magic Show</button>
-    <button class="filter-pill" data-type="decor">Decorations</button>
-    <button class="filter-pill" data-type="eatables">Eatables</button>
-  </div>
-
-</div>
-
-
+</div> <!-- ✅ THIS WAS MISSING -->
 
 <div class="products-grid">
+
 
   <!-- ================= MAGIC SHOW ================= -->
 
@@ -1066,7 +1123,7 @@ include '../includes/header.php';
 let activePrice = '';
 let activeType = '';
 
-// PRICE FILTER (ONLY ONE ACTIVE)
+/* ================= PRICE FILTER ================= */
 document.querySelectorAll('#priceFilters .filter-pill').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('#priceFilters .filter-pill')
@@ -1078,7 +1135,7 @@ document.querySelectorAll('#priceFilters .filter-pill').forEach(btn => {
   });
 });
 
-// TYPE FILTER (ONLY ONE ACTIVE)
+/* ================= TYPE FILTER ================= */
 document.querySelectorAll('#typeFilters .filter-pill').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('#typeFilters .filter-pill')
@@ -1090,60 +1147,47 @@ document.querySelectorAll('#typeFilters .filter-pill').forEach(btn => {
   });
 });
 
+/* ================= FILTER LOGIC ================= */
 function filterProducts() {
   document.querySelectorAll('.product').forEach(card => {
     const priceMatch = !activePrice || card.dataset.price === activePrice;
     const typeMatch  = !activeType  || card.dataset.type === activeType;
-
     card.style.display = (priceMatch && typeMatch) ? 'block' : 'none';
   });
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* ================= CATEGORY CARD FILTER (FULL WORKING) ================= */
-
+/* ================= CATEGORY CARD → ACTIVITY TYPE ================= */
 document.querySelectorAll('.category-card').forEach(card => {
   card.addEventListener('click', () => {
     const type = card.dataset.type;
 
-    /* 1️⃣ REMOVE ACTIVE STATE FROM ALL CATEGORY CARDS */
+    /* ACTIVE STATE */
     document.querySelectorAll('.category-card')
       .forEach(c => c.classList.remove('active'));
-
-    /* 2️⃣ SET ACTIVE STATE ON CLICKED CARD */
     card.classList.add('active');
 
-    /* 3️⃣ UPDATE TYPE FILTER PILLS VISUALLY */
+    /* SYNC TYPE FILTER PILL */
     document.querySelectorAll('#typeFilters .filter-pill')
       .forEach(btn => {
         btn.classList.toggle('active', btn.dataset.type === type);
       });
 
-    /* 4️⃣ UPDATE GLOBAL ACTIVE TYPE */
-    activeType = type || '';
+    activeType = type;
+    activePrice = ''; // reset price on category change
 
-    /* 5️⃣ FILTER PRODUCTS (USING YOUR EXISTING FUNCTION) */
+    /* RESET PRICE PILLS */
+    document.querySelectorAll('#priceFilters .filter-pill')
+      .forEach(btn => btn.classList.remove('active'));
+    document.querySelector('#priceFilters .filter-pill[data-price=""]')
+      .classList.add('active');
+
     filterProducts();
 
-    /* 6️⃣ SMOOTH SCROLL TO PRODUCTS */
-    document.querySelector('.products-grid')
-      .scrollIntoView({ behavior: 'smooth' });
+    /* SCROLL TO FILTER BAR (LIKE YOUR 2nd IMAGE) */
+    document.querySelector('.filters-box')
+      .scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 });
-
 </script>
 
 <?php include '../includes/footer.php'; ?>
