@@ -30,6 +30,7 @@ include '../includes/header.php';
   border: 1px solid #e5e7eb;
   border-radius: 18px;
   padding: 20px 22px;
+  margin-top: 32px;
   margin-bottom: 34px;
 
   display: flex;
@@ -37,6 +38,8 @@ include '../includes/header.php';
   gap: 28px;
   flex-wrap: wrap;
 }
+
+
 
 /* EACH FILTER ROW IN ONE LINE */
 .filter-row {
@@ -316,49 +319,36 @@ include '../includes/header.php';
 
 
 
-
-
-/* ================= KIDS BANNER (FIXED IMAGE ALIGNMENT) ================= */
+/* ================= KIDS BANNER (LARGE GRID – IMAGE 1 STYLE) ================= */
 .kids-banner {
   position: relative;
-  height: 260px;
+  width: 100%;
+  height: 340px;              /* ✅ Desktop height exactly like reference */
   border-radius: 22px;
   overflow: hidden;
-  margin-bottom: 32px;
+  margin-bottom: 42px;
   background: #000;
 }
 
-/* IMAGE – FULL WIDTH, NO EMPTY SPACE */
+/* IMAGE – FULL WIDTH, FULL HEIGHT */
 .kids-banner-img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;        /* 🔑 fills entire grid */
-  object-position: center;  /* keeps subject centered */
+  object-fit: cover;          /* fills banner perfectly */
+  object-position: center;
   display: block;
 }
-
-
 
 /* MOBILE */
 @media (max-width: 768px) {
   .kids-banner {
-    height: 200px;
-  }
-
-  .kids-banner-content {
-    left: 20px;
-  }
-
-  .kids-banner-content h1 {
-    font-size: 26px;
-  }
-
-  .kids-banner-content p {
-    font-size: 15px;
+    height: 260px;            /* ✅ Mobile proportion */
+    border-radius: 16px;
   }
 }
+
 
 
 
@@ -516,60 +506,51 @@ include '../includes/header.php';
 }
 
 
-/* ================= COLORED GRADIENT BORDERS ================= */
+/* ================= CATEGORY CARD – PREMIUM EDITORIAL BORDER ================= */
 
-/* Base gradient border */
+.category-card {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+
+  /* outer precision border */
+  border: 1px solid rgba(17,24,39,0.12);
+
+  /* calm depth */
+  box-shadow:
+    0 8px 20px rgba(0,0,0,0.18);
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease,
+    border-color .25s ease;
+}
+
+/* inner soft border ring */
 .category-card::after {
   content: '';
   position: absolute;
-  inset: 0;
-  border-radius: 24px;
-  padding: 2px; /* border thickness */
-  background: linear-gradient(135deg, #ffffff40, #ffffff10);
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
+  inset: 6px;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.35);
   pointer-events: none;
-  z-index: 3;
 }
 
-/* LIVE FOOD STALLS – warm red/orange */
-.category-card[data-type="eatables"]::after {
-  background: linear-gradient(
-    135deg,
-    #f43f5e,
-    #fb923c
-  );
+/* hover — restrained lift */
+.category-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(17,24,39,0.22);
+  box-shadow:
+    0 14px 34px rgba(0,0,0,0.26);
 }
 
-/* LIVE CARTOON / ENTERTAINMENT – purple/pink */
-.category-card[data-type="magic"]::after {
-  background: linear-gradient(
-    135deg,
-    #a855f7,
-    #ec4899
-  );
-}
-
-/* ARCADE GAMES – neon blue/cyan */
-.category-card[data-type="games"]::after {
-  background: linear-gradient(
-    135deg,
-    #38bdf8,
-    #22d3ee
-  );
-}
-
-/* OPTIONAL: softer shadow when active */
+/* active — professional focus (no glow) */
 .category-card.active {
-  box-shadow: 0 0 0 3px rgba(225,29,72,.45),
-              0 22px 45px rgba(0,0,0,.35);
+  border-color: #e11d48;
+  box-shadow:
+    0 0 0 1px #e11d48,
+    0 16px 36px rgba(0,0,0,0.32);
 }
-
-
-
 
 
 
@@ -642,6 +623,544 @@ include '../includes/header.php';
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ================= FORCE GRID VIEW (IMAGE-2 MODE) ================= */
+.products-grid.grid-view {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)) !important;
+  gap: 26px;
+  overflow: visible !important;
+  scroll-snap-type: none !important;
+}
+
+.products-grid.grid-view .product {
+  min-width: unset !important;
+  max-width: unset !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   🎉 KIDS HERO SECTION – PREMIUM VISUAL UPGRADE
+   (NO STRUCTURE / LOGIC CHANGES)
+========================================================= */
+
+/* ---------- HERO BANNER POLISH ---------- */
+.kids-banner {
+  box-shadow:
+    0 30px 60px rgba(0,0,0,0.25),
+    inset 0 -120px 120px rgba(0,0,0,0.35);
+}
+
+/* subtle glow edge */
+.kids-banner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 22px;
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.15),
+    rgba(255,255,255,0)
+  );
+  pointer-events: none;
+}
+
+/* ---------- CATEGORY CARDS – PRO UPGRADE ---------- */
+.category-cards {
+  margin-top: -20px; /* pulls cards closer to banner */
+}
+
+/* base card enhancement */
+.category-card {
+  box-shadow:
+    0 18px 45px rgba(0,0,0,0.28);
+}
+
+/* stronger hover = premium feel */
+.category-card:hover {
+  transform: translateY(-10px);
+  box-shadow:
+    0 30px 70px rgba(0,0,0,0.45);
+}
+
+/* overlay refinement */
+.category-card::before {
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.82),
+    rgba(0,0,0,0.35),
+    rgba(0,0,0,0.15)
+  );
+}
+
+/* category label – more elegant */
+.category-card span {
+  font-size: 17px;
+  padding: 12px 20px;
+  backdrop-filter: blur(10px);
+  background: rgba(0,0,0,0.6);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+}
+
+/* glowing border on hover */
+.category-card:hover::after {
+  filter: brightness(1.3);
+}
+
+/* ACTIVE STATE – more visible */
+.category-card.active {
+  transform: translateY(-6px);
+  box-shadow:
+    0 0 0 3px rgba(225,29,72,0.6),
+    0 28px 65px rgba(0,0,0,0.5);
+}
+
+/* ---------- MOBILE REFINEMENT ---------- */
+@media (max-width: 900px) {
+  .category-cards {
+    margin-top: 0;
+  }
+
+  .category-card span {
+    font-size: 15px;
+    padding: 10px 16px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ================= FLOATING EDGE CATEGORY TOGGLE (PRO VERSION) ================= */
+.category-toggle-btn {
+  position: fixed;
+  top: 190px;
+  right: 0;
+  z-index: 990;
+
+  height: 50px;
+  width: 48px;                 /* icon-only default */
+  padding: 0 14px;
+
+  background: #ffffff;
+  color: #111827;
+
+  border-radius: 12px 0 0 12px;
+  border: 1px solid #e5e7eb;
+  border-right: none;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: .2px;
+  cursor: pointer;
+
+  overflow: hidden;
+  white-space: nowrap;
+
+  box-shadow: -8px 10px 26px rgba(0,0,0,.12);
+  transition: width .28s ease, box-shadow .28s ease;
+}
+
+/* Icon — flat, professional */
+.category-toggle-btn .icon {
+  font-size: 18px;
+  color: #e11d48;     /* accent only */
+  line-height: 1;
+}
+
+/* Text — calm, not shouty */
+.category-toggle-btn .label {
+  opacity: 0;
+  color: #374151;
+  transition: opacity .18s ease;
+}
+
+/* Hover — slide out gently */
+.category-toggle-btn:hover {
+  width: 150px;
+  box-shadow: -12px 14px 32px rgba(0,0,0,.18);
+}
+
+.category-toggle-btn:hover .label {
+  opacity: 1;
+}
+
+/* Mobile — keep compact */
+@media (max-width: 768px) {
+  .category-toggle-btn {
+    top: 160px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Overlay */
+.category-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.45);
+  z-index: 998;
+  opacity: 0;
+  pointer-events: none;
+  transition: .3s ease;
+}
+
+.category-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Drawer panel */
+
+.category-panel {
+  position: fixed;
+  top: 160px;                     /* ✅ REAL HEADER HEIGHT */
+  right: -380px;
+  width: 360px;
+  height: calc(100vh - 160px);    /* ✅ FULL VIEWPORT BELOW HEADER */
+  background: #ffffff;
+  z-index: 999;
+  box-shadow: -25px 0 50px rgba(0,0,0,.25);
+  transition: .35s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.category-panel.open {
+  right: 0;
+}
+
+/* Header */
+
+.category-panel-header {
+  position: sticky;
+  top: 0;
+  background: #ffffff;
+  z-index: 2;
+}
+
+.category-panel-header h3 {
+  font-size: 18px;
+  font-weight: 800;
+  color: #111827;
+}
+
+.category-close {
+  font-size: 22px;
+  cursor: pointer;
+  color: #6b7280;
+}
+
+/* List */
+/* .category-panel ul {
+  list-style: none;
+  padding: 18px 24px;
+  margin: 0;
+} */
+
+.category-panel ul {
+  list-style: none;
+  padding: 18px 24px 28px;
+  margin: 0;
+  overflow-y: auto;      /* ✅ allows scrolling */
+  flex: 1;               /* ✅ fills remaining space */
+}
+
+
+.category-panel li {
+  padding: 14px 12px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #374151;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.category-panel li:hover {
+  background: #fdf2f8;
+  color: #e11d48;
+}
+
+.category-panel li.active {
+  background: #fee2e2;
+  color: #e11d48;
+  font-weight: 700;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ================= CATEGORY DRAWER HEADING ================= */
+
+.category-panel-header {
+  padding: 22px 24px 18px;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.category-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+  font-weight: 800;
+  color: #111827;
+  letter-spacing: .3px;
+}
+
+.category-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: #fee2e2;
+  color: #e11d48;
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+}
+
+.category-close {
+  font-size: 22px;
+  cursor: pointer;
+  color: #6b7280;
+  transition: .2s ease;
+}
+
+.category-close:hover {
+  color: #e11d48;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   FINAL OVERRIDE — PRODUCT CARDS (MATCH IMAGE-2 EXACTLY)
+   This MUST stay at the bottom of CSS
+========================================================= */
+
+/* GRID — no slider look */
+.products-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)) !important;
+  gap: 28px;
+  overflow: visible !important;
+}
+
+/* CARD */
+.product {
+  width: 100%;
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transform: none !important;
+  transition: none !important;
+}
+
+/* IMAGE */
+.product-img {
+  height: 190px;
+  border-radius: 18px 18px 0 0;
+  overflow: hidden;
+}
+
+.product-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* HEART */
+.product-wishlist {
+  top: 12px;
+  left: 12px;
+  width: 34px;
+  height: 34px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+  font-size: 15px;
+}
+
+/* OFFER BADGE */
+.product-badge {
+  top: 12px;
+  right: 12px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 999px;
+}
+
+/* BODY */
+.product-body {
+  padding: 14px 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* TITLE */
+.product-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.35;
+}
+
+/* PRICE */
+.product-price-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.product-price {
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.product-old-price {
+  font-size: 14px;
+  color: #9ca3af;
+  text-decoration: line-through;
+}
+
+/* RATING */
+.product-rating {
+  font-size: 14px;
+  font-weight: 600;
+  color: #f59e0b;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* FOOTER */
+.product-footer {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* CART ICON */
+.product-cart {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #f3f4f6;
+  display: grid;
+  place-items: center;
+  font-size: 17px;
+}
+
+/* BOOK NOW */
+.product-footer a {
+  flex: 1;
+  height: 42px;
+  border-radius: 999px;
+  background: #e11d48;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+
+
 </style>
 
 <div class="kids-wrap">
@@ -649,15 +1168,20 @@ include '../includes/header.php';
 
 
 
+<div class="category-toggle-btn" id="openCategories">
+  <span class="icon">☰</span>
+  <span class="label">Categories</span>
+</div>
+
 <div class="kids-banner">
   <img
     src="../assets/images/kids/banner/Kids-Activity-Page.jpg"
     alt="Kids Party Activities"
     class="kids-banner-img"
   />
-
-
 </div>
+
+
 
 
 <div class="category-cards">
@@ -695,6 +1219,15 @@ include '../includes/header.php';
     <button class="filter-pill" data-price="mid">₹3000 – 6999</button>
     <button class="filter-pill" data-price="high">₹7000 Above</button>
   </div>
+  <!-- HIDDEN TYPE FILTER (LOGIC ONLY – DO NOT STYLE OR SHOW) -->
+<div class="filter-row" id="typeFilters" style="display:none">
+  <button class="filter-pill" data-type="">All</button>
+  <button class="filter-pill" data-type="magic">Magic</button>
+  <button class="filter-pill" data-type="games">Games</button>
+  <button class="filter-pill" data-type="decor">Decor</button>
+  <button class="filter-pill" data-type="eatables">Eatables</button>
+</div>
+
 </div> <!-- ✅ THIS WAS MISSING -->
 
 <div class="products-grid">
@@ -1116,34 +1649,69 @@ include '../includes/header.php';
 
 
 
+</div>
+
+
+
+
+<!-- OVERLAY -->
+<div class="category-overlay" id="categoryOverlay"></div>
+
+<!-- SLIDE PANEL -->
+<div class="category-panel" id="categoryPanel">
+
+ 
+<div class="category-panel-header">
+  <div class="category-title">
+    <!-- <span class="category-icon">📂</span> -->
+    Categories
+  </div>
+  <div class="category-close" id="closeCategories">✕</div>
+</div>
+
+  <ul>
+    <li>Balloon Decorations</li>
+    <li>Theme Decor</li>
+    <li class="active">All Kids Activities</li>
+    <li>Fun Entertainers</li>
+    <li>Live Eateries</li>
+    <li>Live Cartoon Characters</li>
+    <li>Game Stalls</li>
+    <li>Fun Party Artists</li>
+    <li>Live Musical Delivery</li>
+    <li>Photography</li>
+    <li>Kids Play Rentals</li>
+  </ul>
 
 </div>
 
+
 <script>
 let activePrice = '';
-let activeType = '';
+let activeType  = '';
+
+const productsGrid = document.querySelector('.products-grid');
+const filtersBox   = document.querySelector('.filters-box');
+
+/* 🔧 HEADER + BREATHING SPACE (IMPORTANT) */
+const HEADER_OFFSET = 140;   // sticky header
+const EXTRA_OFFSET  = 40;    // visual spacing like Image-2
 
 /* ================= PRICE FILTER ================= */
 document.querySelectorAll('#priceFilters .filter-pill').forEach(btn => {
   btn.addEventListener('click', () => {
+
     document.querySelectorAll('#priceFilters .filter-pill')
       .forEach(b => b.classList.remove('active'));
 
     btn.classList.add('active');
     activePrice = btn.dataset.price || '';
-    filterProducts();
-  });
-});
 
-/* ================= TYPE FILTER ================= */
-document.querySelectorAll('#typeFilters .filter-pill').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('#typeFilters .filter-pill')
-      .forEach(b => b.classList.remove('active'));
+    /* Price-only browsing = slider */
+    productsGrid.classList.remove('grid-view');
 
-    btn.classList.add('active');
-    activeType = btn.dataset.type || '';
     filterProducts();
+    scrollPerfectly();
   });
 });
 
@@ -1156,38 +1724,86 @@ function filterProducts() {
   });
 }
 
-/* ================= CATEGORY CARD → ACTIVITY TYPE ================= */
+/* ================= CATEGORY CARD CLICK ================= */
 document.querySelectorAll('.category-card').forEach(card => {
   card.addEventListener('click', () => {
     const type = card.dataset.type;
 
-    /* ACTIVE STATE */
+    /* Active state */
     document.querySelectorAll('.category-card')
       .forEach(c => c.classList.remove('active'));
     card.classList.add('active');
 
-    /* SYNC TYPE FILTER PILL */
-    document.querySelectorAll('#typeFilters .filter-pill')
-      .forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.type === type);
-      });
-
+    /* Set type */
     activeType = type;
-    activePrice = ''; // reset price on category change
 
-    /* RESET PRICE PILLS */
+    /* Reset price */
+    activePrice = '';
     document.querySelectorAll('#priceFilters .filter-pill')
-      .forEach(btn => btn.classList.remove('active'));
+      .forEach(b => b.classList.remove('active'));
     document.querySelector('#priceFilters .filter-pill[data-price=""]')
       .classList.add('active');
 
-    filterProducts();
+    /* 🔥 Force Image-2 layout */
+    productsGrid.classList.add('grid-view');
 
-    /* SCROLL TO FILTER BAR (LIKE YOUR 2nd IMAGE) */
-    document.querySelector('.filters-box')
-      .scrollIntoView({ behavior: 'smooth', block: 'start' });
+    filterProducts();
+    scrollPerfectly();
   });
 });
+
+/* ================= PERFECT SCROLL (IMAGE-2 FEEL) ================= */
+function scrollPerfectly() {
+  const y =
+    filtersBox.getBoundingClientRect().top +
+    window.pageYOffset -
+    HEADER_OFFSET -
+    EXTRA_OFFSET;
+
+  window.scrollTo({
+    top: y,
+    behavior: 'smooth'
+  });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const openBtn = document.getElementById('openCategories');
+const closeBtn = document.getElementById('closeCategories');
+const panel = document.getElementById('categoryPanel');
+const overlay = document.getElementById('categoryOverlay');
+
+openBtn.addEventListener('click', () => {
+  panel.classList.add('open');
+  overlay.classList.add('open');
+});
+
+closeBtn.addEventListener('click', closePanel);
+overlay.addEventListener('click', closePanel);
+
+function closePanel() {
+  panel.classList.remove('open');
+  overlay.classList.remove('open');
+}
+
 </script>
+
+
 
 <?php include '../includes/footer.php'; ?>
