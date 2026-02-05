@@ -483,7 +483,7 @@ body {
 /* ================= CATEGORY TOGGLE BUTTON ================= */
 .category-toggle {
   position: fixed;
-  left: -16px;
+  left: -5px;
   top: calc(var(--header-height) + 24px);
 
   z-index: 1300;
@@ -635,6 +635,46 @@ body {
   margin-left: 360px; /* same as drawer width */
 }
 
+
+
+
+
+
+
+
+
+
+
+
+.addons-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 99999;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </style>
 </head>
 
@@ -646,7 +686,7 @@ body {
 
 <!-- CATEGORY TOGGLE BUTTON -->
 <div class="category-toggle" onclick="toggleCategoryMenu()">
-  <span class="hamburger">☰</span>
+  <span class="hamburger">⋮</span>
   <span class="toggle-text">Categories</span>
 </div>
 
@@ -762,7 +802,7 @@ body {
 </div>
 
     <div class="product-footer">
-      <a href="book-now.php" class="book-btn">Book Now</a>
+     <a href="book-now1.php" class="book-btn">Book Now</a>
     </div>
   </div>
 </div>
@@ -1510,153 +1550,265 @@ body {
     <a href="#">Contact</a>
   </div>
 </footer>
-
 <script>
-let activeCategory = null;
+/* ======================================================
+   GLOBAL STATE
+====================================================== */
+let activeCategory = "all";
 
-/* ================= CATEGORY FILTER ================= */
+/* ======================================================
+   CATEGORY DRAWER
+====================================================== */
+function toggleCategoryMenu() {
+  document.getElementById("categoryDrawer")?.classList.toggle("open");
+  document.querySelector(".category-toggle")?.classList.toggle("hide");
+  document.querySelector(".page-content")?.classList.toggle("shifted");
+}
+
+/* ======================================================
+   CATEGORY CARD FILTER (FIXED – NO LAYOUT JUMP)
+====================================================== */
 function filterByCategory(category) {
   activeCategory = category;
 
-  const target = document.getElementById("magic-products");
+  // close drawer if open
+  document.getElementById("categoryDrawer")?.classList.remove("open");
+  document.querySelector(".category-toggle")?.classList.remove("hide");
+  document.querySelector(".page-content")?.classList.remove("shifted");
 
-  // ✅ PERFECT OFFSET FOR STICKY HEADER
-  const headerHeight = document.querySelector("header")?.offsetHeight || 120;
-
-  const top =
-    target.offsetTop - headerHeight - 20; // extra breathing space
-
-  window.scrollTo({
-    top: top,
-    behavior: "smooth"
-  });
-
-  // Show only selected category products
+  // filter products
   document.querySelectorAll(".product").forEach(product => {
     product.style.display =
       product.dataset.category === category ? "block" : "none";
   });
 
-  // Reset budget filter
-  document.querySelectorAll(".budget-btn").forEach(btn =>
-    btn.classList.remove("active")
-  );
+  // reset budget filter
+  document.querySelectorAll(".budget-btn")
+    .forEach(b => b.classList.remove("active"));
+
   document
     .querySelector('.budget-btn[data-range="all"]')
-    .classList.add("active");
+    ?.classList.add("active");
+
+  // 🔥 PERFECT SCROLL (accounts for fixed header)
+  const target = document.getElementById("magic-products");
+  const headerHeight =
+    document.querySelector("header")?.offsetHeight || 0;
+
+  const y =
+    target.getBoundingClientRect().top +
+    window.pageYOffset -
+    headerHeight -
+    16; // small breathing space
+
+  window.scrollTo({
+    top: y,
+    behavior: "smooth"
+  });
 }
 
-/* ================= BUDGET FILTER ================= */
+/* ======================================================
+   BUDGET FILTER
+====================================================== */
 document.querySelectorAll(".budget-btn").forEach(btn => {
   btn.addEventListener("click", () => {
-    document.querySelectorAll(".budget-btn").forEach(b =>
-      b.classList.remove("active")
-    );
+
+    document.querySelectorAll(".budget-btn")
+      .forEach(b => b.classList.remove("active"));
+
     btn.classList.add("active");
 
     const range = btn.dataset.range;
 
     document.querySelectorAll(".product").forEach(product => {
-      if (activeCategory && product.dataset.category !== activeCategory) {
-        product.style.display = "none";
-        return;
-      }
+      const price = parseInt(product.dataset.price, 10);
 
-      const price = parseInt(product.dataset.price);
-      let show = false;
+      const matchCategory =
+        activeCategory === "all" ||
+        product.dataset.category === activeCategory;
 
-      if (range === "all") show = true;
-      if (range === "low") show = price < 3000;
-      if (range === "mid") show = price >= 3000 && price <= 6999;
-      if (range === "high") show = price >= 7000;
+      let matchPrice = false;
 
-      product.style.display = show ? "block" : "none";
+      if (range === "all") matchPrice = true;
+      if (range === "low") matchPrice = price < 3000;
+      if (range === "mid") matchPrice = price >= 3000 && price <= 6999;
+      if (range === "high") matchPrice = price >= 7000;
+
+      product.style.display =
+        matchCategory && matchPrice ? "block" : "none";
     });
   });
 });
 
-/* ================= DEFAULT LOAD ================= */
-window.addEventListener("load", () => {
-  document.querySelectorAll(".product").forEach(product => {
-    product.style.display = "block";
-  });
-
-  activeCategory = null;
-
-  document.querySelectorAll(".budget-btn").forEach(btn =>
-    btn.classList.remove("active")
-  );
-  document
-    .querySelector('.budget-btn[data-range="all"]')
-    .classList.add("active");
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* ======================================================
+   WISHLIST
+====================================================== */
 function toggleWishlist(el) {
   el.classList.toggle("active");
-
-  // Optional: change heart symbol (♡ → ♥)
-  if (el.classList.contains("active")) {
-    el.innerHTML = "♥";
-  } else {
-    el.innerHTML = "♡";
-  }
+  el.textContent = el.classList.contains("active") ? "♥" : "♡";
 }
 
+/* ======================================================
+   INITIAL LOAD
+====================================================== */
+window.addEventListener("load", () => {
+  document.querySelectorAll(".product")
+    .forEach(p => p.style.display = "block");
 
+  document
+    .querySelector('.budget-btn[data-range="all"]')
+    ?.classList.add("active");
 
+  activeCategory = "all";
+});
 
-
-
-
-
-
-
-
-
-
-
-/* ================= HEADER HEIGHT FIX ================= */
+/* ======================================================
+   HEADER HEIGHT
+====================================================== */
 function setHeaderHeight() {
   const header = document.querySelector("header");
-  if (!header) return;
-
-  const height = header.offsetHeight;
-  document.documentElement.style.setProperty(
-    "--header-height",
-    height + "px"
-  );
+  if (header) {
+    document.documentElement.style.setProperty(
+      "--header-height",
+      header.offsetHeight + "px"
+    );
+  }
 }
 
 window.addEventListener("load", setHeaderHeight);
 window.addEventListener("resize", setHeaderHeight);
 
-/* ================= CATEGORY TOGGLE ================= */
-function toggleCategoryMenu() {
-  const drawer = document.getElementById("categoryDrawer");
-  const toggle = document.querySelector(".category-toggle");
-  const content = document.querySelector(".page-content");
 
-  drawer.classList.toggle("open");
-  toggle.classList.toggle("hide");
-  content.classList.toggle("shifted");
-}
 
+
+
+
+/* =========================================
+   FORCE Book Now → book-now1.php
+   (override any global modal JS)
+========================================= */
+document.querySelectorAll('.book-btn').forEach(btn => {
+  btn.addEventListener('click', e => {
+    // allow normal navigation
+    window.location.href = btn.getAttribute('href');
+  });
+});
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ================= ADD-ONS MODAL ================= -->
+<div class="addons-overlay" id="addonsModal">
+  <div class="addons-modal">
+
+    <!-- HEADER -->
+<div class="addons-header">
+  <h3>Enhance Your Celebration</h3>
+
+  <button
+    class="addons-close-btn"
+    id="closeAddons"
+    aria-label="Close add-ons"
+  >
+    ✕
+  </button>
+</div>
+
+
+    <!-- SEARCH -->
+    <div class="addons-search-wrap">
+      <input type="text" placeholder="Search add-ons…" class="addons-search">
+    </div>
+
+    <!-- FILTER TABS -->
+    <div class="addons-tabs">
+      <button class="tab active" data-filter="all">Popular</button>
+      <button class="tab" data-filter="babyshower">Baby Shower</button>
+      <button class="tab" data-filter="rosepetals">Rose Petals</button>
+      <button class="tab" data-filter="babyshowercake">Baby Shower Cake</button>
+    </div>
+
+
+<div class="addons-content">
+
+  <!-- Baby Shower item -->
+  <div class="addon-card" data-category="popular babyshower">
+    <img src="../assets/images/addons/u-shape-balloon.jpg">
+    <h4>U-Shape Arch</h4>
+    <p>₹2499</p>
+    <button class="add-btn">ADD</button>
+  </div>
+
+  <!-- Rose Petals -->
+  <div class="addon-card" data-category="popular rosepetals">
+    <img src="../assets/images/addons/rose-petals.jpg">
+    <h4>Rose Petals</h4>
+    <p>₹499</p>
+    <button class="add-btn">ADD</button>
+  </div>
+
+  <!-- Fairy Light (popular only) -->
+  <div class="addon-card" data-category="popular">
+    <img src="../assets/images/addons/fairy-light.jpg">
+    <h4>Fairy Light</h4>
+    <p>₹249</p>
+    <button class="add-btn">ADD</button>
+  </div>
+
+  <!-- Rose Path -->
+  <div class="addon-card" data-category="popular rosepetals">
+    <img src="../assets/images/addons/rose-path.webp">
+    <h4>Rose Path</h4>
+    <p>₹799</p>
+    <button class="add-btn">ADD</button>
+  </div>
+
+</div>
+
+    <!-- FOOTER -->
+<div class="addons-footer">
+  <button class="close-btn" id="skipToCheckout" type="button">
+    Skip for now
+  </button>
+
+  <a href="/PARTYONE-PHP/public/cart.php" class="proceed-btn">
+    Proceed to Cart →
+  </a>
+</div>
+
+  </div>
+</div>
+
+
+
+<!-- PAGE END MARKER -->
+<div id="pageEndMarker"></div>
+
 
 </body>
 </html>

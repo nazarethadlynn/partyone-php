@@ -509,7 +509,7 @@ if (session_status() === PHP_SESSION_NONE) {
     </div> -->
   <!-- </div> -->
    <div class="menu-item">
-  <a href="/PARTYONE-PHP/public/kids-activities.php"
+  <a href="/PARTYONE-PHP/public/kids.php"
      style="text-decoration:none;color:inherit;">
      Kid's Activities
   </a>
