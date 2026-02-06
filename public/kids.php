@@ -675,11 +675,102 @@ body {
 
 
 
+
+
+
+
+
+
+
+/* =========================================================
+   📱 MOBILE ACTIVITY FILTER – UNDER BANNER (NO DESKTOP CHANGE)
+   ========================================================= */
+@media (max-width: 768px) {
+
+  /* 🔥 COMPACT BANNER */
+  .kids-banner {
+    height: 100px;          /* smaller banner */
+    margin: 14px 16px 0;   /* tighter spacing */
+    border-radius: 16px;
+  }
+
+  /* 🔥 SECTION MOVES UP */
+  .kids-banner + .section {
+    padding-top: 10px;     /* reduce gap below banner */
+  }
+
+  /* ================= SMALL GAP BELOW HEADER ================= */
+.header-gap {
+  height: 12px;              /* 👈 adjust: 8px / 12px / 16px */
+  background: var(--bg);     /* clean white space */
+}
+
+  /* ACTIVITY FILTER GRID */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-top: 10px;
+  }
+
+  /* ACTIVITY CARD */
+  .card {
+    border-radius: 14px;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+    overflow: hidden;
+    background: #fff;
+  }
+
+  /* IMAGE */
+  .card img {
+    height: 150px;
+    object-fit: cover;
+  }
+
+  /* TITLE AREA */
+  .card-body {
+    padding: 5px 5px 8px;
+    text-align: center;
+  }
+
+  .card-title h2 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #dc2626; /* red like screenshot */
+    line-height: 1.2;
+  }
+
+  /* Remove hover lift on mobile */
+  .card:hover {
+    transform: none;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+  }
+}
+
+/* ---------- SMALL MOBILE (≤480px) ---------- */
+@media (max-width: 480px) {
+
+  .cards {
+    gap: 12px;
+  }
+
+  .card img {
+    height: 105px;
+  }
+
+  .card-title h2 {
+    font-size: 13px;
+  }
+}
+
+
 </style>
 </head>
 
 <body>
 <div class="page-content">
+    <!-- SMALL WHITE GAP BELOW HEADER -->
+  <div class="header-gap"></div>
 <!-- BANNER (NEW) -->
 <section class="kids-banner"></section>
 
@@ -718,7 +809,7 @@ body {
 
 <!-- ACTIVITIES -->
 <section class="section">
-  <h2 class="section-title">Most Popular Party Activities</h2>
+  <h6 class="section-title">Most Popular Party Activities</h6>
   <p class="section-sub">The most loved entertainment choices for 2026.</p>
 
   <div class="cards">
@@ -1510,46 +1601,9 @@ body {
   </div>
 </section>
 </div>
-<!-- STATS -->
-<section class="stats">
-  <div class="stat">
-    <h2>15,000+</h2>
-    <p>Parties Hosted</p>
-  </div>
-  <div class="stat">
-    <h2>450+</h2>
-    <p>Verified Artists</p>
-  </div>
-  <div class="stat">
-    <h2>4.9/5</h2>
-    <p>Avg Review Score</p>
-  </div>
-  <div class="stat">
-    <h2>100%</h2>
-    <p>Safety Compliance</p>
-  </div>
-</section>
 
-<footer class="footer">
-  <div>
-    <h4>PartyOne</h4>
-    <p>Industry standard for professional kids party entertainment.</p>
-  </div>
 
-  <div>
-    <h4>Services</h4>
-    <a href="#">Magic Shows</a>
-    <a href="#">Inflatables</a>
-    <a href="#">Face Painting</a>
-  </div>
 
-  <div>
-    <h4>Company</h4>
-    <a href="#">About Us</a>
-    <a href="#">Safety Standards</a>
-    <a href="#">Contact</a>
-  </div>
-</footer>
 <script>
 /* ======================================================
    GLOBAL STATE
@@ -1693,6 +1747,22 @@ document.querySelectorAll('.book-btn').forEach(btn => {
     window.location.href = btn.getAttribute('href');
   });
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </script>
 
 

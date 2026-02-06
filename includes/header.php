@@ -96,72 +96,92 @@ if (session_status() === PHP_SESSION_NONE) {
   cursor: pointer;
 }
 
-/* ================= MOBILE HEADER ================= */
+
+
+
+
+/* =========================================================
+   📱 MOBILE HEADER — FINAL LOCKED VERSION (ALL PAGES)
+   ========================================================= */
 @media (max-width: 768px) {
 
-  .menu-bar { display: none !important; }
-  .right-links { display: none !important; }
-  .mobile-only { display: flex; }
-
-  .top-header {
-    flex-wrap: wrap;
-    gap: 12px;
-    padding: 14px 16px;
+  /* hide desktop */
+  .menu-bar,
+  .right-links {
+    display: none !important;
   }
 
-  /* MOBILE ICON ROW */
+  .mobile-only {
+    display: flex !important;
+  }
+
+  /* HEADER WRAP */
+  .top-header {
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 12px 14px;
+  }
+
+  /* LOGO */
+  .logo img {
+    height: 50px;
+  }
+
+  /* ICON GROUP */
   .header-actions {
+    margin-left: auto;
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-left: auto;
   }
 
-  /* CITY – BOXED */
+  /* CITY */
   .header-actions .city-btn {
     padding: 6px 12px;
-    border-radius: 12px;
     font-size: 13px;
+    border-radius: 12px;
+    line-height: 1;
   }
 
-  /* CART – OUTLINED BOX */
+  /* CART */
   .cart-btn {
-    width: 40px;
-    height: 40px;
+    width: 38px;
+    height: 38px;
     border-radius: 12px;
     border: 1.5px solid #2563eb;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #2563eb;
     background: #fff;
-    font-size: 16px;
-    position: relative;
+    color: #2563eb;
+    font-size: 15px;
   }
 
-  /* SEARCH FULL WIDTH */
+  /* MENU */
+  .mobile-menu-btn {
+    background: none;
+    border: none;
+    font-size: 22px;
+    padding: 0;
+  }
+
+  /* 🔥 SEARCH — LOCKED SIZE */
   .search-box {
+    flex: 0 0 100%;
     width: 100%;
-    max-width: none;
+    margin-top: 8px;
   }
 
   .search-box input {
-    height: 48px;
-    border-radius: 14px;
-    border: 1.5px solid #111;
+    height: 44px;              /* EXACT IMAGE HEIGHT */
+    padding: 0 42px 0 16px;
+    border-radius: 14px;      /* EXACT IMAGE RADIUS */
     font-size: 14px;
   }
 
   .search-btn {
     right: 14px;
-  }
-
-  /* HAMBURGER */
-  .mobile-menu-btn {
-    background: none;
-    border: none;
-    font-size: 22px;
-    cursor: pointer;
+    font-size: 16px;
   }
 }
 
@@ -501,13 +521,6 @@ if (session_status() === PHP_SESSION_NONE) {
     </div>
   </div>
 
-  <!-- <div class="menu-item">Kid's Activities <span class="caret"></span> -->
-    <!-- <div class="dropdown">
-      <a href="/PARTYONE-PHP/public/kids-cartoon-themes.php">Cartoon Themes</a>
-      <a href="/PARTYONE-PHP/public/kids-balloon-parties.php">Balloon Parties</a>
-      <a href="/PARTYONE-PHP/public/kids-magic-shows.php">Magic Shows</a>
-    </div> -->
-  <!-- </div> -->
    <div class="menu-item">
   <a href="/PARTYONE-PHP/public/kids.php"
      style="text-decoration:none;color:inherit;">
