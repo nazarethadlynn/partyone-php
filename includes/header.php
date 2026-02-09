@@ -16,83 +16,378 @@ if (session_status() === PHP_SESSION_NONE) {
 <link rel="icon" href="/PARTYONE-PHP/public/favicon.ico">
 
 <style>
-/* ================= BASE ================= */
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.mobile-only { display: none; }
+body {
+  padding-top: 120px;
+  font-family: 'Inter', sans-serif;
+}
 
-/* ================= HEADER BASE ================= */
+/* ================= HEADER ================= */
 .site-header {
-  background: #f5efef;
-  border-bottom: 1px solid #eee;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #f6efef;
+  border-bottom: 1px solid #e5e7eb;
+  z-index: 99999;
 }
 
-.top-header {
+/* ================= TOP BAR ================= */
+.header-top {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 20px;
   padding: 14px 32px;
+  flex-wrap: nowrap;   
 }
 
-/* LOGO */
 .logo img {
-  height: 56px;
-  display: block;
+  height: 52px;
 }
 
 /* ================= SEARCH ================= */
-.search-box {
-  position: relative;
+.search-wrap {
   flex: 1;
-  max-width: 520px;
+  max-width: 350px;
+  position: relative;
 }
 
-.search-box input {
+.search-wrap input {
   width: 100%;
   height: 48px;
-  padding: 0 52px 0 18px;
-  border-radius: 14px;
+  border-radius: 9px;
   border: 1.5px solid #111;
+  padding: 0 52px 0 18px;
   font-size: 15px;
-  outline: none;
 }
 
-.search-btn {
+.search-wrap button {
   position: absolute;
   right: 14px;
   top: 50%;
   transform: translateY(-50%);
   background: none;
   border: none;
-  font-size: 18px;
-  cursor: pointer;
+  font-size: 17px;
 }
 
-/* ================= DESKTOP RIGHT ================= */
-.right-links {
+
+
+
+
+
+
+
+
+
+
+/* ================= ACTIONS ================= */
+.header-actions {
   display: flex;
+  gap: 12px;
+  margin-left: auto;
   align-items: center;
-  gap: 14px;
 }
 
-.right-links a {
-  font-size: 13px;
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 12px;
+  border: 1.5px solid #e5e7eb;
+  background: #fff;
   font-weight: 600;
   text-decoration: none;
+}
+
+.icon-btn.cart {
+  border-color: #2563eb;
+  color: #2563eb;
+}
+
+.city-pill {
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1.5px solid #e11d48;
+  background: #fff;
+  color: #e11d48;
+  font-weight: 700;
+}
+
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 24px;
+}
+
+/* ================= CATEGORY BAR (DESKTOP ONLY) ================= */
+.category-bar {
+  display: flex;
+  gap: 14px;
+  padding: 12px 32px 16px;
+  align-items: center;
+}
+
+/* 🔥 FORCE CLEAN DESKTOP LOOK */
+.category-bar * {
+  text-decoration: none !important;
+  list-style: none !important;
+}
+
+/* .cat-item {
+  position: relative;
+} */
+.cat-item {
+  position: relative;
+}
+
+/* 🔥 INVISIBLE HOVER BRIDGE */
+.cat-item::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 100%;
+  height: 10px;       /* hover-safe zone */
+}
+
+
+/* ================= GRADIENT CATEGORY PILLS ================= */
+.cat-pill {
+  padding: 10px 20px;
+  border-radius: 12px;
+  background: linear-gradient(
+    135deg,
+    #610f0a 0%,
+    #bd2c22 50%,
+    #e24b40 100%
+  );
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 14.5px;
+  white-space: nowrap;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.25),
+    0 6px 14px rgba(158,39,33,0.25);
+  transition: all .25s ease;
+}
+
+/* HOVER EFFECT */
+.cat-pill:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.35),
+    0 10px 22px rgba(158,39,33,0.35);
+}
+
+/* CLICK FEEDBACK */
+.cat-pill:active {
+  transform: translateY(0);
+  box-shadow:
+    inset 0 2px 4px rgba(0,0,0,0.25);
+}
+
+
+/* ================= DROPDOWN ================= */
+.cat-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 6px;                 /* 🔥 REMOVE GAP */
+  padding-top: 6px;              /* 🔥 visual spacing without hover gap */
+  background: #fff;
+  min-width: 200px;
+  border-radius: 14px;
+  box-shadow: 0 14px 40px rgba(0,0,0,.18);
+  display: none;
+  overflow: hidden;
+  z-index: 9999;
+}
+
+.cat-dropdown a {
+  display: block;
+  padding: 12px 16px;
+  font-size: 14px;
   color: #111;
 }
 
-/* CITY BUTTON (BOXED) */
-.city-btn {
-  padding: 8px 14px;
-  border-radius: 12px;
-  border: 1.5px solid #e11d48;
-  background: #fff;
-  font-size: 14px;
-  font-weight: 600;
+.cat-dropdown a:hover {
+  background: #f3f4f6;
+}
+
+.cat-item:hover .cat-dropdown {
+  display: block;
+}
+.cat-dropdown {
+  animation: fadeSlide .18s ease;
+}
+
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ================= MOBILE ONLY ================= */
+@media (max-width: 768px) {
+
+  body {
+    padding-top: 150px;
+  }
+
+
+  .logo img {
+    height: 46px;
+  }
+
+  .header-actions {
+    margin-left: auto;
+    gap: 10px;
+  }
+
+  .icon-btn.login {
+    display: none;
+  }
+
+  .mobile-menu-btn {
+    display: inline-flex;
+  }
+
+  .search-wrap {
+    order: 99;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .search-wrap input {
+    height: 46px;
+    font-size: 14px;
+  }
+
+  /* ❌ HIDE CATEGORY BAR ON MOBILE */
+  .category-bar {
+    display: none !important;
+  }
+}
+
+
+/* ================= LOGIN POPUP CARD ================= */
+.login-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 200000;
+}
+
+.login-overlay.active {
+  display: flex;
+}
+
+/* CARD */
+.login-modal {
+  width: 92%;
+  max-width: 380px;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 26px 24px 28px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+  animation: popIn .25s ease;
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* CLOSE BUTTON */
+.login-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  border: none;
+  background: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* ICON */
+.login-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #fde8ec;
   color: #e11d48;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  margin: 0 auto 12px;
+}
+
+/* TEXT */
+.login-modal h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.login-modal p {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 18px;
+}
+
+/* PHONE INPUT */
+.login-phone {
+  display: flex;
+  align-items: center;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.login-phone span {
+  padding: 12px 14px;
+  background: #f9fafb;
+  font-weight: 600;
+  border-right: 1.5px solid #e5e7eb;
+}
+
+.login-phone input {
+  border: none;
+  flex: 1;
+  padding: 12px 14px;
+  font-size: 15px;
+  outline: none;
+}
+
+/* SEND OTP BUTTON */
+.login-btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 14px;
+  border: none;
+  background: linear-gradient(135deg,#e11d48,#fb7185);
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
   cursor: pointer;
 }
 
@@ -100,334 +395,248 @@ if (session_status() === PHP_SESSION_NONE) {
 
 
 
-/* =========================================================
-   📱 MOBILE HEADER — FINAL LOCKED VERSION (ALL PAGES)
-   ========================================================= */
-@media (max-width: 768px) {
 
-  /* hide desktop */
-  .menu-bar,
-  .right-links {
-    display: none !important;
-  }
 
-  .mobile-only {
-    display: flex !important;
-  }
 
-  /* HEADER WRAP */
-  .top-header {
-    flex-wrap: wrap;
-    gap: 10px;
-    padding: 12px 14px;
-  }
 
-  /* LOGO */
-  .logo img {
-    height: 50px;
-  }
 
-  /* ICON GROUP */
-  .header-actions {
-    margin-left: auto;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
 
-  /* CITY */
-  .header-actions .city-btn {
-    padding: 6px 12px;
-    font-size: 13px;
-    border-radius: 12px;
-    line-height: 1;
-  }
 
-  /* CART */
-  .cart-btn {
-    width: 38px;
-    height: 38px;
-    border-radius: 12px;
-    border: 1.5px solid #2563eb;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #fff;
-    color: #2563eb;
-    font-size: 15px;
-  }
 
-  /* MENU */
-  .mobile-menu-btn {
-    background: none;
-    border: none;
-    font-size: 22px;
-    padding: 0;
-  }
 
-  /* 🔥 SEARCH — LOCKED SIZE */
-  .search-box {
-    flex: 0 0 100%;
-    width: 100%;
-    margin-top: 8px;
-  }
 
-  .search-box input {
-    height: 44px;              /* EXACT IMAGE HEIGHT */
-    padding: 0 42px 0 16px;
-    border-radius: 14px;      /* EXACT IMAGE RADIUS */
-    font-size: 14px;
-  }
 
-  .search-btn {
-    right: 14px;
-    font-size: 16px;
-  }
-}
 
 /* ================= MOBILE SIDE MENU ================= */
 .mobile-menu {
   position: fixed;
   top: 0;
-  right: -100%;
-  width: 80%;
+  right: 0;
+  width: 82%;
+  max-width: 340px;
   height: 100vh;
   background: #fff;
-  padding: 20px;
-  box-shadow: -4px 0 20px rgba(0,0,0,.15);
-  transition: right .3s ease;
-  z-index: 9999;
+  transform: translateX(100%);
+  transition: transform .35s ease;
+  z-index: 100000;
+  padding: 22px 20px;
+  overflow-y: auto;
 }
 
 .mobile-menu.open {
-  right: 0;
+  transform: translateX(0);
 }
 
-.mobile-menu h3 {
-  font-size: 13px;
+/* SECTION TITLES */
+.mobile-menu h4 {
+  font-size: 14px;
   font-weight: 700;
-  margin-bottom: 12px;
-  color: #6b7280;
-  text-transform: uppercase;
+  color: #9e2721;
+  margin: 18px 0 10px;
 }
 
-.mobile-item {
-  font-size: 16px;
-  font-weight: 600;
-  padding: 14px 0;
-  display: flex;
-  justify-content: space-between;
-}
-
-.mobile-submenu {
-  display: none;
-  padding-left: 12px;
-}
-
-.mobile-item.active + .mobile-submenu {
+/* LINKS */
+.mobile-menu a {
   display: block;
-}
-
-
-
-
-
-
-
-
-
-/* LOGIN MODAL MOBILE FIX */
-@media (max-width: 768px) {
-  .login-modal {
-    width: 90vw;
-    max-width: 360px;
-    border-radius: 16px;
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* ================= LOGIN POPUP – FINAL FIX ================= */
-
-/* Overlay */
-.login-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.55);
-  backdrop-filter: blur(6px);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 99999;
-}
-
-/* Modal Card */
-.login-modal {
-  background: #fff;
-  width: 380px;
-  max-width: 92vw;
-  padding: 26px 24px 28px;
-  border-radius: 18px;
-  position: relative;
-  box-shadow: 0 20px 50px rgba(0,0,0,.25);
-  animation: popupFade .35s ease;
-}
-
-/* Close button */
-.login-close {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  background: none;
-  border: none;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-/* Headings */
-.login-modal h3 {
-  text-align: center;
-  font-size: 20px;
-  margin-bottom: 6px;
-}
-
-.login-modal p {
-  text-align: center;
-  font-size: 14px;
-  color: #6b7280;
-  margin-bottom: 20px;
-}
-
-/* Phone field */
-.login-phone {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  border-bottom: 1.5px solid #e5e7eb;
-  padding-bottom: 8px;
-  margin-bottom: 22px;
-}
-
-.login-phone span {
-  font-size: 14px;
-  color: #374151;
-}
-
-.login-phone input {
-  border: none;
-  outline: none;
+  padding: 12px 0;
   font-size: 15px;
-  flex: 1;
+  font-weight: 500;
+  color: #111;
+  text-decoration: none;
+  border-bottom: 1px solid #f1f1f1;
 }
 
-/* Button */
-.login-modal .pay-btn {
-  width: 100%;
-  height: 46px;
-  border-radius: 999px;
-  font-size: 15px;
-  font-weight: 700;
-}
-
-/* Desktop animation */
-@keyframes popupFade {
-  from {
-    opacity: 0;
-    transform: scale(.92);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* ================= MOBILE SLIDE-UP ================= */
-@media (max-width: 768px) {
-
-  .login-overlay {
-    align-items: flex-end;
-  }
-
-  .login-modal {
-    width: 100%;
-    max-width: 100%;
-    border-radius: 20px 20px 0 0;
-    animation: slideUp .35s ease;
-    padding: 22px 20px 26px;
-  }
-
-  @keyframes slideUp {
-    from {
-      transform: translateY(100%);
-    }
-    to {
-      transform: translateY(0);
-    }
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* ================= MOBILE LOGIN CTA (SIDE MENU) ================= */
-
+/* LOGIN CTA */
 .mobile-login-cta {
   margin-top: 22px;
-  padding: 14px 16px;
+  padding: 14px;
   border-radius: 14px;
-  background: linear-gradient(135deg, #e11d48, #fb7185);
+  background: linear-gradient(135deg,#e11d48,#fb7185);
   color: #fff;
-  font-size: 15px;
   font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  text-align: center;
+}
+
+/* MOBILE ONLY */
+@media (min-width: 769px) {
+  .mobile-menu {
+    display: none;
+  }
+}
+
+
+
+
+
+
+
+
+
+/* ================= ACTION PILLS (MATCH CATEGORY STYLE) ================= */
+.action-pill {
+  padding: 10px 20px;
+  border-radius: 12px;
+  background: linear-gradient(
+    135deg,
+    #610f0a 0%,
+    #bd2c22 50%,
+    #e24b40 100%
+  );
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 14.5px;
+  white-space: nowrap;
   cursor: pointer;
-  box-shadow: 0 10px 24px rgba(225,29,72,.35);
-}
 
-.mobile-login-cta i {
-  font-size: 18px;
-}
-
-.mobile-login-cta span {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
+
+  border: none;
+  text-decoration: none;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.25),
+    0 6px 14px rgba(158,39,33,0.25);
+
+  transition: all .25s ease;
 }
 
-/* subtle tap feedback */
-.mobile-login-cta:active {
-  transform: scale(.97);
+/* Hover */
+.action-pill:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.35),
+    0 10px 22px rgba(158,39,33,0.35);
 }
+
+/* Active / Click */
+.action-pill:active {
+  transform: translateY(0);
+  box-shadow:
+    inset 0 2px 4px rgba(0,0,0,0.25);
+}
+
+/* Icons inside action pills */
+.action-pill i {
+  font-size: 14px;
+}
+
+
+
+
+
+
+
+
+/* ================= MOBILE HEADER – FINAL FIX ================= */
+@media (max-width: 768px) {
+
+  /* Allow header to form TWO ROWS */
+  .header-top {
+    flex-wrap: wrap !important;
+    align-items: center;
+    padding: 12px 16px;
+    row-gap: 12px;
+  }
+
+  /* LOGO → LEFT (ROW 1) */
+  .logo {
+    order: 1;
+    flex: 0 0 auto;
+  }
+
+  .logo img {
+    height: 46px;
+  }
+
+  /* ACTIONS → RIGHT (ROW 1) */
+  .header-actions {
+    order: 2;
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* Hide desktop-style pills */
+  .header-actions .action-pill {
+    display: none !important;
+  }
+
+  /* LOCATION (outlined pill) */
+  .header-actions button[action-location] {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    border-radius: 12px;
+    background: #fff;
+    color: #e11d48;
+    border: 1.5px solid #e11d48;
+    font-weight: 600;
+    box-shadow: none;
+  }
+
+  /* CART (icon only) */
+  .header-actions a[action-cart] {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 10px;
+    border-radius: 10px;
+    background: #fff;
+    color: #2563eb;
+    border: 1.5px solid #2563eb;
+    box-shadow: none;
+  }
+
+  .header-actions a[action-cart] span {
+    display: none;
+  }
+
+  /* HAMBURGER */
+  .mobile-menu-btn {
+    display: inline-flex !important;
+    font-size: 22px;
+  }
+
+  /* 🔥 SEARCH → FULL WIDTH (ROW 2) */
+  .search-wrap {
+    order: 3;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .search-wrap input {
+    width: 100%;
+    height: 46px;
+    border-radius: 12px;
+    font-size: 14px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </style>
 
@@ -437,166 +646,134 @@ if (session_status() === PHP_SESSION_NONE) {
 
 <header class="site-header">
 
-<div class="top-header">
+  <!-- TOP BAR -->
+  <div class="header-top">
 
-  <div class="logo">
-    <a href="/PARTYONE-PHP/public/index.php">
-      <img src="../assets/images/LOGO.svg" alt="Party One">
-    </a>
-  </div>
-
-  <!-- 🔥 MOBILE ICONS ONLY -->
-  <div class="header-actions mobile-only">
-<button class="city-btn" onclick="openCityPopup()">
-      📍 <span id="headerCityText"><?= $_SESSION['city'] ?? 'Bangalore' ?></span>
-    </button>
-    <a href="/PARTYONE-PHP/public/checkout.php" class="cart-btn">
-      <i class="fa-solid fa-bag-shopping"></i>
-    </a>
-
-    <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
-      <i class="fa-solid fa-bars"></i>
-    </button>
-  </div>
-
-  <!-- SEARCH BAR -->
-  <div class="search-box">
-    <input type="text" placeholder="Search by event, birthday, party..." />
-    <button class="search-btn">
-      <i class="fa-solid fa-magnifying-glass"></i>
-    </button>
-  </div>
-
-  <!-- ✅ DESKTOP HEADER LINKS (UNCHANGED) -->
-  <div class="right-links">
-    <a href="#">HELP CENTER</a>
-    <a href="javascript:void(0)" onclick="openLogin()">LOG IN</a>
-    <button class="city-btn" onclick="openCityPopup()">
-      📍 <span id="headerCityText"><?= $_SESSION['city'] ?? 'Bangalore' ?></span>
-    </button>
-  </div>
-
-</div>
-
-<!-- DESKTOP MENU (UNCHANGED) -->
-<nav class="menu-bar">
-
-  <div class="menu-item">Anniversary <span class="caret">▾</span>
-    <div class="dropdown">
-      <a href="#">Room Decor</a>
-      <a href="#">Surprise Setup</a>
-      <a href="#">Romantic Themes</a>
+    <div class="logo">
+      <a href="/PARTYONE-PHP/public/index.php">
+        <img src="../assets/images/LOGO.svg" alt="PartyOne">
+      </a>
     </div>
-  </div>
 
-  <div class="menu-item">Gifts <span class="caret">▾</span>
-    <div class="dropdown">
-      <a href="#">Flowers</a>
-      <a href="#">Cakes</a>
-      <a href="#">Gift Hampers</a>
+    <!-- SEARCH (DESKTOP ONLY) -->
+    <div class="search-wrap">
+      <input type="text" placeholder="Search by event, birthday, party..." />
+      <button><i class="fa-solid fa-magnifying-glass"></i></button>
     </div>
-  </div>
 
-  <div class="menu-item">Candlelight Dinners <span class="caret">▾</span>
-    <div class="dropdown">
-      <a href="#">Private Dining</a>
-      <a href="#">Rooftop Dinner</a>
-      <a href="#">Beachside Dinner</a>
-    </div>
-  </div>
-
-  <div class="menu-item">Decorations <span class="caret">▾</span>
-    <div class="dropdown">
-      <a href="#">Balloon Decor</a>
-      <a href="#">Theme Decor</a>
-      <a href="#">Room Decor</a>
-    </div>
-  </div>
-
-  <div class="menu-item">Festivals <span class="caret">▾</span>
-    <div class="dropdown">
-      <a href="#">Diwali</a>
-      <a href="#">Christmas</a>
-      <a href="#">New Year</a>
-    </div>
-  </div>
-
-   <div class="menu-item">
-  <a href="/PARTYONE-PHP/public/kids.php"
-     style="text-decoration:none;color:inherit;">
-     Kid's Activities
-  </a>
-</div>
-
-
-  <div class="menu-item">Corporate Events <span class="caret">▾</span>
-    <div class="dropdown">
-      <a href="#">Office Decor</a>
-      <a href="#">Product Launch</a>
-      <a href="#">Team Parties</a>
-    </div>
-  </div>
-
-</nav>
-
-<!-- MOBILE MENU -->
-<div class="mobile-menu" id="mobileMenu">
-
-  <h3>Categories</h3>
-
-  <div class="mobile-item" onclick="toggleSub(this)">Anniversary ▾</div>
-  <div class="mobile-submenu">
-    <a href="#">Room Decor</a>
-    <a href="#">Surprise Setup</a>
-    <a href="#">Romantic Themes</a>
-  </div>
-
-  <div class="mobile-item" onclick="toggleSub(this)">Gifts ▾</div>
-  <div class="mobile-submenu">
-    <a href="#">Flowers</a>
-    <a href="#">Cakes</a>
-    <a href="#">Gift Hampers</a>
-  </div>
-
-  <div class="mobile-item" onclick="toggleSub(this)">Candlelight Dinners ▾</div>
-  <div class="mobile-submenu">
-    <a href="#">Private Dining</a>
-    <a href="#">Rooftop Dinner</a>
-    <a href="#">Beachside Dinner</a>
-  </div>
-
-  <div class="mobile-item" onclick="toggleSub(this)">Decorations ▾</div>
-  <div class="mobile-submenu">
-    <a href="#">Balloon Decor</a>
-    <a href="#">Theme Decor</a>
-    <a href="#">Room Decor</a>
-  </div>
-
-  <div class="mobile-item" onclick="toggleSub(this)">Festivals ▾</div>
-  <div class="mobile-submenu">
-    <a href="#">Diwali</a>
-    <a href="#">Christmas</a>
-    <a href="#">New Year</a>
-  </div>
-
-  <a href="/PARTYONE-PHP/public/kids-activities.php"
-   style="display:block;padding:14px 0;font-weight:600;">
-   Kid's Activities
+    <!-- RIGHT ACTIONS -->
+    <div class="header-actions">
+  <a href="/PARTYONE-PHP/public/cart.php" class="action-pill" action-cart>
+  <i class="fa-solid fa-bag-shopping"></i>
+  Cart
 </a>
 
+<button class="action-pill" onclick="openLogin()">
+  <i class="fa-regular fa-user"></i>
+  Login
+</button>
+
+<button class="action-pill" action-location onclick="openCityPopup()">
+  <i class="fa-solid fa-location-dot"></i>
+  <?= $_SESSION['city'] ?? 'Bangalore' ?>
+</button>
+
+      <!-- MOBILE MENU BUTTON -->
+      <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+    </div>
+  </div>
 
 
-<div class="mobile-login-cta" onclick="openLogin()">
-  <span>
-    <i class="fa-regular fa-user"></i>
-    Login / Signup
-  </span>
-  <i class="fa-solid fa-arrow-right"></i>
+<!-- CATEGORY BAR WITH DROPDOWNS -->
+  <nav class="category-bar">
+
+    <div class="cat-item">
+      <div class="cat-pill">Birthday</div>
+      <div class="cat-dropdown">
+        <a href="#">Kids Birthday</a>
+        <a href="#">Adult Birthday</a>
+        <a href="#">Theme Parties</a>
+      </div>
+    </div>
+
+    <div class="cat-item">
+      <div class="cat-pill">Decorations</div>
+      <div class="cat-dropdown">
+        <a href="#">Balloon Decor</a>
+        <a href="#">Room Decor</a>
+        <a href="#">Theme Decor</a>
+      </div>
+    </div>
+
+   
+    <div class="cat-item">
+      <a href="/PARTYONE-PHP/public/kids.php" class="cat-pill">
+          Kids Activities
+      </a>
+    </div>
+
+    <div class="cat-item">
+      <div class="cat-pill">Festival Decorations</div>
+      <div class="cat-dropdown">
+        <a href="#">Diwali</a>
+        <a href="#">Christmas</a>
+        <a href="#">New Year</a>
+      </div>
+    </div>
+
+    <div class="cat-item">
+      <div class="cat-pill">Candlelight Dinners</div>
+      <div class="cat-dropdown">
+        <a href="#">Rooftop</a>
+        <a href="#">Private Dining</a>
+        <a href="#">Beachside</a>
+      </div>
+    </div>
+
+    <div class="cat-item">
+      <div class="cat-pill">Corporate Planner</div>
+      <div class="cat-dropdown">
+        <a href="#">Office Parties</a>
+        <a href="#">Product Launch</a>
+        <a href="#">Team Events</a>
+      </div>
+    </div>
+
+    <div class="cat-item">
+      <div class="cat-pill">Occasions</div>
+      <div class="cat-dropdown">
+        <a href="#">Anniversary</a>
+        <a href="#">Proposal</a>
+        <a href="#">Surprise Setup</a>
+      </div>
+    </div>
+
+  </nav>
+
+  <!-- ================= MOBILE SIDE MENU ================= -->
+<div class="mobile-menu" id="mobileMenu">
+
+  <h4>Categories</h4>
+  <a href="#">Birthday</a>
+  <a href="#">Decorations</a>
+  <a href="/PARTYONE-PHP/public/kids.php">Kids Activities</a>
+  <a href="#">Festival Decorations</a>
+  <a href="#">Candlelight Dinners</a>
+  <a href="#">Corporate Planner</a>
+  <a href="#">Occasions</a>
+
+  <div class="mobile-login-cta" onclick="openLogin()">
+    <i class="fa-regular fa-user"></i> Login / Signup
+  </div>
+
 </div>
 
-
-</div>
 </header>
+
+
 
 <script>
 function toggleMobileMenu() {
@@ -626,38 +803,26 @@ function closeLogin() {
 }
 </script>
 
+<!-- ================= LOGIN POPUP ================= -->
+<div id="loginPopup" class="login-overlay" onclick="closeLogin()">
 
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- LOGIN POPUP -->
-<div id="loginPopup" class="login-overlay">
-  <div class="login-modal">
+  <div class="login-modal" onclick="event.stopPropagation()">
 
     <button class="login-close" onclick="closeLogin()">✕</button>
 
-    <img src="../assets/images/login/login-icon.svg"
-         alt="Login"
-         style="height:52px;margin:0 auto 14px;display:block;">
+    <div class="login-icon">
+      <i class="fa-regular fa-user"></i>
+    </div>
 
-    <h3>Please Enter mobile no</h3>
-    <p>Login to explore great services</p>
+    <h3>Login with Mobile</h3>
+    <p>Enter your phone number to continue</p>
 
     <div class="login-phone">
       <span>+91</span>
-      <input type="tel" placeholder="Enter mobile number">
+      <input type="tel" placeholder="Enter mobile number" maxlength="10">
     </div>
 
-    <button class="pay-btn">Send OTP</button>
+    <button class="login-btn">Send OTP</button>
 
   </div>
 </div>

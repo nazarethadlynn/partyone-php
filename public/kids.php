@@ -14,6 +14,7 @@ include '../includes/header.php';
 
 <style>
 :root {
+  --header-height: 120px;
   --primary: #e11d48;
   --dark: #0f172a;
   --muted: #6b7280;
@@ -28,6 +29,7 @@ include '../includes/header.php';
 }
 
 body {
+  padding-top: var(--header-height);
   background: var(--bg);
   color: #111827;
 }
@@ -37,18 +39,18 @@ body {
 .kids-banner {
   height: 270px;
 
-  /* 🔥 MATCH CONTENT WIDTH EXACTLY */
-  margin: 32px 30px 0;   /* same as .section horizontal padding */
+  /* PERFECT DESKTOP SPACING */
+  margin: 24px 30px 0;   /* 🔥 NO TOP OVERLAP */
 
-  border-radius: 22px;
+  border-radius: 18px;
 
   background-image: url("../assets/images/kids/banner/Kids-Activity-Page.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 
-  overflow: hidden;
   position: relative;
+  overflow: hidden;
 }
 
 
@@ -701,7 +703,7 @@ body {
 
   /* ================= SMALL GAP BELOW HEADER ================= */
 .header-gap {
-  height: 12px;              /* 👈 adjust: 8px / 12px / 16px */
+  height: 25px;              /* 👈 adjust: 8px / 12px / 16px */
   background: var(--bg);     /* clean white space */
 }
 

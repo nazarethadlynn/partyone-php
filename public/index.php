@@ -1,5 +1,150 @@
 <?php include "../includes/header.php"; ?>
 
+<!-- ================= HORIZONTAL CATEGORIES ================= -->
+<section class="categories-scroll">
+
+  <div class="categories-scroll-track">
+
+     <a href="#" class="category-chip">
+      <div class="chip-img">
+        <img src="../assets/images/categories/category-candle.jpg" alt="">
+      </div>
+      <span>Candle Light Dinner</span>
+    </a>
+
+    <a href="#" class="category-chip">
+      <div class="chip-img">
+         <img src="../assets/images/categories/category-birthday.webp">
+      </div>
+      <span>Birthday Services</span>
+    </a>
+
+    <a href="#" class="category-chip">
+      <div class="chip-img">
+        <img src="../assets/images/categories/category-kids.png">
+      </div>
+      <span>All Kids Activity</span>
+    </a>
+
+    <a href="#" class="category-chip">
+      <div class="chip-img">
+        <img src="../assets/images/categories/category-theme.webp">
+      </div>
+      <span>Birthday Theme Decor</span>
+    </a>
+
+    <a href="#" class="category-chip">
+      <div class="chip-img">
+        <img src="../assets/images/categories/category-decoration.jpg">
+      </div>
+      <span>Decoration</span>
+    </a>
+
+    <a href="#" class="category-chip">
+      <div class="chip-img">
+        <img src="../assets/images/categories/category-candle.jpg">
+      </div>
+      <span>Candle Light Dinner</span>
+    </a>
+
+    <a href="#" class="category-chip">
+      <div class="chip-img">
+        <img src="../assets/images/categories/category-theater.jpg">
+      </div>
+      <span>Private Theater</span>
+    </a>
+
+    <a href="#" class="category-chip">
+      <div class="chip-img">
+        <img src="../assets/images/categories/category-house.jpg">
+      </div>
+      <span>House Warming</span>
+    </a>
+
+    <a href="#" class="category-chip">
+      <div class="chip-img">
+       <img src="../assets/images/categories/category-naming.jpg">
+      </div>
+      <span>Naming Ceremony</span>
+    </a>
+
+    <a href="#" class="category-chip">
+      <div class="chip-img">
+       <img src="../assets/images/categories/category-baby.jpg">
+      </div>
+      <span>Baby Shower</span>
+    </a>
+
+    <a href="#" class="category-chip">
+      <div class="chip-img">
+        <img src="../assets/images/categories/category-surprise.webp">
+      </div>
+      <span>Surprises</span>
+    </a>
+
+    <a href="#" class="category-chip">
+      <div class="chip-img">
+       <img src="../assets/images/categories/category-anniversary.jpg">
+      </div>
+      <span>Anniversary</span>
+    </a>
+
+    <a href="#" class="category-chip">
+      <div class="chip-img">
+       <img src="../assets/images/categories/category-corporate.png">
+      </div>
+      <span>Corporate</span>
+    </a>
+     <!-- ===== DUPLICATED SET (REQUIRED FOR LOOP) ===== -->
+    <!-- exact same items again -->
+
+    <a href="#" class="category-chip">
+      <div class="chip-img">
+        <img src="../assets/images/categories/category-birthday.webp">
+      </div>
+      <span>Birthday</span>
+    </a>
+
+    <a href="#" class="category-chip">
+      <div class="chip-img">
+        <img src="../assets/images/categories/category-kids.png">
+      </div>
+      <span>Kids Activity</span>
+    </a>
+
+    <a href="#" class="category-chip">
+      <div class="chip-img">
+        <img src="../assets/images/categories/category-theme.webp">
+      </div>
+      <span>Theme Decor</span>
+    </a>
+
+    <a href="#" class="category-chip">
+      <div class="chip-img">
+        <img src="../assets/images/categories/category-decoration.jpg">
+      </div>
+      <span>Decoration</span>
+    </a>
+
+    <a href="#" class="category-chip">
+      <div class="chip-img">
+        <img src="../assets/images/categories/category-candle.jpg">
+      </div>
+      <span>Candle Light</span>
+    </a>
+
+    <a href="#" class="category-chip">
+      <div class="chip-img">
+        <img src="../assets/images/categories/category-theater.jpg">
+      </div>
+      <span>Private Theater</span>
+    </a>
+
+  </div>
+</section>
+<!-- ================= END HORIZONTAL CATEGORIES ================= -->
+
+
 <!-- ===== BANNER SLIDER SECTION (SEPARATE FROM HEADER) ===== -->
 <section class="home-banner">
   <div class="banner-container">
@@ -39,77 +184,7 @@
       <?= $_SESSION['city'] ?? 'Bangalore' ?>
     </span>
   </div>
-</section>
 
-
-<section class="categories-section">
-  <h2 class="categories-title">Explore our categories</h2>
-
-  <div class="categories-grid">
-
-    <a href="#" class="category-card">
-      <img src="../assets/images/categories/category-birthday.webp" alt="Birthday Services">
-      <span>Birthday Services</span>
-    </a>
-
-    <a href="#" class="category-card">
-      <img src="../assets/images/categories/category-kids.png" alt="All Kids Activity">
-      <span>All Kids Activity</span>
-    </a>
-
-    <a href="#" class="category-card">
-      <img src="../assets/images/categories/category-theme.webp" alt="Birthday Theme Decor">
-      <span>Birthday Theme Decor</span>
-    </a>
-
-    <a href="#" class="category-card">
-      <img src="../assets/images/categories/category-decoration.jpg" alt="Decoration">
-      <span>Decoration</span>
-    </a>
-
-    <a href="#" class="category-card">
-      <img src="../assets/images/categories/category-candle.jpg" alt="Candle Light Dinner">
-      <span>Candle Light Dinner</span>
-    </a>
-
-    <a href="#" class="category-card">
-      <img src="../assets/images/categories/category-theater.jpg" alt="Private Theater Celebration">
-      <span>Private Theater Celebration</span>
-    </a>
-
-    <a href="#" class="category-card">
-      <img src="../assets/images/categories/category-house.jpg" alt="House Warming">
-      <span>House Warming</span>
-    </a>
-
-    <a href="#" class="category-card">
-      <img src="../assets/images/categories/category-naming.jpg" alt="Naming Ceremony">
-      <span>Naming Ceremony</span>
-    </a>
-
-    <a href="#" class="category-card">
-      <img src="../assets/images/categories/category-baby.jpg" alt="Baby Shower">
-      <span>Baby Shower</span>
-    </a>
-
-    <a href="#" class="category-card">
-      <img src="../assets/images/categories/category-surprise.webp" alt="Surprises">
-      <span>Surprises</span>
-    </a>
-
-     <a href="#" class="category-card">
-      <img src="../assets/images/categories/category-anniversary.jpg" alt="Anniversary Celebrations">
-      <span>Anniversary Celebrations</span>
-    </a>
-
-    <a href="#" class="category-card">
-      <img src="../assets/images/categories/category-corporate.png" alt="Corporate Celebrations">
-      <span>Corporate Celebrations</span>
-    </a>
-
-
-  </div>
-</section>
 
 <!-- ================= PRODUCT SECTION ================= -->
 <section class="product-section">

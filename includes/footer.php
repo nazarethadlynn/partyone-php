@@ -101,6 +101,35 @@
 
 
 
+<!-- ❤️ FLOATING HEARTS LAYER -->
+<div id="floating-hearts"></div>
+
+
+<script>
+(function () {
+  const container = document.getElementById("floating-hearts");
+  if (!container) return;
+
+  function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.setProperty("--x", (Math.random() * 100 - 50) + "px");
+    heart.style.animationDuration = Math.random() * 3 + 8 + "s";
+
+    container.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 12000);
+  }
+
+  setInterval(createHeart, 600);
+})();
+</script>
+
+
 
 </body>
 </html>

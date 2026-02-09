@@ -59,10 +59,6 @@ body {
 
 /* ================= SEARCH SUGGESTIONS ================= */
 
-/* .search-box {
-  position: relative;
-} */
-
 .search-suggestions {
   position: absolute;
   top: 58px;
@@ -321,39 +317,42 @@ body {
   background: #fff;
   cursor: pointer;
 }
-
 /* ===== HOME BANNER ===== */
 .home-banner {
-  padding: 20px 0 10px; /* top | left-right | bottom */
+  padding: 14px 0 10px;     /* 🔽 reduced vertical space */
   background: #ffffff;
+  margin-top: 38px;        /* keeps gap below fixed header */
 }
 
+/* Banner wrapper */
 .banner-container {
-  width: 92%;
-  max-width: 1300px;
-  margin: 0 auto; /* IMPORTANT */
+  width: 98%;
+  max-width: 1600px;
+  margin: 0 auto;
   position: relative;
   overflow: hidden;
-  border-radius: 24px;
+  border-radius: 18px;
 }
-
 
 /* Slides */
 .banner-slide {
   display: none;
   width: 100%;
-  height: 420px;
-}
 
-.banner-slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 24px;
+  /* 🔥 KEY FIX: REDUCED HEIGHT */
+  height: 340px;
 }
 
 .banner-slide.active {
   display: block;
+}
+
+/* Image */
+.banner-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;       /* keeps premium look */
+  border-radius: 18px;
 }
 
 /* Arrows */
@@ -383,7 +382,7 @@ body {
 /* Dots */
 .banner-dots {
   position: absolute;
-  bottom: 14px;
+  bottom: 10px;           /* 🔥 ensures visible */
   width: 100%;
   text-align: center;
 }
@@ -400,6 +399,23 @@ body {
 
 .dot.active {
   background: #e11d48;
+}
+
+/* ================= MOBILE (SAFE & RESPONSIVE) ================= */
+@media (max-width: 768px) {
+
+  .banner-slide {
+    height: auto;          /* mobile uses image height */
+  }
+
+  .banner-slide img {
+    height: auto;
+    object-fit: contain;
+  }
+
+  .banner-dots {
+    bottom: -14px;         /* already visible on mobile */
+  }
 }
 
 
@@ -472,82 +488,6 @@ body {
   font-weight: 600;
 }
 
-
-/* ================= CATEGORIES SECTION ================= */
-
-.categories-section {
-  width: 100%;
-  padding: 60px 0 80px;
-  background: #ffffff;
-}
-
-.categories-title {
-  width: 92%;
-  max-width: 1300px;
-  margin: 0 auto 10px;
-  font-size: 28px;
-  font-weight: 700;
-  color: #111;
-}
-
-/* Grid */
-.categories-grid {
-  width: 92%;
-  max-width: 1300px;
-  margin: auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 32px;
-}
-
-/* Card */
-.category-card {
-  text-align: center;
-  text-decoration: none;
-  color: #111;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.category-card img {
-  width: 160px;
-  height: 160px;
-  object-fit: cover;
-  border-radius: 28px;
-  border: 2px solid #ffb6c1;
-  padding: 6px;
-  background: #fff;
-  transition: transform 0.25s ease, border-color 0.25s ease;
-}
-
-/* Title */
-.category-card span {
-  display: block;
-  margin-top: 14px;
-  font-size: 15px;
-  font-weight: 500;
-}
-
-/* Hover */
-.category-card:hover {
-  transform: translateY(-6px);
-}
-
-.category-card:hover img {
-  transform: scale(1.05);
-  border-color: #e11d48;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .categories-title {
-    font-size: 22px;
-  }
-
-  .category-card img {
-    width: 140px;
-    height: 140px;
-  }
-}
 
 
 
@@ -4537,3 +4477,247 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
 
 
+
+
+
+
+
+
+
+
+
+/* ================= PREMIUM FLOATING HEARTS ================= */
+
+#floating-hearts {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999999;
+  overflow: hidden;
+}
+
+/* Heart base */
+#floating-hearts .heart {
+  position: absolute;
+  bottom: -50px;
+  width: 18px;
+  height: 18px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 85, 120, 0.85),
+    rgba(255, 140, 160, 0.75)
+  );
+  transform: rotate(45deg);
+  animation: heartFloat linear forwards;
+  box-shadow: 0 6px 14px rgba(255, 90, 120, 0.25);
+}
+
+/* Heart circles */
+#floating-hearts .heart::before,
+#floating-hearts .heart::after {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: inherit;
+  border-radius: 50%;
+}
+
+#floating-hearts .heart::before {
+  top: -9px;
+  left: 0;
+}
+
+#floating-hearts .heart::after {
+  left: -9px;
+  top: 0;
+}
+
+/* Animation */
+@keyframes heartFloat {
+  0% {
+    transform: translateY(0) translateX(0) rotate(45deg) scale(0.7);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(-120vh) translateX(var(--x)) rotate(45deg) scale(1.15);
+    opacity: 0;
+  }
+}
+
+/* Mobile tuning */
+@media (max-width: 768px) {
+  #floating-hearts .heart {
+    width: 15px;
+    height: 15px;
+  }
+
+  #floating-hearts .heart::before,
+  #floating-hearts .heart::after {
+    width: 15px;
+    height: 15px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* ================= HORIZONTAL CATEGORY STRIP ================= */
+.categories-scroll {
+  margin-top: 40px;
+  padding: 22px 16px 16px;
+  background: #fff;
+  overflow: hidden;
+}
+
+/* TRACK */
+.categories-scroll-track {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  animation: infiniteScroll 40s linear infinite;
+}
+
+/* Pause on hover */
+.categories-scroll:hover .categories-scroll-track {
+  animation-play-state: paused;
+}
+
+/* TRUE INFINITE LOOP */
+@keyframes infiniteScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* CARD */
+.category-chip {
+  width: 150px;
+  flex-shrink: 0;
+
+  /* 🔥 IMPORTANT FIX */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-decoration: none;
+}
+
+/* IMAGE HOLDER */
+.chip-img {
+  width: 122px;
+  height: 122px;
+  padding: 6px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, #f7c1cc, #ffd9e2);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: all .35s ease;
+}
+
+/* IMAGE */
+.chip-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 22px;
+  background: #fff;
+}
+
+/* 🔥 LABEL — PERFECTLY CENTERED */
+.category-chip span {
+  margin-top: 10px;
+  max-width: 122px;
+
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  color: #111;
+  line-height: 1.3;
+}
+
+/* HOVER */
+.category-chip:hover .chip-img {
+  transform: translateY(-6px);
+  background: linear-gradient(135deg, #c90f38);
+  box-shadow: 0 14px 32px rgba(225, 29, 72, 0.28);
+}
+
+/* ================================================= */
+/* 🔥 FIX: REMOVE GAP BETWEEN CATEGORY & BANNER */
+/* ================================================= */
+
+.categories-scroll {
+  padding-top: 16px !important;
+  padding-bottom: 12px !important;
+}
+
+.home-banner {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.categories-scroll + .home-banner {
+  margin-top: -2px !important;
+}
+
+/* MOBILE SAFETY */
+@media (max-width: 768px) {
+  .categories-scroll {
+    padding-top: 14px !important;
+    padding-bottom: 10px !important;
+  }
+}
+
+
+
+
+
+
+
+
+
+/* ================================================= */
+/* 📱 MOBILE FIX — REMOVE GAP BETWEEN HEADER & CATEGORIES */
+/* ================================================= */
+@media (max-width: 768px) {
+
+  /* Reduce body offset for mobile header */
+  body {
+    padding-top: 118px !important; /* exact mobile header height */
+  }
+
+  /* Kill extra spacing above categories */
+  .categories-scroll {
+    margin-top: 30px !important;
+    padding-top: 12px !important;
+  }
+
+  /* Ensure banner does NOT push content */
+  .home-banner {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  /* Safety: if categories come right after header */
+  header.site-header + .categories-scroll {
+    margin-top: 0 !important;
+  }
+}
