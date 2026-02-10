@@ -685,22 +685,38 @@ body {
 /* ================= REQUEST CALLBACK ================= */
 
 .request-callback {
-  background: linear-gradient(180deg, #fff3f4 0%, #ffffff 75%);
-  padding: 40px 20px 50px; /* 🔽 reduced */
+  background: linear-gradient(135deg, #fde7f3, #eef2ff);
+  padding: 56px 20px; /* ⬇ reduced from 80px */
+  display: flex;
+  justify-content: center;
   text-align: center;
 }
 
-.request-callback h2 {
-  font-size: 28px;
-  font-weight: 700;
-  color: #e11d48;
-  margin-bottom: 4px; /* 🔽 reduced */
+/* ================= CALLBACK CARD ================= */
+
+.callback-card {
+  background: #ffffff;
+  width: 100%;
+  max-width: 860px;
+  padding: 36px 44px 40px; /* ⬇ reduced */
+  border-radius: 26px;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.12);
+  text-align: center;
 }
 
-.callback-subtitle {
+/* Title */
+.callback-card h2 {
+  font-size: 30px; /* ⬇ slightly smaller */
+  font-weight: 700;
+  color: #e11d48;
+  margin-bottom: 4px;
+}
+
+/* Subtitle */
+.callback-card .callback-subtitle {
   font-size: 14px;
-  color: #6b6b6b;
-  margin-bottom: 26px; /* 🔽 reduced */
+  color: #6b7280;
+  margin-bottom: 26px; /* ⬇ reduced */
 }
 
 /* FORM */
@@ -712,13 +728,13 @@ body {
 /* GROUP */
 .form-group {
   text-align: left;
-  margin-bottom: 18px; /* 🔽 reduced */
+  margin-bottom: 14px; /* ⬇ reduced */
   position: relative;
 }
 
 .form-group label {
   display: block;
-  margin-bottom: 6px;
+  margin-bottom: 5px;
   font-size: 13px;
   font-weight: 500;
 }
@@ -727,9 +743,9 @@ body {
 .form-group input,
 .form-group select {
   width: 100%;
-  height: 54px;
-  padding: 0 22px;
-  border-radius: 32px;
+  height: 48px; /* ⬇ reduced from 54px */
+  padding: 0 20px;
+  border-radius: 28px;
   border: 1.5px solid #ff8a9d;
   font-size: 14px;
   background: #fff;
@@ -742,14 +758,14 @@ body {
 
 /* SELECT */
 .select-wrap select {
-  padding-right: 54px;
+  padding-right: 52px;
 }
 
-/* ONLY visible dropdown icon */
+/* Dropdown icon */
 .select-icon {
   position: absolute;
   right: 18px;
-  top: 55%;
+  top: 54%;
   width: 18px;
   height: 18px;
   stroke: #e11d48;
@@ -760,10 +776,10 @@ body {
 
 /* DATE & TIME */
 .icon-wrap input {
-  padding-right: 54px;
+  padding-right: 52px;
 }
 
-/* Native picker works under SVG */
+/* Native picker hidden */
 input[type="date"]::-webkit-calendar-picker-indicator,
 input[type="time"]::-webkit-calendar-picker-indicator {
   position: absolute;
@@ -778,7 +794,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 .input-icon {
   position: absolute;
   right: 18px;
-  top: 55%;
+  top: 54%;
   width: 18px;
   height: 18px;
   stroke: #444;
@@ -790,7 +806,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 /* ROW */
 .form-row {
   display: flex;
-  gap: 18px; /* 🔽 reduced */
+  gap: 14px; /* ⬇ reduced */
 }
 
 .form-row .form-group {
@@ -800,13 +816,13 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 /* BUTTON */
 .callback-btn {
   width: 100%;
-  height: 56px;
-  margin-top: 26px; /* 🔽 reduced */
+  height: 52px; /* ⬇ reduced */
+  margin-top: 20px; /* ⬇ reduced */
   background: #e11d48;
   border: none;
   border-radius: 36px;
   color: #fff;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 600;
   cursor: pointer;
 }
@@ -815,15 +831,26 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   background: #c7163d;
 }
 
-/* MOBILE */
+/* ================= MOBILE ================= */
+
 @media (max-width: 768px) {
+
   .request-callback {
-    padding: 30px 16px 40px;
+    padding: 40px 14px;
+  }
+
+  .callback-card {
+    padding: 28px 18px 32px;
+    border-radius: 22px;
+  }
+
+  .callback-card h2 {
+    font-size: 24px;
   }
 
   .form-row {
     flex-direction: column;
-    gap: 14px;
+    gap: 12px;
   }
 }
 
@@ -4486,7 +4513,9 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
 
 
-/* ================= PREMIUM FLOATING HEARTS ================= */
+
+
+/* ================= PREMIUM FLOATING HEARTS (FALLING) ================= */
 
 #floating-hearts {
   position: fixed;
@@ -4499,7 +4528,6 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 /* Heart base */
 #floating-hearts .heart {
   position: absolute;
-  bottom: -50px;
   width: 18px;
   height: 18px;
   background: linear-gradient(
@@ -4508,7 +4536,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     rgba(255, 140, 160, 0.75)
   );
   transform: rotate(45deg);
-  animation: heartFloat linear forwards;
+  animation: heartFall linear forwards;
   box-shadow: 0 6px 14px rgba(255, 90, 120, 0.25);
 }
 
@@ -4533,8 +4561,8 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   top: 0;
 }
 
-/* Animation */
-@keyframes heartFloat {
+/* ⬇️ FALLING ANIMATION */
+@keyframes heartFall {
   0% {
     transform: translateY(0) translateX(0) rotate(45deg) scale(0.7);
     opacity: 0;
@@ -4543,7 +4571,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     opacity: 0.9;
   }
   100% {
-    transform: translateY(-120vh) translateX(var(--x)) rotate(45deg) scale(1.15);
+    transform: translateY(120vh) translateX(var(--x)) rotate(45deg) scale(1.1);
     opacity: 0;
   }
 }
@@ -4561,6 +4589,29 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     height: 15px;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -4721,3 +4772,41 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     margin-top: 0 !important;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

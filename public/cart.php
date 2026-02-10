@@ -1,6 +1,27 @@
 <?php include '../includes/header.php'; ?>
 
 <style>
+ /* ========================================= */
+/* ✅ FIX: PUSH PAGE CONTENT BELOW HEADER */
+/* ========================================= */
+
+/* Desktop header height */
+:root {
+  --fixed-header-offset: 80px;
+}
+
+/* Push entire checkout section down */
+.checkout-wrap {
+  margin-top: var(--fixed-header-offset) !important;
+}
+
+/* Mobile header is taller */
+@media (max-width: 768px) {
+  :root {
+    --fixed-header-offset: 60px;
+  }
+}
+
   /* CART HEADER BAR */
 .cart-header {
   display: flex;
@@ -32,11 +53,14 @@ body {
 }
 
 /* LAYOUT */
-.checkout-wrap {
+
+  .checkout-wrap {
   max-width: 1200px;
-  margin: 30px auto;
+  margin-left: auto;
+  margin-right: auto;
   padding: 0 16px;
 }
+
 .checkout-grid {
   display: grid;
   grid-template-columns: 2.2fr 1fr;
@@ -2170,6 +2194,117 @@ body {
   pointer-events: auto;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ================= COUPON POPUP ================= */
+
+.coupon-overlay {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(6px);
+}
+
+.coupon-modal {
+  background: #fff;
+  width: 380px;
+  max-width: 92vw;
+  padding: 22px;
+  border-radius: 16px;
+  position: relative;
+}
+
+.coupon-modal h3 {
+  text-align: center;
+  margin-bottom: 18px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.coupon-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  border: none;
+  background: none;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.coupon-card {
+  border: 1px dashed #e5e7eb;
+  border-radius: 12px;
+  padding: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.coupon-card strong {
+  font-size: 15px;
+}
+
+.coupon-card span {
+  font-size: 12.5px;
+  color: #6b7280;
+  display: block;
+  margin-top: 4px;
+}
+
+.coupon-card button {
+  background: #22c55e;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.coupon-card.disabled {
+  opacity: 0.5;
+}
+
+.coupon-card.disabled button {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .coupon-modal {
+    width: 92vw;
+    padding: 18px;
+  }
+}
+
 </style>
 
 <div class="checkout-wrap">
@@ -2192,12 +2327,13 @@ body {
 
       <div class="mini-card">
         <div class="delivery-row">
-           <span class="delivery-left">
-  <i class="fa-solid fa-paper-plane delivery-icon"></i>
-  Delivery Details
-</span>
-
-          <a href="#">Edit</a>
+            <span class="delivery-left">
+             <i class="fa-solid fa-paper-plane delivery-icon"></i>
+               Delivery Details
+            </span>
+            <a href="checkout.php" class="edit-link" aria-label="Edit delivery details">
+              <i class="fa-solid fa-pen-to-square"></i>
+            </a>
         </div>
       </div>
 
@@ -2561,115 +2697,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-// document.addEventListener("DOMContentLoaded", function () {
-//   const checkbox = document.getElementById("acceptTerms");
-//   const payBtn = document.getElementById("popupPayBtn");
-
-//   if (!checkbox || !payBtn) return;
-
-//   // Disable initially
-//   payBtn.disabled = true;
-
-//   checkbox.addEventListener("change", function () {
-//     payBtn.disabled = !this.checked;
-//   });
-// });
-
-
-
-
-
-/* ========================================= */
-/* PAY NOW BUTTON → REDIRECT TO payment.php */
-/* ========================================= */
-// document.addEventListener("click", function (e) {
-//   const payBtn = e.target.closest("#popupPayBtn");
-//   if (!payBtn) return;
-
-//   if (payBtn.disabled) return;
-
-//   const amountEl = document.getElementById("popupTotal");
-//   const amount = amountEl ? amountEl.innerText : 0;
-
-//   localStorage.setItem("payNowAmount", amount);
-
-  
-//   window.location.href = "payment.php";
-// });
-
-
-
-
-
-
-
-
-
-// document.addEventListener("DOMContentLoaded", function () {
-
-//   const popup = document.getElementById("deliveryPopup");
-//   if (!popup) return;
-
-//   const checkbox = document.getElementById("acceptTerms");
-//   const payBtn = document.getElementById("popupPayBtn");
-
-//   // Required fields
-//   const nameInput    = popup.querySelector('input[placeholder="Enter name"]');
-//   const emailInput   = popup.querySelector('input[type="email"]');
-//   const mobileInput  = popup.querySelector('input[placeholder="Enter phone number"]');
-//   const addressInput = popup.querySelector('textarea');
-//   const citySelect   = popup.querySelector('select[required]');
-
-//   // Disable checkbox & pay button initially
-//   checkbox.disabled = true;
-//   payBtn.disabled = true;
-
-//   function isValidEmail(email) {
-//     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-//   }
-
-//   function isValidMobile(mobile) {
-//     return /^[6-9]\d{9}$/.test(mobile);
-//   }
-
-//   function validateForm() {
-//     const isValid =
-//       nameInput.value.trim() !== "" &&
-//       isValidEmail(emailInput.value.trim()) &&
-//       isValidMobile(mobileInput.value.trim()) &&
-//       addressInput.value.trim() !== "" &&
-//       citySelect.value.trim() !== "";
-
-//     // Enable checkbox only when form is valid
-//     checkbox.disabled = !isValid;
-
-//     // If form becomes invalid again → reset checkbox & pay button
-//     if (!isValid) {
-//       checkbox.checked = false;
-//       payBtn.disabled = true;
-//     }
-//   }
-
-//   // Listen to all required fields
-//   [
-//     nameInput,
-//     emailInput,
-//     mobileInput,
-//     addressInput,
-//     citySelect
-//   ].forEach(field => {
-//     field.addEventListener("input", validateForm);
-//     field.addEventListener("change", validateForm);
-//   });
-
-//   // Existing logic: checkbox controls Pay button
-//   checkbox.addEventListener("change", function () {
-//     payBtn.disabled = !this.checked;
-//   });
-
-// });
-
-
 
 
 
@@ -2708,163 +2735,115 @@ document.addEventListener("DOMContentLoaded", function () {
     window.location.href = "checkout.php";
   });
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ================= COUPON TOGGLE LOGIC ================= */
+
+let appliedCoupon = JSON.parse(localStorage.getItem("appliedCoupon")) || null;
+
+/* Calculate totals */
+function getCartTotal() {
+  const base = Number(document.getElementById("baseTotal").innerText) || 0;
+  const addons = Number(document.getElementById("addonsTotal").innerText) || 0;
+  return base + addons;
+}
+
+/* Recalculate bill */
+function recalculateBill() {
+  let total = getCartTotal();
+  let discount = appliedCoupon ? appliedCoupon.discount : 0;
+
+  if (discount > total) discount = total;
+
+  const finalTotal = total - discount;
+
+  document.getElementById("grandTotal").innerText = finalTotal;
+  updatePaymentSplit();
+}
+
+/* Apply / Remove coupon */
+function toggleCoupon(code, discount) {
+  if (appliedCoupon && appliedCoupon.code === code) {
+    // REMOVE COUPON
+    appliedCoupon = null;
+    localStorage.removeItem("appliedCoupon");
+  } else {
+    // APPLY COUPON
+    appliedCoupon = { code, discount };
+    localStorage.setItem("appliedCoupon", JSON.stringify(appliedCoupon));
+  }
+
+  updateCouponUI();
+  recalculateBill();
+}
+
+/* Update buttons UI */
+function updateCouponUI() {
+  document.querySelectorAll(".coupon-card").forEach(card => {
+    const btn = card.querySelector(".coupon-btn");
+    if (!btn) return;
+
+    const code = card.dataset.code;
+
+    if (appliedCoupon && appliedCoupon.code === code) {
+      btn.innerText = "Applied";
+      btn.style.background = "#16a34a";
+    } else {
+      btn.innerText = "Apply";
+      btn.style.background = "#22c55e";
+    }
+  });
+}
+
+/* Bind click events */
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll(".coupon-card").forEach(card => {
+    const btn = card.querySelector(".coupon-btn");
+    if (!btn) return;
+
+    btn.addEventListener("click", function () {
+      const code = card.dataset.code;
+      const discount = Number(card.dataset.discount);
+      toggleCoupon(code, discount);
+    });
+  });
+
+  // Restore applied coupon on reload
+  if (appliedCoupon) {
+    updateCouponUI();
+    recalculateBill();
+  }
+});
+
+/* Close popup after applying */
+document.addEventListener("click", function (e) {
+  if (e.target.classList.contains("coupon-btn")) {
+    closeCouponPopup();
+  }
+});
 </script>
 
-
-
-<!-- DELIVERY + PAYMENT POPUP -->
-<!-- <div id="deliveryPopup" class="delivery-overlay">
-  <div class="delivery-modal">
-<div class="delivery-header">
-  <span class="delivery-back" onclick="closeDeliveryPopup()">←</span>
-
-  <h2>Delivery <span>Details</span></h2>
-
-  <img src="../assets/images/LOGO.svg" alt="Logo">
-</div>
-
-
-    <div class="delivery-grid">
-
-      <div class="delivery-field">
-        <label>Name *</label>
-        <input type="text" placeholder="Enter name" required>
-      </div>
-
-      <div class="delivery-field">
-        <label>Email *</label>
-        <input type="email" placeholder="Enter email" required>
-      </div>
-
-      <div class="delivery-field">
-        <label>Mobile *</label>
-        <input type="text" placeholder="Enter phone number" required>
-      </div>
-
-      <div class="delivery-field">
-        <label>Occasion</label>
-        <select>
-          <option>Select occasion</option>
-          <option>Birthday</option>
-          <option>Anniversary</option>
-        </select>
-      </div>
-
-      <div class="delivery-field full">
-        <label>Address *</label>
-        <textarea placeholder="Enter address" required></textarea>
-      </div>
-
-
-      <div class="delivery-field">
-  <label>City *</label>
-  <select required>
-    <option value="">Select city</option>
-    <option value="Bangalore">Bangalore</option>
-    <option value="Delhi NCR">Delhi NCR</option>
-    <option value="Mumbai">Mumbai</option>
-    <option value="Pune">Pune</option>
-    <option value="Hyderabad">Hyderabad</option>
-    <option value="Chennai">Chennai</option>
-    <option value="Kolkata">Kolkata</option>
-    <option value="Ahmedabad">Ahmedabad</option>
-  </select>
-</div>
-
-
-
-      <div class="delivery-field">
-        <label>Venue</label>
-        <select>
-          <option>Select venue</option>
-          <option>Home</option>
-          <option>Hall</option>
-        </select>
-      </div>
-
-    </div>
-
-  
-
-
-<button class="popup-pay-btn" id="popupPayBtn" disabled>
-  Pay Now ₹<span id="popupTotal">0</span>
-</button> -->
-
-
-
-<!-- SECURE PAYMENTS -->
-<!-- <div class="secure-payment-box">
-
-  <div class="secure-title">100% Secure Payments</div> -->
-
-  <!-- TRUST BADGES -->
-  <!-- <div class="trust-logos">
-    <img src="../assets/images/payments/norton.png" alt="Norton Secured">
-    <img src="../assets/images/payments/mcafee.png" alt="McAfee Secure">
-    <img src="../assets/images/payments/truste.png" alt="TRUSTe Verified">
-  </div> -->
-
-  <!-- PAYMENT METHODS -->
-  <!-- <div class="payment-methods">
-    <img src="../assets/images/payments/razorpay.webp" alt="Razorpay">
-    <img src="../assets/images/payments/gpay.png" alt="Google Pay">
-    <img src="../assets/images/payments/phonepe.webp" alt="PhonePe">
-    <img src="../assets/images/payments/visa.png" alt="Visa">
-    <img src="../assets/images/payments/mastercard.svg" alt="Mastercard">
-    <img src="../assets/images/payments/amex.avif" alt="Amex">
-  </div>
-
-</div> -->
-
-<!-- TERMS CHECKBOX -->
-<!-- <div class="popup-checkbox">
-  <label>
-    <input type="checkbox" id="acceptTerms">
-    <span>
-      I agree to Party One’s
-      <a href="#" target="_blank">Terms & Conditions</a>
-      and
-      <a href="#" target="_blank">Privacy Policy</a>.
-    </span>
-  </label>
-</div>
-
-  </div>
-</div> -->
-
-
-
-<!-- COUPON POPUP -->
-<!-- <div id="couponPopup" class="login-overlay" style="display:none;">
-  <div class="login-modal">
-
-    <button class="login-close" onclick="closeCouponPopup()">✕</button>
-
-    <h3>Available Coupons</h3>
-
-    <div style="border:1px dashed #d1d5db;padding:12px;border-radius:10px;margin-bottom:12px;">
-      <strong>PARTY500</strong>
-      <p style="font-size:13px;margin:4px 0;">
-        Get ₹500 off on orders above ₹5000
-      </p>
-      <button class="pay-btn" style="margin-top:6px;">
-        Apply Coupon
-      </button>
-    </div>
-
-    <div style="border:1px dashed #d1d5db;padding:12px;border-radius:10px;">
-      <strong>FIRST10</strong>
-      <p style="font-size:13px;margin:4px 0;">
-        Flat 10% off for first-time users
-      </p>
-      <button class="pay-btn" style="margin-top:6px;">
-        Apply Coupon
-      </button>
-    </div>
-
-  </div>
-</div> -->
 
 
 <section class="trust-metrics">
@@ -2927,7 +2906,73 @@ document.addEventListener("DOMContentLoaded", function () {
   <div class="party-links-grid" id="partyLinks"></div>
 </section>
 
+<!-- ================= COUPON POPUP ================= -->
+<!-- <div class="coupon-overlay" id="couponPopup">
 
+  <div class="coupon-modal">
+    <button class="coupon-close" onclick="closeCouponPopup()">×</button>
+
+    <h3>Available Coupons</h3>
+
+    <div class="coupon-card">
+      <div class="coupon-left">
+        <strong>PARTY300</strong>
+        <span>Flat ₹300 OFF on orders above ₹2000</span>
+      </div>
+      <button onclick="applyCoupon(300)">Apply</button>
+    </div>
+
+    <div class="coupon-card">
+      <div class="coupon-left">
+        <strong>FIRST500</strong>
+        <span>Flat ₹500 OFF on first order</span>
+      </div>
+      <button onclick="applyCoupon(500)">Apply</button>
+    </div>
+
+    <div class="coupon-card disabled">
+      <div class="coupon-left">
+        <strong>FESTIVE10</strong>
+        <span>10% OFF (Max ₹400)</span>
+      </div>
+      <button disabled>Expired</button>
+    </div>
+
+  </div>
+</div> -->
+
+<!-- ================= COUPON POPUP ================= -->
+<div class="coupon-overlay" id="couponPopup">
+  <div class="coupon-modal">
+    <button class="coupon-close" onclick="closeCouponPopup()">×</button>
+
+    <h3>Available Coupons</h3>
+
+    <div class="coupon-card" data-code="PARTY300" data-discount="300">
+      <div class="coupon-left">
+        <strong>PARTY300</strong>
+        <span>Flat ₹300 OFF on orders above ₹2000</span>
+      </div>
+      <button class="coupon-btn">Apply</button>
+    </div>
+
+    <div class="coupon-card" data-code="FIRST500" data-discount="500">
+      <div class="coupon-left">
+        <strong>FIRST500</strong>
+        <span>Flat ₹500 OFF on first order</span>
+      </div>
+      <button class="coupon-btn">Apply</button>
+    </div>
+
+    <div class="coupon-card disabled">
+      <div class="coupon-left">
+        <strong>FESTIVE10</strong>
+        <span>10% OFF (Max ₹400)</span>
+      </div>
+      <button disabled>Expired</button>
+    </div>
+  </div>
+</div>
 
 
 

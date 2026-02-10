@@ -6,16 +6,36 @@ body {
   font-family: Inter, system-ui, sans-serif;
 }
 
-/* GLOBAL FIX */
-*, *::before, *::after {
-  box-sizing: border-box;
+/* ========================================= */
+/* ✅ FIX: PUSH CARD 2px BELOW FIXED HEADER */
+/* ========================================= */
+:root {
+  --header-safe-offset: 40px;
 }
 
 /* PAGE WRAP */
 .delivery-page-wrap {
   max-width: 600px;
-  margin: 32px auto 64px;
+  margin: calc(32px + var(--header-safe-offset)) auto 64px;
   padding: 0 16px;
+}
+
+/* ========================================= */
+/* 📱 MOBILE ONLY – PUSH CARD BELOW HEADER */
+/* ========================================= */
+@media (max-width: 640px) {
+
+  .delivery-page-wrap {
+    margin-top: 54px !important; /* 👈 pushes card down on mobile only */
+  }
+
+}
+
+
+
+/* GLOBAL FIX */
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
 /* SINGLE CARD */
@@ -224,6 +244,92 @@ body {
   .popup-checkbox {
     font-size: 11.5px;
   }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ========================================= */
+/* ✅ FINAL PERFECT CARD ALIGNMENT */
+/* ========================================= */
+
+/* FIX: correct card padding (NO huge top gap) */
+.delivery-modal {
+  padding: 18px 18px 40px !important;
+  border-radius: 16px;
+}
+
+/* Header spacing – balanced */
+.delivery-header {
+  row-gap: 6px !important;
+  margin-bottom: 14px !important;
+}
+
+/* Title size – clean & centered */
+.delivery-header h2 {
+  font-size: 18px !important;
+  line-height: 1.2;
+}
+
+/* Form grid – tighter but readable */
+.delivery-grid {
+  gap: 8px 10px !important;
+}
+
+/* Fields – compact & aligned */
+.delivery-field {
+  gap: 3px !important;
+  font-size: 12px !important;
+}
+
+/* Inputs */
+.delivery-field input,
+.delivery-field select {
+  height: 34px !important;
+  font-size: 13px !important;
+  padding: 0 10px;
+}
+
+/* Address textarea */
+.delivery-field textarea {
+  height: 58px !important;
+  font-size: 13px !important;
+  padding: 6px 10px !important;
+}
+
+/* Pay button – closer & balanced */
+.popup-pay-btn {
+  margin-top: 12px !important;
+  height: 42px !important;
+  font-size: 14.5px !important;
+  border-radius: 12px;
+}
+
+/* Secure payment box – compact */
+.secure-payment-box {
+  margin-top: 12px !important;
+  padding: 10px !important;
+  border-radius: 12px;
+}
+
+/* Checkbox spacing */
+.popup-checkbox {
+  margin-top: 8px !important;
+  font-size: 12px;
 }
 
 </style>

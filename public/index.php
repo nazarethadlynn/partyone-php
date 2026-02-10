@@ -606,7 +606,7 @@
 <!-- ================= END PRODUCT SECTION ================= -->
 
 <!-- ================= REQUEST CALLBACK SECTION ================= -->
-<section class="request-callback">
+<!-- <section class="request-callback">
 
   <h2>Request Callback</h2>
   <p class="callback-subtitle">
@@ -640,20 +640,20 @@
       </svg>
     </div>
 
-    <div class="form-row">
+    <div class="form-row"> -->
 
       <!-- DATE -->
-      <div class="form-group icon-wrap">
+      <!-- <div class="form-group icon-wrap">
         <label>Party Date (Optional)</label>
         <input type="date" name="date">
         <svg class="input-icon" viewBox="0 0 24 24">
           <rect x="3" y="4" width="18" height="18" rx="2"/>
           <line x1="3" y1="10" x2="21" y2="10"/>
         </svg>
-      </div>
+      </div> -->
 
       <!-- TIME -->
-      <div class="form-group icon-wrap">
+      <!-- <div class="form-group icon-wrap">
         <label>Party Time (Optional)</label>
         <input type="time" name="time">
         <svg class="input-icon" viewBox="0 0 24 24">
@@ -669,8 +669,79 @@
 
   </form>
 
+</section> -->
+<!-- ================= END REQUEST CALLBACK ================= -->
+
+
+<!-- ================= REQUEST CALLBACK SECTION ================= -->
+<section class="request-callback">
+
+  <div class="callback-card">
+
+    <h2>Request Callback</h2>
+    <p class="callback-subtitle">
+      Please fill your details, we will get back to you shortly
+    </p>
+
+    <form class="callback-form" id="callbackForm">
+
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" name="name" placeholder="Your Name" required>
+      </div>
+
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" name="phone" placeholder="+91" required>
+      </div>
+
+      <div class="form-group select-wrap">
+        <label>Location (Optional)</label>
+        <select name="location">
+          <option value="">Select Location</option>
+          <option>Bangalore</option>
+          <option>Mumbai</option>
+          <option>Chennai</option>
+          <option>Hyderabad</option>
+        </select>
+
+        <svg class="select-icon" viewBox="0 0 24 24">
+          <path d="M6 9l6 6 6-6" />
+        </svg>
+      </div>
+
+      <div class="form-row">
+
+        <div class="form-group icon-wrap">
+          <label>Party Date (Optional)</label>
+          <input type="date" name="date">
+          <svg class="input-icon" viewBox="0 0 24 24">
+            <rect x="3" y="4" width="18" height="18" rx="2"/>
+            <line x1="3" y1="10" x2="21" y2="10"/>
+          </svg>
+        </div>
+
+        <div class="form-group icon-wrap">
+          <label>Party Time (Optional)</label>
+          <input type="time" name="time">
+          <svg class="input-icon" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="9"/>
+            <line x1="12" y1="7" x2="12" y2="12"/>
+            <line x1="12" y1="12" x2="15" y2="14"/>
+          </svg>
+        </div>
+
+      </div>
+
+      <button type="submit" class="callback-btn">Submit</button>
+
+    </form>
+
+  </div>
+
 </section>
 <!-- ================= END REQUEST CALLBACK ================= -->
+
 <!-- ================= LOVED BY CLIENTS ================= -->
 <section class="loved-clients">
 

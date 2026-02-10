@@ -106,6 +106,27 @@
 
 
 <script>
+// (function () {
+//   const container = document.getElementById("floating-hearts");
+//   if (!container) return;
+
+//   function createHeart() {
+//     const heart = document.createElement("div");
+//     heart.className = "heart";
+
+//     heart.style.left = Math.random() * 100 + "vw";
+//     heart.style.setProperty("--x", (Math.random() * 100 - 50) + "px");
+//     heart.style.animationDuration = Math.random() * 3 + 8 + "s";
+
+//     container.appendChild(heart);
+
+//     setTimeout(() => {
+//       heart.remove();
+//     }, 12000);
+//   }
+
+//   setInterval(createHeart, 600);
+// })();
 (function () {
   const container = document.getElementById("floating-hearts");
   if (!container) return;
@@ -114,19 +135,22 @@
     const heart = document.createElement("div");
     heart.className = "heart";
 
+    // Start from top
     heart.style.left = Math.random() * 100 + "vw";
+    heart.style.top = "-40px"; // 🔥 start above screen
     heart.style.setProperty("--x", (Math.random() * 100 - 50) + "px");
-    heart.style.animationDuration = Math.random() * 3 + 8 + "s";
+    heart.style.animationDuration = Math.random() * 3 + 6 + "s";
 
     container.appendChild(heart);
 
     setTimeout(() => {
       heart.remove();
-    }, 12000);
+    }, 10000);
   }
 
-  setInterval(createHeart, 600);
+  setInterval(createHeart, 700);
 })();
+
 </script>
 
 

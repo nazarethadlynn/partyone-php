@@ -28,12 +28,27 @@ body {
 }
 
 /* ================= HEADER ================= */
-.site-header {
+/* .site-header {
   position: fixed;
   top: 0;
   width: 100%;
   background: #f6efef;
   border-bottom: 1px solid #e5e7eb;
+  z-index: 99999;
+} */
+.site-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  backdrop-filter: blur(6px);
+  background: linear-gradient(
+    180deg,
+    #fff5f7 0%,
+    #fffafa 55%,
+    #ffffff 100%
+  );
+
+  border-bottom: 1px solid rgba(225, 29, 72, 0.08);
   z-index: 99999;
 }
 
@@ -141,9 +156,7 @@ body {
   list-style: none !important;
 }
 
-/* .cat-item {
-  position: relative;
-} */
+
 .cat-item {
   position: relative;
 }
@@ -160,7 +173,7 @@ body {
 
 
 /* ================= GRADIENT CATEGORY PILLS ================= */
-.cat-pill {
+/* .cat-pill {
   padding: 10px 20px;
   border-radius: 12px;
   background: linear-gradient(
@@ -181,15 +194,51 @@ body {
     inset 0 1px 0 rgba(255,255,255,0.25),
     0 6px 14px rgba(158,39,33,0.25);
   transition: all .25s ease;
-}
+} */
 
 /* HOVER EFFECT */
-.cat-pill:hover {
+/* .cat-pill:hover {
   transform: translateY(-1px);
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,0.35),
     0 10px 22px rgba(158,39,33,0.35);
+} */
+
+  .cat-pill {
+  padding: 10px 20px;
+  border-radius: 14px;
+
+  background: linear-gradient(
+    135deg,
+    #ffe4e8 0%,
+    #ffc1cb 50%,
+    #ff9fb0 100%
+  );
+
+  color: #9f1239; /* deep rose text */
+  font-weight: 600;
+  font-size: 14.5px;
+  white-space: nowrap;
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow:
+    0 6px 14px rgba(225,29,72,0.18);
+
+  transition: all 0.25s ease;
 }
+.cat-pill:hover {
+  background: linear-gradient(
+    135deg,
+    #ffd1d9,
+    #ff9fb0
+  );
+  transform: translateY(-1px);
+}
+
 
 /* CLICK FEEDBACK */
 .cat-pill:active {
@@ -468,47 +517,34 @@ body {
 
 
 
-
-
-
-
-/* ================= ACTION PILLS (MATCH CATEGORY STYLE) ================= */
 .action-pill {
-  padding: 10px 20px;
-  border-radius: 12px;
+  padding: 10px 18px;
+  border-radius: 14px;
+
   background: linear-gradient(
-    135deg,
-    #610f0a 0%,
-    #bd2c22 50%,
-    #e24b40 100%
+    180deg,
+    #ffffff 0%,
+    #fff5f7 100%
   );
-  color: #ffffff;
-  font-weight: 700;
+
+  border: 1.5px solid rgba(225, 29, 72, 0.25);
+  color: #e11d48;
+
+  font-weight: 600;
   font-size: 14.5px;
-  white-space: nowrap;
-  cursor: pointer;
 
   display: inline-flex;
   align-items: center;
   gap: 8px;
 
-  border: none;
-  text-decoration: none;
-
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.25),
-    0 6px 14px rgba(158,39,33,0.25);
-
-  transition: all .25s ease;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+  transition: all 0.25s ease;
 }
-
-/* Hover */
 .action-pill:hover {
+  background: #fff1f2;
   transform: translateY(-1px);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.35),
-    0 10px 22px rgba(158,39,33,0.35);
 }
+
 
 /* Active / Click */
 .action-pill:active {
@@ -801,6 +837,10 @@ function openLogin() {
 function closeLogin() {
   document.getElementById("loginPopup").style.display = "none";
 }
+
+
+
+
 </script>
 
 <!-- ================= LOGIN POPUP ================= -->
