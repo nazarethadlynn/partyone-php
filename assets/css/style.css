@@ -2436,7 +2436,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 .book-btn {
   flex: 1;
   height: 44px;
-  border-radius: 999px;
+  border-radius: 14px;
   border: none;
   background: #e11d48;
   color: #fff;
@@ -4708,7 +4708,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 .category-chip:hover .chip-img {
   transform: translateY(-6px);
   background: linear-gradient(135deg, #c90f38);
-  box-shadow: 0 14px 32px rgba(225, 29, 72, 0.28);
+  /* box-shadow: 0 14px 32px rgba(225, 29, 72, 0.28); */
 }
 
 /* ================================================= */
@@ -4775,6 +4775,88 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
 
 
+/* ================= PURCHASE POPUP (RIGHT SIDE FINAL) ================= */
+
+#purchasePopup {
+  position: fixed !important;
+  bottom: 20px !important;
+  right: 20px !important;
+  left: auto !important;        /* 🔥 force remove left */
+  
+  width: 320px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 15px 40px rgba(0,0,0,.18);
+  padding: 14px 16px;
+  z-index: 999999;
+
+  transform: translateX(120%);
+  opacity: 0;
+  transition: all .4s ease;
+}
+
+/* Show animation */
+#purchasePopup.show {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* Content layout */
+.popup-content {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.popup-content img {
+  width: 55px;
+  height: 55px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.popup-text {
+  flex: 1;
+}
+
+.popup-name {
+  font-size: 14px;
+  margin: 0;
+  color: #111827;
+}
+
+.popup-product {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 3px 0;
+}
+
+.popup-time {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* Close button */
+.popup-close {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: #6b7280;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  #purchasePopup {
+    width: 90%;
+    right: 5% !important;
+    left: auto !important;
+  }
+}
 
 
 
@@ -4798,6 +4880,126 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
 
 
+
+
+
+
+
+
+
+
+/* ================= FLOATING VIDEO ================= */
+
+#floatingVideoWrapper {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 120px;
+  height: 200px;
+  border-radius: 14px;
+  overflow: hidden;
+  z-index: 99999;
+  box-shadow: 0 10px 25px rgba(0,0,0,.25);
+  background: #000;
+}
+
+.videoLink {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+}
+
+.videoLink video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Small Video Close Button */
+#closeFloatingVideo {
+  position: absolute;
+  top: 6px;
+  left: 8px;
+  font-size: 18px;
+  color: #fff;
+  cursor: pointer;
+  z-index: 100001;
+  font-weight: bold;
+}
+
+/* Instagram text overlay */
+.watchMoreOverlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 6px 8px;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  color: #fff;
+  background: linear-gradient(to top, rgba(0,0,0,.7), transparent);
+}
+
+ /* ✅ CLEAN Expand Icon (NO BACKGROUND) */
+#expandVideoBtn {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  font-size: 18px;
+  color: #ffffff;
+  cursor: pointer;
+  z-index: 100000;
+
+  background: none;       /* ❌ removed black background */
+  padding: 0;             /* ❌ removed padding */
+  border-radius: 0;       /* ❌ removed rounded box */
+}
+
+/* ================= MODAL ================= */
+
+#videoModal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.95);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999999;
+  padding: 20px; /* prevents touching screen edges */
+}
+
+.videoModalContent {
+  position: relative;
+
+  /* 🔥 MAGIC FIX */
+  max-width: 95vw;
+  max-height: 95vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.videoModalContent video {
+  max-width: 95vw;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  border-radius: 16px;
+}
+
+
+/* Close button */
+#closeVideoModal {
+  position: fixed;
+  top: 20px;
+  right: 30px;
+  font-size: 34px;
+  color: #ffffff;
+  cursor: pointer;
+  z-index: 1000000;
+}
 
 
 

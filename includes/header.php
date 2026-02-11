@@ -143,23 +143,23 @@ body {
 }
 
 /* ================= CATEGORY BAR (DESKTOP ONLY) ================= */
-.category-bar {
+/* .category-bar {
   display: flex;
   gap: 14px;
   padding: 12px 32px 16px;
   align-items: center;
-}
+} */
 
 /* 🔥 FORCE CLEAN DESKTOP LOOK */
-.category-bar * {
+/* .category-bar * {
   text-decoration: none !important;
   list-style: none !important;
-}
+} */
 
-
+/* 
 .cat-item {
   position: relative;
-}
+} */
 
 /* 🔥 INVISIBLE HOVER BRIDGE */
 .cat-item::after {
@@ -172,39 +172,46 @@ body {
 }
 
 
-/* ================= GRADIENT CATEGORY PILLS ================= */
-/* .cat-pill {
-  padding: 10px 20px;
-  border-radius: 12px;
-  background: linear-gradient(
-    135deg,
-    #610f0a 0%,
-    #bd2c22 50%,
-    #e24b40 100%
-  );
-  color: #ffffff;
-  font-weight: 700;
-  font-size: 14.5px;
-  white-space: nowrap;
-  cursor: pointer;
-  display: inline-flex;
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ================= CATEGORY BAR (WIDE SPREAD) ================= */
+.category-bar {
+  display: flex;
+  justify-content: space-between;   /* 🔥 spread full width */
   align-items: center;
-  justify-content: center;
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.25),
-    0 6px 14px rgba(158,39,33,0.25);
-  transition: all .25s ease;
-} */
+  padding: 12px 32px 16px;
+  width: 100%;
+}
 
-/* HOVER EFFECT */
-/* .cat-pill:hover {
-  transform: translateY(-1px);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.35),
-    0 10px 22px rgba(158,39,33,0.35);
-} */
+/* Make each category take equal width */
+.cat-item {
+  flex: 1;                 /* 🔥 equal distribution */
+  display: flex;
+  justify-content: center; /* center pill inside */
+  position: relative;
+}
 
-  .cat-pill {
+/* Make pills responsive */
+.cat-pill {
+  width: 90%;              /* nice spacing inside */
+  text-align: center;
+}
+
+
+/* ================= GRADIENT CATEGORY PILLS ================= */
+
+  /* .cat-pill {
   padding: 10px 20px;
   border-radius: 14px;
 
@@ -215,7 +222,7 @@ body {
     #ff9fb0 100%
   );
 
-  color: #9f1239; /* deep rose text */
+  color: #9f1239;
   font-weight: 600;
   font-size: 14.5px;
   white-space: nowrap;
@@ -229,15 +236,132 @@ body {
     0 6px 14px rgba(225,29,72,0.18);
 
   transition: all 0.25s ease;
+} */
+
+.cat-pill,
+.cat-pill:hover,
+.cat-pill:focus,
+.cat-pill:active,
+.cat-pill:visited {
+  text-decoration: none !important;
 }
-.cat-pill:hover {
+
+/* .cat-pill:hover {
   background: linear-gradient(
     135deg,
     #ffd1d9,
     #ff9fb0
   );
   transform: translateY(-1px);
+} */
+
+/* .cat-pill {
+  padding: 10px 20px;
+  border-radius: 14px;
+
+  background: linear-gradient(
+    135deg,
+    #f43f5e 0%,     
+    #e11d48 50%,   
+    #be123c 100%   
+  );
+
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 14.5px;
+  white-space: nowrap;
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow:
+    0 10px 25px rgba(225,29,72,0.35);
+
+  transition: all 0.25s ease;
+} */
+
+.cat-pill {
+  padding: 10px 22px;
+  border-radius: 14px;
+
+  background: linear-gradient(
+      135deg,
+    #f43f5e 0%,     
+    #e11d48 50%,   
+    #be123c 100% 
+  );
+
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 14.5px;
+  white-space: nowrap;
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 28px; /* 🔥 increased spacing */
+
+  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+  transition: all 0.25s ease;
 }
+
+
+
+
+
+
+
+
+
+.cat-pill:hover {
+  transform: translateY(-2px);
+  /* box-shadow:
+    0 16px 35px rgba(225,29,72,0.45); */
+}
+
+/* .cat-pill {
+  padding: 10px 20px;
+  border-radius: 999px;
+
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #ffe4ea 100%
+  );
+
+  border: 1.5px solid #f43f5e;
+
+  color: #be123c;
+  font-weight: 600;
+  font-size: 14.5px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow:
+    0 8px 20px rgba(244,63,94,0.15);
+
+  transition: all 0.25s ease;
+}
+
+.cat-pill:hover {
+  background: linear-gradient(
+    135deg,
+    #f43f5e,
+    #e11d48
+  );
+  color: #ffffff;
+}
+ */
+
+
+
+
 
 
 /* CLICK FEEDBACK */
@@ -249,12 +373,12 @@ body {
 
 
 /* ================= DROPDOWN ================= */
-.cat-dropdown {
+/* .cat-dropdown {
   position: absolute;
   top: 100%;
   left: 0;
-  margin-top: 6px;                 /* 🔥 REMOVE GAP */
-  padding-top: 6px;              /* 🔥 visual spacing without hover gap */
+  margin-top: 6px;                 
+  padding-top: 6px;              
   background: #fff;
   min-width: 200px;
   border-radius: 14px;
@@ -262,22 +386,57 @@ body {
   display: none;
   overflow: hidden;
   z-index: 9999;
+} */
+/* ================= PERFECT CENTERED DROPDOWN ================= */
+.cat-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%); /* only horizontal centering */
+
+  background: #ffffff;
+  min-width: 220px;
+  border-radius: 18px;
+  box-shadow: 0 20px 45px rgba(0,0,0,0.15);
+
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.18s ease, visibility 0.18s ease;
+
+  z-index: 9999;
+  overflow: hidden;
 }
+
 
 .cat-dropdown a {
   display: block;
   padding: 12px 16px;
   font-size: 14px;
   color: #111;
+
+  text-decoration: none !important;   /* 🔥 remove underline */
+}
+
+/* Remove underline in all states */
+.cat-dropdown a:hover,
+.cat-dropdown a:focus,
+.cat-dropdown a:active,
+.cat-dropdown a:visited {
+  text-decoration: none !important;
 }
 
 .cat-dropdown a:hover {
   background: #f3f4f6;
 }
 
-.cat-item:hover .cat-dropdown {
+/* .cat-item:hover .cat-dropdown {
   display: block;
+} */
+.cat-item:hover .cat-dropdown {
+  opacity: 1;
+  visibility: visible;
 }
+/* 
 .cat-dropdown {
   animation: fadeSlide .18s ease;
 }
@@ -285,7 +444,7 @@ body {
 @keyframes fadeSlide {
   from { opacity: 0; transform: translateY(-6px); }
   to   { opacity: 1; transform: translateY(0); }
-}
+} */
 
 
 /* ================= MOBILE ONLY ================= */
@@ -558,6 +717,9 @@ body {
   font-size: 14px;
 }
 
+.action-pill {
+  text-decoration: none !important;
+}
 
 
 
@@ -667,11 +829,155 @@ body {
 
 
 
+/* Center text perfectly */
+.cat-pill {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 40px; /* extra right padding for arrow space */
+}
+
+/* Arrow positioned near right edge */
+.drop-icon {
+  position: absolute;
+  right: 18px; /* distance from right edge */
+  font-size: 12px;
+  transition: transform 0.25s ease;
+}
+
+/* Rotate on hover */
+.cat-item:hover .drop-icon {
+  transform: rotate(180deg);
+}
+
+
+
+/* .cat-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;   
+} */
+
+/* Dropdown icon style */
+.drop-icon {
+  font-size: 12px;
+  transition: transform 0.25s ease;
+}
+
+/* Rotate icon when hovering */
+.cat-item:hover .drop-icon {
+  transform: rotate(180deg);
+}
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ================= PURCHASE POPUP ================= */
+.purchase-popup {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 300px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  padding: 14px;
+  z-index: 999999;
+
+  transform: translateY(120%);
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+/* Visible state */
+.purchase-popup.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Content layout */
+.popup-content {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.purchase-popup img {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.popup-text {
+  flex: 1;
+}
+
+.popup-name {
+  font-size: 13px;
+  color: #555;
+}
+
+.popup-product {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111;
+  margin: 4px 0;
+}
+
+.popup-time {
+  font-size: 12px;
+  color: #888;
+}
+
+/* Close button */
+.popup-close {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  border: none;
+  background: none;
+  font-size: 14px;
+  cursor: pointer;
+  color: #999;
+}
 
 
 </style>
@@ -727,7 +1033,10 @@ body {
   <nav class="category-bar">
 
     <div class="cat-item">
-      <div class="cat-pill">Birthday</div>
+      <div class="cat-pill">
+  Birthday
+  <i class="fa-solid fa-chevron-down drop-icon"></i>
+</div>
       <div class="cat-dropdown">
         <a href="#">Kids Birthday</a>
         <a href="#">Adult Birthday</a>
@@ -736,7 +1045,10 @@ body {
     </div>
 
     <div class="cat-item">
-      <div class="cat-pill">Decorations</div>
+      <div class="cat-pill">
+  Decorations
+  <i class="fa-solid fa-chevron-down drop-icon"></i>
+</div>
       <div class="cat-dropdown">
         <a href="#">Balloon Decor</a>
         <a href="#">Room Decor</a>
@@ -752,7 +1064,10 @@ body {
     </div>
 
     <div class="cat-item">
-      <div class="cat-pill">Festival Decorations</div>
+      <div class="cat-pill">
+  Festival Decorations
+  <i class="fa-solid fa-chevron-down drop-icon"></i>
+</div>
       <div class="cat-dropdown">
         <a href="#">Diwali</a>
         <a href="#">Christmas</a>
@@ -761,7 +1076,10 @@ body {
     </div>
 
     <div class="cat-item">
-      <div class="cat-pill">Candlelight Dinners</div>
+      <div class="cat-pill">
+  Candlelight Dinners
+  <i class="fa-solid fa-chevron-down drop-icon"></i>
+</div>
       <div class="cat-dropdown">
         <a href="#">Rooftop</a>
         <a href="#">Private Dining</a>
@@ -770,7 +1088,10 @@ body {
     </div>
 
     <div class="cat-item">
-      <div class="cat-pill">Corporate Planner</div>
+      <div class="cat-pill">
+  Corporate Planner
+  <i class="fa-solid fa-chevron-down drop-icon"></i>
+</div>
       <div class="cat-dropdown">
         <a href="#">Office Parties</a>
         <a href="#">Product Launch</a>
@@ -779,7 +1100,10 @@ body {
     </div>
 
     <div class="cat-item">
-      <div class="cat-pill">Occasions</div>
+      <div class="cat-pill">
+  Occasions
+  <i class="fa-solid fa-chevron-down drop-icon"></i>
+</div>
       <div class="cat-dropdown">
         <a href="#">Anniversary</a>
         <a href="#">Proposal</a>
@@ -841,6 +1165,68 @@ function closeLogin() {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+const users = [
+  "Rashika", "Ananya", "Priya", "Rahul",
+  "Sneha", "Kiran", "Amit", "Divya"
+];
+
+const products = [
+  "Welcome Baby Girl Decor",
+  "Romantic Candlelight Dinner",
+  "Birthday Balloon Setup",
+  "Corporate Event Decoration",
+  "Anniversary Surprise Setup"
+];
+
+const images = [
+  "../assets/images/sample-users/sample1.jpg",
+  "../assets/images/sample-users/sample2.jpg",
+  "../assets/images/sample-users/sample3.jpg"
+];
+
+function showPurchasePopup() {
+  const popup = document.getElementById("purchasePopup");
+
+  // Random user
+  document.getElementById("popupUser").innerText =
+    users[Math.floor(Math.random() * users.length)];
+
+  // Random product
+  document.getElementById("popupProduct").innerText =
+    products[Math.floor(Math.random() * products.length)];
+
+  // Random image
+  document.getElementById("popupImage").src =
+    images[Math.floor(Math.random() * images.length)];
+
+  popup.classList.add("show");
+
+  // Auto hide after 6 seconds
+  setTimeout(() => {
+    popup.classList.remove("show");
+  }, 6000);
+}
+
+function closePurchasePopup() {
+  document.getElementById("purchasePopup").classList.remove("show");
+}
+
+/* First popup after 10 seconds */
+setTimeout(showPurchasePopup, 10000);
+
+/* Repeat every 10 minutes */
+setInterval(showPurchasePopup, 10000);
 </script>
 
 <!-- ================= LOGIN POPUP ================= -->
@@ -864,6 +1250,36 @@ function closeLogin() {
 
     <button class="login-btn">Send OTP</button>
 
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ================= PURCHASE POPUP ================= -->
+<div id="purchasePopup" class="purchase-popup">
+  <button class="popup-close" onclick="closePurchasePopup()">✕</button>
+
+  <div class="popup-content">
+    <img id="popupImage" src="../assets/images/sample-users/sample4.jpg" alt="Product">
+
+    <div class="popup-text">
+      <p class="popup-name">
+        <strong id="popupUser">Rashika</strong> purchased
+      </p>
+      <p class="popup-product" id="popupProduct">
+        Welcome Baby Girl Decor
+      </p>
+      <p class="popup-time">Just now</p>
+    </div>
   </div>
 </div>
 
