@@ -6,6 +6,7 @@ if (session_status() === PHP_SESSION_NONE) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
 <meta charset="UTF-8">
 <title>Party One</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1172,61 +1173,6 @@ function closeLogin() {
 
 
 
-
-
-
-
-const users = [
-  "Rashika", "Ananya", "Priya", "Rahul",
-  "Sneha", "Kiran", "Amit", "Divya"
-];
-
-const products = [
-  "Welcome Baby Girl Decor",
-  "Romantic Candlelight Dinner",
-  "Birthday Balloon Setup",
-  "Corporate Event Decoration",
-  "Anniversary Surprise Setup"
-];
-
-const images = [
-  "../assets/images/sample-users/sample1.jpg",
-  "../assets/images/sample-users/sample2.jpg",
-  "../assets/images/sample-users/sample3.jpg"
-];
-
-function showPurchasePopup() {
-  const popup = document.getElementById("purchasePopup");
-
-  // Random user
-  document.getElementById("popupUser").innerText =
-    users[Math.floor(Math.random() * users.length)];
-
-  // Random product
-  document.getElementById("popupProduct").innerText =
-    products[Math.floor(Math.random() * products.length)];
-
-  // Random image
-  document.getElementById("popupImage").src =
-    images[Math.floor(Math.random() * images.length)];
-
-  popup.classList.add("show");
-
-  // Auto hide after 6 seconds
-  setTimeout(() => {
-    popup.classList.remove("show");
-  }, 6000);
-}
-
-function closePurchasePopup() {
-  document.getElementById("purchasePopup").classList.remove("show");
-}
-
-/* First popup after 10 seconds */
-setTimeout(showPurchasePopup, 10000);
-
-/* Repeat every 10 minutes */
-setInterval(showPurchasePopup, 10000);
 </script>
 
 <!-- ================= LOGIN POPUP ================= -->
@@ -1250,36 +1196,6 @@ setInterval(showPurchasePopup, 10000);
 
     <button class="login-btn">Send OTP</button>
 
-  </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- ================= PURCHASE POPUP ================= -->
-<div id="purchasePopup" class="purchase-popup">
-  <button class="popup-close" onclick="closePurchasePopup()">✕</button>
-
-  <div class="popup-content">
-    <img id="popupImage" src="../assets/images/sample-users/sample4.jpg" alt="Product">
-
-    <div class="popup-text">
-      <p class="popup-name">
-        <strong id="popupUser">Rashika</strong> purchased
-      </p>
-      <p class="popup-product" id="popupProduct">
-        Welcome Baby Girl Decor
-      </p>
-      <p class="popup-time">Just now</p>
-    </div>
   </div>
 </div>
 

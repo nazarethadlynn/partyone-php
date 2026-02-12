@@ -243,7 +243,46 @@ setInterval(showPurchasePopup, 35000);
 </div>
 
 
+<!-- ================= REAL ANIMATED AI ASSISTANT ================= -->
 
+<div class="ai-assistant-wrapper">
 
+  <!-- Speech Bubble -->
+  <div class="ai-bubble">
+    Hi 👋 I'm PartyOne AI Assistant 🎉<br>
+    Ask me about decorations!
+  </div>
+
+  <!-- Lottie Animation Container -->
+  <div id="aiLottieCharacter" class="ai-lottie" onclick="toggleAIChat()"></div>
+
+</div>
+
+<!-- ================= PROFESSIONAL CHAT PANEL ================= -->
+
+<div class="ai-chat-panel" id="aiChatPanel">
+
+  <div class="ai-chat-header">
+    <div class="ai-header-left">
+      <div class="ai-status-dot"></div>
+      <div>
+        <div class="ai-title">PartyOne AI Assistant</div>
+        <div class="ai-subtitle">Online • Instant replies</div>
+      </div>
+    </div>
+
+    <button class="ai-close-btn" onclick="toggleAIChat()">✕</button>
+  </div>
+
+  <div class="ai-chat-messages" id="aiMessages"></div>
+
+  <div class="ai-chat-input-wrapper">
+    <input type="text" id="aiInput" placeholder="Ask about decorations..." />
+    <button onclick="sendMessage()">Send</button>
+  </div>
+
+</div>
+
+<script src="../assets/js/ai-assistant.js"></script>
 </body>
 </html>

@@ -186,6 +186,105 @@
   </div>
 
 
+<!-- ================= HOW IT WORKS ================= -->
+<section class="how-it-works">
+
+  <h2 class="how-title">
+    Celebrate, the <span>PartyOne</span> way 🎉
+  </h2>
+
+  <div class="how-steps">
+
+    <!-- STEP 1 -->
+    <div class="how-step">
+      <div class="how-heading">
+        <div class="how-text">
+          <h4>Book service</h4>
+          <p>Online or Over chat</p>
+        </div>
+        <div class="connector"></div>
+      </div>
+
+      <div class="how-video">
+        <video class="hiw-video" autoplay muted loop playsinline>
+          <source src="https://img.ebonow.com/Posters/hiw/VP01.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="how-step">
+      <div class="how-heading">
+        <div class="how-text">
+          <h4>PartyOne Santa</h4>
+          <p>Arrives with material</p>
+        </div>
+        <div class="connector"></div>
+      </div>
+
+      <div class="how-video">
+        <video class="hiw-video" autoplay muted loop playsinline>
+          <source src="https://img.ebonow.com/Posters/hiw/VP02.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="how-step">
+      <div class="how-heading">
+        <div class="how-text">
+          <h4>Trained Santa</h4>
+          <p>Starts the service</p>
+        </div>
+        <div class="connector"></div>
+      </div>
+
+      <div class="how-video">
+        <video class="hiw-video" autoplay muted loop playsinline>
+          <source src="https://img.ebonow.com/Posters/hiw/VP03.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="how-step">
+      <div class="how-heading">
+        <div class="how-text">
+          <h4>Professional touch</h4>
+          <p>Seeking perfection</p>
+        </div>
+        <div class="connector"></div>
+      </div>
+
+      <div class="how-video">
+        <video class="hiw-video"autoplay muted loop playsinline>
+          <source src="https://img.ebonow.com/Posters/hiw/VP04.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+    <!-- STEP 5 (NO CONNECTOR AFTER LAST) -->
+    <div class="how-step last-step">
+      <div class="how-heading">
+        <div class="how-text">
+          <h4>Celebration time!</h4>
+          <p>celebration ho toh, PartyOne!</p>
+        </div>
+      </div>
+
+      <div class="how-video">
+        <video class="hiw-video" autoplay muted loop playsinline>
+          <source src="https://img.ebonow.com/Posters/hiw/VP06.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+
+
 <!-- ================= PRODUCT SECTION ================= -->
 <section class="product-section">
 
@@ -975,6 +1074,75 @@
 <script src="../assets/js/city-popup.js"></script>
 
 <script src="../assets/js/callback.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const modal = document.getElementById("hiwModal");
+  const modalVideo = document.getElementById("hiwModalVideo");
+  const closeBtn = document.getElementById("hiwClose");
+
+  document.querySelectorAll(".hiw-video").forEach(video => {
+    video.addEventListener("click", function () {
+
+      const source = this.querySelector("source").src;
+
+      modal.style.display = "flex";
+      modalVideo.src = source;
+      modalVideo.play();
+
+      document.body.style.overflow = "hidden";
+    });
+  });
+
+  closeBtn.addEventListener("click", function () {
+    modal.style.display = "none";
+    modalVideo.pause();
+    modalVideo.src = "";
+    document.body.style.overflow = "auto";
+  });
+
+  modal.addEventListener("click", function (e) {
+    if (e.target === modal) {
+      modal.style.display = "none";
+      modalVideo.pause();
+      modalVideo.src = "";
+      document.body.style.overflow = "auto";
+    }
+  });
+
+});
+</script>
+<script>
+function sendMessage() {
+    const input = document.getElementById("aiInput");
+    const message = input.value;
+
+    fetch("ai-chat.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: "message=" + encodeURIComponent(message)
+    })
+    .then(res => res.json())
+    .then(data => {
+        const reply = data.choices[0].message.content;
+        document.getElementById("aiMessages").innerHTML += 
+            "<p><strong>You:</strong> " + message + "</p>" +
+            "<p><strong>AI:</strong> " + reply + "</p>";
+    });
+
+    input.value = "";
+}
+</script>
+
+
+<!-- HOW IT WORKS VIDEO MODAL -->
+<div id="hiwModal" class="hiw-modal">
+  <span class="hiw-close" id="hiwClose">&times;</span>
+  <div class="hiw-modal-content">
+    <video id="hiwModalVideo" controls autoplay></video>
+  </div>
+</div>
+
 
 <?php include "../includes/footer.php"; ?>
 
