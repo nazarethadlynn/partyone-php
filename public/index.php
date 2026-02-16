@@ -498,6 +498,7 @@
 <!-- ================= END PRODUCT SECTION ================= -->
 
 
+
 <!-- ================= PRODUCT SECTION ================= -->
 <section class="product-section">
 
@@ -703,6 +704,126 @@
   </div>
 </section>
 <!-- ================= END PRODUCT SECTION ================= -->
+<!-- ================= CELEBRATION STORIES ================= -->
+<section class="celebration-stories">
+
+  <h2 class="celebration-title">Celebration stories ✨</h2>
+
+  <div class="stories-wrapper">
+
+    <!-- CARD -->
+    <div class="story-card">
+      <div class="story-video">
+        <video autoplay muted loop playsinline>
+          <source src="https://img.ebonow.com/Posters/reviews/VP01.mp4" type="video/mp4">
+        </video>
+        <button class="mute-btn" type="button">🔇</button>
+      </div>
+
+      <div class="story-content">
+        <p>
+          Thank you for making my daughter's birthday memorable.
+          Decorations were beautiful and neat.
+        </p>
+      </div>
+
+      <!-- ALWAYS AT BOTTOM -->
+      <div class="story-footer">
+        <span class="client-name">Ashleen</span>
+        <span class="stars">★★★★★</span>
+      </div>
+    </div>
+
+    <!-- CARD -->
+    <div class="story-card">
+      <div class="story-video">
+        <video autoplay muted loop playsinline>
+          <source src="https://img.ebonow.com/Posters/reviews/VP02.mp4" type="video/mp4">
+        </video>
+        <button class="mute-btn" type="button">🔇</button>
+      </div>
+
+      <div class="story-content">
+        <p>
+          Loved the experience. Everything handled smoothly and professionally.
+        </p>
+      </div>
+
+      <div class="story-footer">
+        <span class="client-name">Ranjita</span>
+        <span class="stars">★★★★★</span>
+      </div>
+    </div>
+
+    <!-- CARD -->
+    <div class="story-card">
+      <div class="story-video">
+        <video autoplay muted loop playsinline>
+          <source src="../assets/videos/promo.mp4" type="video/mp4">
+        </video>
+        <button class="mute-btn" type="button">🔇</button>
+      </div>
+
+      <div class="story-content">
+        <p>
+          Balloons and lights were arranged beautifully. My family loved it.
+        </p>
+      </div>
+
+      <div class="story-footer">
+        <span class="client-name">Sudha</span>
+        <span class="stars">★★★★★</span>
+      </div>
+    </div>
+  <!-- REPEAT CARDS -->
+   <!-- CARD -->
+    <div class="story-card">
+      <div class="story-video">
+        <video autoplay muted loop playsinline>
+          <source src="https://img.ebonow.com/Posters/reviews/VP01.mp4" type="video/mp4">
+        </video>
+        <button class="mute-btn" type="button">🔇</button>
+      </div>
+
+      <div class="story-content">
+        <p>
+          Thank you for making my daughter's birthday memorable.
+          Decorations were beautiful and neat.
+        </p>
+      </div>
+
+      <!-- ALWAYS AT BOTTOM -->
+      <div class="story-footer">
+        <span class="client-name">Ashleen</span>
+        <span class="stars">★★★★★</span>
+      </div>
+    </div>
+
+    <!-- CARD -->
+    <div class="story-card">
+      <div class="story-video">
+        <video autoplay muted loop playsinline>
+          <source src="https://img.ebonow.com/Posters/reviews/VP02.mp4" type="video/mp4">
+        </video>
+        <button class="mute-btn" type="button">🔇</button>
+      </div>
+
+      <div class="story-content">
+        <p>
+          Loved the experience. Everything handled smoothly and professionally.
+        </p>
+      </div>
+
+      <div class="story-footer">
+        <span class="client-name">Ranjita</span>
+        <span class="stars">★★★★★</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
 <!-- ================= REQUEST CALLBACK SECTION ================= -->
 <section class="request-callback">
 
@@ -1072,8 +1193,9 @@
 
 
 <script src="../assets/js/city-popup.js"></script>
-
 <script src="../assets/js/callback.js"></script>
+<script src="../assets/js/testimonials.js"></script>
+
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 

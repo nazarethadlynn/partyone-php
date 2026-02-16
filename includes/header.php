@@ -7,6 +7,7 @@ if (session_status() === PHP_SESSION_NONE) {
 <html lang="en">
 <head>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+  
 <meta charset="UTF-8">
 <title>Party One</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,14 +30,6 @@ body {
 }
 
 /* ================= HEADER ================= */
-/* .site-header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: #f6efef;
-  border-bottom: 1px solid #e5e7eb;
-  z-index: 99999;
-} */
 .site-header {
   position: fixed;
   top: 0;
@@ -143,24 +136,7 @@ body {
   font-size: 24px;
 }
 
-/* ================= CATEGORY BAR (DESKTOP ONLY) ================= */
-/* .category-bar {
-  display: flex;
-  gap: 14px;
-  padding: 12px 32px 16px;
-  align-items: center;
-} */
 
-/* 🔥 FORCE CLEAN DESKTOP LOOK */
-/* .category-bar * {
-  text-decoration: none !important;
-  list-style: none !important;
-} */
-
-/* 
-.cat-item {
-  position: relative;
-} */
 
 /* 🔥 INVISIBLE HOVER BRIDGE */
 .cat-item::after {
@@ -210,34 +186,6 @@ body {
 }
 
 
-/* ================= GRADIENT CATEGORY PILLS ================= */
-
-  /* .cat-pill {
-  padding: 10px 20px;
-  border-radius: 14px;
-
-  background: linear-gradient(
-    135deg,
-    #ffe4e8 0%,
-    #ffc1cb 50%,
-    #ff9fb0 100%
-  );
-
-  color: #9f1239;
-  font-weight: 600;
-  font-size: 14.5px;
-  white-space: nowrap;
-  cursor: pointer;
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  box-shadow:
-    0 6px 14px rgba(225,29,72,0.18);
-
-  transition: all 0.25s ease;
-} */
 
 .cat-pill,
 .cat-pill:hover,
@@ -247,41 +195,7 @@ body {
   text-decoration: none !important;
 }
 
-/* .cat-pill:hover {
-  background: linear-gradient(
-    135deg,
-    #ffd1d9,
-    #ff9fb0
-  );
-  transform: translateY(-1px);
-} */
 
-/* .cat-pill {
-  padding: 10px 20px;
-  border-radius: 14px;
-
-  background: linear-gradient(
-    135deg,
-    #f43f5e 0%,     
-    #e11d48 50%,   
-    #be123c 100%   
-  );
-
-  color: #ffffff;
-  font-weight: 600;
-  font-size: 14.5px;
-  white-space: nowrap;
-  cursor: pointer;
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  box-shadow:
-    0 10px 25px rgba(225,29,72,0.35);
-
-  transition: all 0.25s ease;
-} */
 
 .cat-pill {
   padding: 10px 22px;
@@ -320,45 +234,9 @@ body {
 
 .cat-pill:hover {
   transform: translateY(-2px);
-  /* box-shadow:
-    0 16px 35px rgba(225,29,72,0.45); */
+  
 }
 
-/* .cat-pill {
-  padding: 10px 20px;
-  border-radius: 999px;
-
-  background: linear-gradient(
-    135deg,
-    #ffffff 0%,
-    #ffe4ea 100%
-  );
-
-  border: 1.5px solid #f43f5e;
-
-  color: #be123c;
-  font-weight: 600;
-  font-size: 14.5px;
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  box-shadow:
-    0 8px 20px rgba(244,63,94,0.15);
-
-  transition: all 0.25s ease;
-}
-
-.cat-pill:hover {
-  background: linear-gradient(
-    135deg,
-    #f43f5e,
-    #e11d48
-  );
-  color: #ffffff;
-}
- */
 
 
 
@@ -373,21 +251,7 @@ body {
 }
 
 
-/* ================= DROPDOWN ================= */
-/* .cat-dropdown {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  margin-top: 6px;                 
-  padding-top: 6px;              
-  background: #fff;
-  min-width: 200px;
-  border-radius: 14px;
-  box-shadow: 0 14px 40px rgba(0,0,0,.18);
-  display: none;
-  overflow: hidden;
-  z-index: 9999;
-} */
+
 /* ================= PERFECT CENTERED DROPDOWN ================= */
 .cat-dropdown {
   position: absolute;
@@ -430,22 +294,12 @@ body {
   background: #f3f4f6;
 }
 
-/* .cat-item:hover .cat-dropdown {
-  display: block;
-} */
+
 .cat-item:hover .cat-dropdown {
   opacity: 1;
   visibility: visible;
 }
-/* 
-.cat-dropdown {
-  animation: fadeSlide .18s ease;
-}
 
-@keyframes fadeSlide {
-  from { opacity: 0; transform: translateY(-6px); }
-  to   { opacity: 1; transform: translateY(0); }
-} */
 
 
 /* ================= MOBILE ONLY ================= */
@@ -854,12 +708,7 @@ body {
 
 
 
-/* .cat-pill {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;   
-} */
+
 
 /* Dropdown icon style */
 .drop-icon {
@@ -980,6 +829,308 @@ body {
   color: #999;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ================= ULTRA PREMIUM CITY POPUP (FIXED ALIGNMENT) ================= */
+
+.po-city-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(12px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999999;
+  padding: 24px;
+}
+
+.po-city-overlay.active {
+  display: flex;
+}
+
+
+
+  /* .po-city-modal {
+  width: 100%;
+  max-width: 840px;
+  background: #ffffff;
+  border-radius: 18px;
+
+  padding: 60px 44px 40px;  
+
+  box-shadow: 0 50px 100px rgba(0,0,0,0.25);
+  position: relative;
+  animation: poCityPop 0.3s ease;
+} */
+.po-city-modal {
+  width: 100%;
+  max-width: 840px;
+  height: 80vh;                 /* 🔥 fixed popup height */
+  background: #ffffff;
+  border-radius: 18px;
+
+  padding: 60px 44px 40px;
+
+  box-shadow: 0 50px 100px rgba(0,0,0,0.25);
+  position: relative;
+  animation: poCityPop 0.3s ease;
+
+  display: flex;                /* 🔥 important */
+  flex-direction: column;       /* 🔥 vertical layout */
+}
+
+
+
+@keyframes poCityPop {
+  from { opacity: 0; transform: translateY(20px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+
+
+
+  .po-city-close {
+  position: absolute;
+  top: 9px;
+  right: 9px;
+
+  width: 42px;
+  height: 42px;
+
+  border-radius: 50%;
+  border: none;
+
+  background: #0f172a;   /* dark premium look */
+  color: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;            /* 🔥 important */
+  line-height: 1;        /* 🔥 removes vertical shift */
+  font-size: 18px;       /* slightly larger */
+  font-weight: 500;
+
+  cursor: pointer;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+  transition: all 0.25s ease;
+}
+
+.po-city-close:hover {
+  background: #e11d48;
+  transform: rotate(90deg) scale(1.08);
+}
+
+/* SEARCH */
+.po-city-search {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #f1f5f9;
+  border-radius: 20px;
+  padding: 16px 20px;
+  margin-bottom: 26px;
+  border: 1px solid #e2e8f0;
+}
+
+.po-city-search input {
+  border: none;
+  background: transparent;
+  width: 100%;
+  outline: none;
+  font-size: 15px;
+  color: #111827;
+}
+
+/* TITLE */
+.po-city-title {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 28px;
+  color: #111827;
+}
+
+/* GRID */
+.po-city-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 36px 40px;
+  justify-items: center;
+  align-items: start;
+}
+
+/* ITEM */
+.po-city-item {
+  width: 110px;                 /* FIXED WIDTH */
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* PERFECT CIRCLE */
+.po-city-item img {
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+  margin-bottom: 14px;
+  transition: all 0.3s ease;
+}
+
+/* PERFECT TITLE ALIGNMENT */
+.po-city-item span {
+  font-size: 14px;
+  font-weight: 500;
+  color: #111827;
+  line-height: 1.2;
+  min-height: 18px;   /* 🔥 FORCE SAME TITLE HEIGHT */
+}
+
+/* HOVER EFFECT */
+.po-city-item:hover img {
+  transform: translateY(-6px) scale(1.06);
+  box-shadow: 0 22px 45px rgba(0,0,0,0.20);
+}
+
+.po-city-item:hover span {
+  color: #e11d48;
+}
+.po-city-noresult {
+  font-size: 14px;
+  color: #ef4444;
+  margin: 10px 0 20px;
+  display: none;   /* ✅ Hidden by default */
+}
+
+
+.po-scroll-area {
+  flex: 1;                  /* 🔥 take remaining height */
+  overflow-y: auto;         /* 🔥 everything scrolls */
+  margin-top: 20px;
+  padding-right: 6px;
+}
+
+.po-scroll-area {
+  flex: 1;
+  overflow-y: auto;
+  margin-top: 20px;
+  padding-right: 8px;
+}
+
+/* Outer scrollbar styling */
+.po-scroll-area::-webkit-scrollbar {
+  width: 8px;
+}
+
+.po-scroll-area::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 10px;
+}
+
+.po-scroll-area::-webkit-scrollbar-thumb {
+  background: #9ca3af;
+  border-radius: 10px;
+}
+
+.po-scroll-area::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ================= VIEW ALL BUTTON ================= */
+
+.po-view-all-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.po-view-all-btn {
+  background: #1f2937;
+  color: #fff;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 14px;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: 0.25s ease;
+}
+
+.po-view-all-btn:hover {
+  background: #111827;
+}
+
+/* ================= ALL CITIES SECTION ================= */
+
+.po-all-cities {
+  display: none;
+  margin-top: 30px;
+  /* max-height: 260px;
+  overflow-y: auto; */
+  padding-right: 6px;
+}
+
+
+/* .po-all-cities-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px 18px;
+} */
+
+/* .po-all-city {
+  background: #f3f4f6;
+  padding: 10px 14px;
+  border-radius: 14px;
+  text-align: center;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s ease;
+} */
+
+/* .po-all-city:hover {
+  background: #e5e7eb;
+} */
 
 </style>
 
@@ -1198,6 +1349,266 @@ function closeLogin() {
 
   </div>
 </div>
+
+
+
+<!-- ================= PREMIUM CITY POPUP ================= -->
+<div id="cityPopup" class="po-city-overlay">
+
+  <div class="po-city-modal">
+
+    <button class="po-city-close" onclick="closeCityPopup()">✕</button>
+
+    <!-- Search -->
+    <div class="po-city-search">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" id="citySearchInput" placeholder="Search for location...">
+    </div>
+ 
+   <!-- SCROLLABLE CONTENT START -->
+<div class="po-scroll-area">
+
+  <p class="po-city-noresult" id="noResultText">No results found</p>
+
+  <h4 class="po-city-title">Popular Locations</h4>
+
+  <div class="po-city-grid" id="cityGrid">
+
+    <div class="po-city-item" data-city="Agra" onclick="setCity('Agra')">
+      <img src="https://jusst4you.com/wp-content/uploads/2025/04/agra.png">
+      <span>Agra</span>
+    </div>
+
+    <div class="po-city-item" data-city="Bangalore" onclick="setCity('Bangalore')">
+      <img src="https://img.ebonow.com/cityImages/bangalore_place.webp">
+      <span>Bangalore</span>
+    </div>
+
+    <div class="po-city-item" data-city="Bhopal" onclick="setCity('Bhopal')">
+      <img src="https://jusst4you.com/wp-content/uploads/2025/04/bhopal.png">
+      <span>Bhopal</span>
+    </div>
+
+    <div class="po-city-item" data-city="Chandigarh" onclick="setCity('Chandigarh')">
+      <img src="https://jusst4you.com/wp-content/uploads/2025/11/WhatsApp-Image-2025-10-31-at-1.44.26-PM.jpeg">
+      <span>Chandigarh</span>
+    </div>
+
+    <div class="po-city-item" data-city="Delhi NCR" onclick="setCity('Delhi NCR')">
+      <img src="https://img.ebonow.com/cityImages/Delhi-NCR.webp">
+      <span>Delhi NCR</span>
+    </div>
+
+    <div class="po-city-item" data-city="Goa" onclick="setCity('Goa')">
+      <img src="https://jusst4you.com/wp-content/uploads/2025/04/goa.png">
+      <span>Goa</span>
+    </div>
+
+    <div class="po-city-item" data-city="Jaipur" onclick="setCity('Jaipur')">
+      <img src="https://jusst4you.com/wp-content/uploads/2025/04/jaipur.png">
+      <span>Jaipur</span>
+    </div>
+
+    <div class="po-city-item" data-city="Kolkata" onclick="setCity('Kolkata')">
+      <img src="https://jusst4you.com/wp-content/uploads/2025/12/Kolkata-icon.png">
+      <span>Kolkata</span>
+    </div>
+
+    <div class="po-city-item" data-city="Manali" onclick="setCity('Manali')">
+      <img src="https://jusst4you.com/wp-content/uploads/2025/04/manali.png">
+      <span>Manali</span>
+    </div>
+
+    <div class="po-city-item" data-city="Mumbai" onclick="setCity('Mumbai')">
+      <img src="https://img.ebonow.com/custom/indiaGate.webp">
+      <span>Mumbai</span>
+    </div>
+
+  </div>
+
+  <!-- View All Button -->
+  <div class="po-view-all-wrapper">
+    <button id="viewAllBtn" class="po-view-all-btn">
+      View All Cities <i class="fa-solid fa-arrow-down"></i>
+    </button>
+  </div>
+
+<!-- Extended Cities -->
+<div class="po-all-cities" id="allCitiesSection">
+
+  <h4 class="po-city-title">All Cities</h4>
+
+  <div class="po-city-grid">
+
+    <div class="po-city-item" data-city="Allahabad" onclick="setCity('Allahabad')">
+      <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAweqB28CNIbTdMbxHRmFtp7eF72MfmSzn0NCtJcA0KbM7MxHKNzGfHhDL9RALsBzwQ52k6SFY9alJw22cvSgRqSHYVjhmSZbTjYsF15deZ4kNr_70yS5nSU7PJBIJviY_r6sRDwU8=w675-h390-n-k-no" alt="Allahabad">
+      <span>Allahabad</span>
+    </div>
+
+    <div class="po-city-item" data-city="Amritsar" onclick="setCity('Amritsar')">
+      <img src="https://static.wixstatic.com/media/3417b6_9d136d18669d49d6ae8315c01402a94d~mv2.jpg/v1/fill/w_640,h_480,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/3417b6_9d136d18669d49d6ae8315c01402a94d~mv2.jpg" alt="Amritsar">
+      <span>Amritsar</span>
+    </div>
+
+    <div class="po-city-item" data-city="Aurangabad" onclick="setCity('Aurangabad')">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-UaFLYqpNfjm6__lH0OBxbEhx9bqEN1z3yag0hY_g2Q&s=10" alt="Aurangabad">
+      <span>Aurangabad</span>
+    </div>
+
+    <div class="po-city-item" data-city="Coimbatore" onclick="setCity('Coimbatore')">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOK8RhCtZ4FLlcT6LQbbs2Ep8hHeVHEi0DRHHpj1NnNw&s=10" alt="Coimbatore">
+      <span>Coimbatore</span>
+    </div>
+
+    <div class="po-city-item" data-city="Erode" onclick="setCity('Erode')">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpZZrC4TszMtjswEQuC7q-dW-QEUzJ2QkNQjg6L7gZ-A&s=10" alt="Erode">
+      <span>Erode</span>
+    </div>
+
+    <div class="po-city-item" data-city="Gwalior" onclick="setCity('Gwalior')">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsCQhKw4VXblRJOwzKWR8l03uiSyYkOORueF0c6Apl6w&s=10" alt="Gwalior">
+      <span>Gwalior</span>
+    </div>
+
+    <div class="po-city-item" data-city="Indore" onclick="setCity('Indore')">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5c8rioelxZkGOlnpZrqjABZIWZEBLD-RQM3xK8k7I5A&s=10" alt="Indore">
+      <span>Indore</span>
+    </div>
+
+    <div class="po-city-item" data-city="Jabalpur" onclick="setCity('Jabalpur')">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9D4TNHUeg6ma9wemzkGD8J6-b7gHU0CtgTbrHpSpsdw&s=10" alt="Jabalpur">
+      <span>Jabalpur</span>
+    </div>
+
+    <div class="po-city-item" data-city="Jamshedpur" onclick="setCity('Jamshedpur')">
+      <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/11/e2/a5/9a/jubilee-park.jpg?w=500&h=500&s=1" alt="Jamshedpur">
+      <span>Jamshedpur</span>
+    </div>
+
+    <div class="po-city-item" data-city="Kanpur" onclick="setCity('Kanpur')">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTubvOOBb96Z9pNQjMlrVfdqv82VA9lAtx2xrVIw3ugBA&s" alt="Kanpur">
+      <span>Kanpur</span>
+    </div>
+    
+    <div class="po-city-item" data-city="Kerala" onclick="setCity('Kerala')">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIz9s1BezeBDE0acNJzOrJPpZ6N6BDKd-2r_f4Y2NEOA&s=10" alt="Kerala">
+      <span>Kerala</span>
+    </div>
+
+    <div class="po-city-item" data-city="Kochi" onclick="setCity('Kochi')">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZ701BD_yabxoNiXFkoANkXuh08tJ8acYKBqy53WwMmQ&s=10" alt="Kochi">
+      <span>Kochi</span>
+    </div>
+
+    <div class="po-city-item" data-city="Kota" onclick="setCity('Kota')">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQErfTMlwyOOicGtfZZDtyjP-UC1OPqlBRQIvEQDzLeVQ&s=10" alt="Kota">
+      <span>Kota</span>
+    </div>
+
+    <div class="po-city-item" data-city="Ludhiana" onclick="setCity('Ludhiana')">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPnqHdHCYnZ6Pu-EM_E55U09CFmppuyuDhU3YNB4bP1g&s=10" alt="Ludhiana">
+      <span>Ludhiana</span>
+    </div>
+
+    <div class="po-city-item" data-city="Madurai" onclick="setCity('Madurai')">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiREs48ZbV53DX1zd7DRoKRdpGugaKlSAFYlUJUyyHjg&s=10" alt="Madurai">
+      <span>Madurai</span>
+    </div>
+
+    <div class="po-city-item" data-city="Meerut" onclick="setCity('Meerut')">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkGECsboimuL03j0zb8bKUno__AUkNX-UUEsNU5LfzAw&s=10" alt="Meerut">
+      <span>Meerut</span>
+    </div>
+
+    <div class="po-city-item" data-city="Nagpur" onclick="setCity('Nagpur')">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMKhmXsItQHwzk-jRWrnPvzhveXvPoqx1IzpnEjn8WWw&s=10" alt="Nagpur">
+      <span>Nagpur</span>
+    </div>
+
+    <div class="po-city-item" data-city="Kanpur" onclick="setCity('Kanpur')">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTubvOOBb96Z9pNQjMlrVfdqv82VA9lAtx2xrVIw3ugBA&s" alt="Kanpur">
+      <span>Kanpur</span>
+    </div>
+
+    <div class="po-city-item" data-city="Nashik" onclick="setCity('Nashik')">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjRqoUNDmOEr7qujpli5azp4YdYLB8bUlINLhnu1W9-Q&s=10" alt="Nashik">
+      <span>Nashik</span>
+    </div>
+    
+    <div class="po-city-item" data-city="Patna" onclick="setCity('Patna')">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsEh__oj7YpM0QfVDKerC3k84pnNB6-tPiTmO7Alg95A&s=10" alt="Patna">
+      <span>Patna</span>
+    </div>
+
+    <div class="po-city-item" data-city="Rajkot" onclick="setCity('Rajkot')">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8J9VNNdvgBtv7JwqUqKuWZXrGKzBJGLC8_WA0Adyv0A&s=10" alt="Rajkot">
+      <span>Rajkot</span>
+    </div>
+
+    <div class="po-city-item" data-city="Ranchi" onclick="setCity('Ranchi')">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1hvdHHn4EAHmLt6B_gxohdbIGZih3AXRTM1_YfvLUQQ&s=10" alt="Ranchi">
+      <span>Ranchi</span>
+    </div>
+
+    <div class="po-city-item" data-city="Salem" onclick="setCity('Salem')">
+      <img src="https://i.natgeofe.com/n/90b7ed90-fa52-4a36-93a2-3498149e06ca/PD82GF.jpg" alt="Salem">
+      <span>Salem</span>
+    </div>
+
+    <div class="po-city-item" data-city="Thiruvananthapuram" onclick="setCity('Thiruvananthapuram')">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwIZ4XZUIt8K2iovsPAczOkGZFvT0t1YYSwrwJKVr96A&s=10" alt="Thiruvananthapuram">
+      <span>Thiruvananthapuram</span>
+    </div>
+
+    <div class="po-city-item" data-city="Simla" onclick="setCity('Simla')">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEKq2YR5dHluLbW7qnH7gxOqpJcoDGIgqEefQ3t02--w&s=10" alt="Simla">
+      <span>Simla</span>
+    </div>
+
+    <div class="po-city-item" data-city="Surat" onclick="setCity('Surat')">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRINnLlZ22XPWuWQAPExzu2yESY4AN4GC6MvDKJh1l-CA&s=10" alt="Surat">
+      <span>Surat</span>
+    </div>
+
+    <div class="po-city-item" data-city="Trichi" onclick="setCity('Trichi')">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1seQb63cgwWzAn6OlA5K25bQIKcAxYwPx764k1wz9rg&s=10" alt="Trichi">
+      <span>Trichi</span>
+    </div>
+
+    <div class="po-city-item" data-city="Vadodara" onclick="setCity('Vadodara')">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7zNVNm57e5qLSkZ6OcdRKdKMaZzoPPlVh2F-EylHwWg&s=10" alt="Vadodara">
+      <span>Vadodara</span>
+    </div>
+
+    <div class="po-city-item" data-city="Varanasi" onclick="setCity('Varanasi')">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwANVnYkYC4gnNMh5lNEdNU13Ccx_avOXCuvGcRWULig&s=10" alt="Varanasi">
+      <span>Varanasi</span>
+    </div>
+
+    <div class="po-city-item" data-city="Vijayawada" onclick="setCity('Vijayawada')">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRt3jLaAMY4_zyA4MgCtzp50tHPesDiLONr1s4iBZycJw&s=10" alt="Vijayawada">
+      <span>Vijayawada</span>
+    </div>
+
+    <div class="po-city-item" data-city="Vishakapatnam" onclick="setCity('Vishakapatnam')">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGmK_OmZ_KlEzLjLQQYvIcbOFqLA3FDckEcXUuCRY16A&s=10" alt="Vishakapatnam">
+      <span>Vishakapatnam</span>
+    </div>
+
+
+    </div>
+
+  </div>
+
+</div>
+<!-- SCROLLABLE CONTENT END -->
+
+    
+  </div>
+</div>
+
+
+<script src="/PARTYONE-PHP/assets/js/city-popup.js" defer></script>
 
 </body>
 </html>

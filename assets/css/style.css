@@ -5113,7 +5113,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 }
 
 /* Responsive */
-@media (max-width: 1000px) {
+/* @media (max-width: 1000px) {
   .how-steps {
     flex-wrap: wrap;
     justify-content: center;
@@ -5122,7 +5122,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   .connector {
     display: none;
   }
-}
+} */
 
 
 
@@ -5165,7 +5165,93 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   z-index: 10000000;
 }
 
+/* ================= MOBILE HORIZONTAL PERFECT CONNECTOR ================= */
 
+@media (max-width: 768px) {
+
+  .how-it-works {
+    padding: 30px 0;
+    border-radius: 0;
+  }
+
+  .how-title {
+    font-size: 20px;
+    margin-bottom: 25px;
+    padding: 0 20px;
+  }
+
+  /* Horizontal scroll */
+  .how-steps {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 25px;
+    padding: 0 20px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    justify-content: flex-start;
+  }
+
+  .how-steps::-webkit-scrollbar {
+    display: none;
+  }
+
+  .how-step {
+    flex: 0 0 220px;
+    scroll-snap-align: start;
+    position: relative;
+    text-align: center; /* ✅ CENTER EACH STEP */
+  }
+
+  /* CENTER HEADING */
+  .how-heading {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* ✅ CENTER TITLE */
+  }
+
+  .how-text {
+    text-align: center; /* ✅ CENTER TEXT */
+    position: relative;
+  }
+
+  /* CONNECTOR POSITION ADJUSTED FOR CENTERED TEXT */
+  .connector {
+    display: block !important;
+    position: absolute;
+
+    top: 50%;
+    transform: translateY(-50%);
+
+    left: 85%;           /* adjust so it starts after centered text */
+    width: 100px;
+    height: 2px;
+
+    background: linear-gradient(to right, #3b5bdb, #8aa5ff);
+  }
+
+  .last-step .connector {
+    display: none !important;
+  }
+
+  /* Video */
+  .how-video {
+    width: 100%;
+    max-width: 220px;
+    height: 260px;
+    margin: 15px auto 0;
+  }
+
+  .how-text h4 {
+    font-size: 14px;
+    margin-bottom: 2px;
+  }
+
+  .how-text p {
+    font-size: 12px;
+  }
+}
 
 
 
@@ -5598,5 +5684,184 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
   .ai-chat-input-wrapper input {
     font-size: 16px; /* prevents zoom on iPhone */
+  }
+}
+
+
+
+
+
+
+
+
+
+/* ================= CELEBRATION STORIES ================= */
+
+.celebration-stories {
+  padding: 50px 6%;
+  background: #f5f6f8;
+}
+
+.celebration-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 35px;
+  color: #111;
+}
+
+/* GRID */
+.stories-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+/* CARD */
+.story-card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  transition: 0.3s ease;
+
+  /* MAGIC FIX */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.story-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+/* VIDEO */
+.story-video {
+  position: relative;
+  height: 240px;
+  overflow: hidden;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.story-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* SPEAKER */
+.mute-btn {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+/* CONTENT */
+.story-content {
+  padding: 15px;
+  flex-grow: 1; /* pushes footer down */
+}
+
+.story-content p {
+  font-size: 13px;
+  color: #444;
+  line-height: 1.5;
+}
+
+/* FOOTER FIXED AT BOTTOM */
+.story-footer {
+  padding: 12px 15px;
+  border-top: 1px solid #eee;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: auto; /* THIS IS THE KEY */
+}
+
+.client-name {
+  font-weight: 600;
+  font-size: 13px;
+  color: #111;
+}
+
+.stars {
+  color: #2f5cff;
+  font-size: 13px;
+}
+
+
+/* ================= MOBILE FIXED UNIFORM CARDS ================= */
+
+@media (max-width: 768px) {
+
+  .celebration-stories {
+    padding: 40px 0;
+  }
+
+  .celebration-title {
+    padding: 0 20px;
+  }
+
+  .stories-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 18px;
+    padding: 0 20px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    align-items: stretch; /* IMPORTANT */
+  }
+
+  .stories-wrapper::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* 🔥 FIXED CARD SIZE */
+  .story-card {
+    flex: 0 0 280px;      /* fixed width */
+    height: 430px;        /* FIXED SAME HEIGHT */
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* FIX VIDEO AREA */
+  .story-video {
+    height: 200px;        /* fixed video height */
+    flex-shrink: 0;
+  }
+
+  /* FIX CONTENT AREA */
+  .story-content {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* LIMIT TEXT HEIGHT */
+  .story-content p {
+    flex-grow: 1;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* max 3 lines */
+    -webkit-box-orient: vertical;
+  }
+
+  /* FOOTER ALWAYS SAME POSITION */
+  .story-footer {
+    margin-top: auto;
   }
 }

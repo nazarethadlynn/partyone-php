@@ -2907,41 +2907,6 @@ document.addEventListener("click", function (e) {
 </section>
 
 <!-- ================= COUPON POPUP ================= -->
-<!-- <div class="coupon-overlay" id="couponPopup">
-
-  <div class="coupon-modal">
-    <button class="coupon-close" onclick="closeCouponPopup()">×</button>
-
-    <h3>Available Coupons</h3>
-
-    <div class="coupon-card">
-      <div class="coupon-left">
-        <strong>PARTY300</strong>
-        <span>Flat ₹300 OFF on orders above ₹2000</span>
-      </div>
-      <button onclick="applyCoupon(300)">Apply</button>
-    </div>
-
-    <div class="coupon-card">
-      <div class="coupon-left">
-        <strong>FIRST500</strong>
-        <span>Flat ₹500 OFF on first order</span>
-      </div>
-      <button onclick="applyCoupon(500)">Apply</button>
-    </div>
-
-    <div class="coupon-card disabled">
-      <div class="coupon-left">
-        <strong>FESTIVE10</strong>
-        <span>10% OFF (Max ₹400)</span>
-      </div>
-      <button disabled>Expired</button>
-    </div>
-
-  </div>
-</div> -->
-
-<!-- ================= COUPON POPUP ================= -->
 <div class="coupon-overlay" id="couponPopup">
   <div class="coupon-modal">
     <button class="coupon-close" onclick="closeCouponPopup()">×</button>
