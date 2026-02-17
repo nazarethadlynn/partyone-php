@@ -162,42 +162,48 @@ body {
 
 
 
+
+
+
+
+
+
 /* ================= CATEGORY BAR (WIDE SPREAD) ================= */
-.category-bar {
+/* .category-bar {
   display: flex;
-  justify-content: space-between;   /* 🔥 spread full width */
+  justify-content: space-between;   
   align-items: center;
   padding: 12px 32px 16px;
   width: 100%;
-}
+} */
 
 /* Make each category take equal width */
-.cat-item {
-  flex: 1;                 /* 🔥 equal distribution */
+/* .cat-item {
+  flex: 1;                 
   display: flex;
-  justify-content: center; /* center pill inside */
+  justify-content: center; 
   position: relative;
-}
+} */
 
 /* Make pills responsive */
-.cat-pill {
-  width: 90%;              /* nice spacing inside */
+/* .cat-pill {
+  width: 90%;              
   text-align: center;
-}
+} */
 
 
-
+/* 
 .cat-pill,
 .cat-pill:hover,
 .cat-pill:focus,
 .cat-pill:active,
 .cat-pill:visited {
   text-decoration: none !important;
-}
+} */
 
 
 
-.cat-pill {
+/* .cat-pill {
   padding: 10px 22px;
   border-radius: 14px;
 
@@ -218,24 +224,24 @@ body {
   align-items: center;
   justify-content: center;
 
-  gap: 28px; /* 🔥 increased spacing */
+  gap: 28px; 
 
   box-shadow: 0 6px 14px rgba(0,0,0,0.15);
   transition: all 0.25s ease;
 }
 
+ */
 
 
 
 
 
 
-
-
+/* 
 .cat-pill:hover {
   transform: translateY(-2px);
   
-}
+} */
 
 
 
@@ -244,20 +250,20 @@ body {
 
 
 /* CLICK FEEDBACK */
-.cat-pill:active {
+/* .cat-pill:active {
   transform: translateY(0);
   box-shadow:
     inset 0 2px 4px rgba(0,0,0,0.25);
 }
-
+ */
 
 
 /* ================= PERFECT CENTERED DROPDOWN ================= */
-.cat-dropdown {
+/* .cat-dropdown {
   position: absolute;
   top: calc(100% + 10px);
   left: 50%;
-  transform: translateX(-50%); /* only horizontal centering */
+  transform: translateX(-50%); 
 
   background: #ffffff;
   min-width: 220px;
@@ -270,20 +276,20 @@ body {
 
   z-index: 9999;
   overflow: hidden;
-}
+} */
 
 
-.cat-dropdown a {
+/* .cat-dropdown a {
   display: block;
   padding: 12px 16px;
   font-size: 14px;
   color: #111;
 
-  text-decoration: none !important;   /* 🔥 remove underline */
-}
+  text-decoration: none !important;  
+} */
 
 /* Remove underline in all states */
-.cat-dropdown a:hover,
+/* .cat-dropdown a:hover,
 .cat-dropdown a:focus,
 .cat-dropdown a:active,
 .cat-dropdown a:visited {
@@ -299,7 +305,7 @@ body {
   opacity: 1;
   visibility: visible;
 }
-
+ */
 
 
 /* ================= MOBILE ONLY ================= */
@@ -731,10 +737,149 @@ body {
 
 
 
+/* =========================================
+   ULTRA PREMIUM CATEGORY STRAP
+========================================= */
+
+.premium-category-bar {
+  width: 100%;
+  background: #471010;
+  border-top: 1px solid rgba(0,0,0,0.04);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+/* Container */
+.premium-categories {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 12px 32px;
+
+  display: flex;
+  align-items: center;
+  gap: 42px;
+}
+
+/* Category Item */
+.premium-item {
+  position: relative;
+  font-size: 15px;
+  font-weight: 500;
+  color: #f2e7e7;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  transition: all 0.25s ease;
+}
+
+/* Chevron icon */
+.premium-item i {
+  font-size: 11px;
+  opacity: 0.6;
+  transition: transform 0.25s ease;
+}
+
+/* Hover effect */
+.premium-item:hover {
+  color: #d71fce;
+}
+
+/* Elegant underline animation */
+.premium-item::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: #d71fce;
+  transition: width 0.3s ease;
+}
+
+.premium-item:hover::after {
+  width: 100%;
+}
+
+/* Rotate icon on hover */
+.premium-item:hover i {
+  transform: rotate(180deg);
+}
+
+/* Highlight (Corporate Events) */
+.premium-item.highlight {
+  color: #8b5cf6;
+  font-weight: 600;
+}
+
+.premium-item.highlight::after {
+  background: #8b5cf6;
+}
+
+/* ================= DROPDOWN ================= */
+
+.premium-dropdown {
+  position: absolute;
+  top: 34px;
+  left: 0;
+
+  background: #ffffff;
+  min-width: 220px;
+
+  border-radius: 14px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.12);
+  padding: 10px 0;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.25s ease;
+  z-index: 9999;
+}
+
+/* Dropdown links */
+.premium-dropdown a {
+  display: block;
+  padding: 12px 18px;
+  font-size: 14px;
+  color: #111827;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.premium-dropdown a:hover {
+  background: #f9fafb;
+}
+
+/* Show dropdown */
+.premium-item:hover .premium-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Hide on mobile */
+@media (max-width: 768px) {
+  .premium-category-bar {
+    display: none;
+  }
+}
 
 
 
 
+/* Remove dropdown arrow spacing for direct link */
+.premium-item.no-dropdown {
+  text-decoration: none;
+  color: #f2e7e7;
+  font-weight: 500;
+  position: relative;
+}
+
+/* Hover effect */
+.premium-item.no-dropdown:hover {
+  color:  #d71fce;
+}
 
 
 
@@ -866,18 +1011,6 @@ body {
 
 
 
-  /* .po-city-modal {
-  width: 100%;
-  max-width: 840px;
-  background: #ffffff;
-  border-radius: 18px;
-
-  padding: 60px 44px 40px;  
-
-  box-shadow: 0 50px 100px rgba(0,0,0,0.25);
-  position: relative;
-  animation: poCityPop 0.3s ease;
-} */
 .po-city-modal {
   width: 100%;
   max-width: 840px;
@@ -1066,6 +1199,87 @@ body {
 
 
 
+/* =========================================================
+   📱 CITY POPUP – MOBILE RESPONSIVE (NO DESKTOP CHANGES)
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  /* Overlay padding */
+  .po-city-overlay {
+    padding: 16px;
+  }
+
+  /* Modal becomes full height */
+  .po-city-modal {
+    width: 100%;
+    max-width: 100%;
+    height: 92vh;                 /* fit mobile screen */
+    border-radius: 16px;
+    padding: 50px 18px 20px;      /* reduced spacing */
+  }
+
+  /* Close button smaller */
+  .po-city-close {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+    top: 10px;
+    right: 10px;
+  }
+
+  /* Search bar smaller */
+  .po-city-search {
+    padding: 12px 14px;
+    border-radius: 16px;
+  }
+
+  .po-city-search input {
+    font-size: 14px;
+  }
+
+  /* Grid changes to 3 columns */
+  .po-city-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px 18px;
+  }
+
+  /* Smaller city item */
+  .po-city-item {
+    width: 100%;
+  }
+
+  .po-city-item img {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 8px;
+  }
+
+  .po-city-item span {
+    font-size: 13px;
+  }
+
+  /* View All button spacing */
+  .po-view-all-wrapper {
+    margin-top: 20px;
+  }
+
+  .po-view-all-btn {
+    font-size: 13px;
+    padding: 8px 16px;
+  }
+
+  /* All cities section spacing */
+  .po-all-cities {
+    margin-top: 20px;
+  }
+
+}
+
+
+
+
+
 
 
 
@@ -1106,31 +1320,10 @@ body {
 .po-all-cities {
   display: none;
   margin-top: 30px;
-  /* max-height: 260px;
-  overflow-y: auto; */
   padding-right: 6px;
 }
 
 
-/* .po-all-cities-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px 18px;
-} */
-
-/* .po-all-city {
-  background: #f3f4f6;
-  padding: 10px 14px;
-  border-radius: 14px;
-  text-align: center;
-  font-size: 14px;
-  cursor: pointer;
-  transition: 0.2s ease;
-} */
-
-/* .po-all-city:hover {
-  background: #e5e7eb;
-} */
 
 </style>
 
@@ -1182,13 +1375,13 @@ body {
 
 
 <!-- CATEGORY BAR WITH DROPDOWNS -->
-  <nav class="category-bar">
+  <!-- <nav class="category-bar">
 
     <div class="cat-item">
       <div class="cat-pill">
   Birthday
   <i class="fa-solid fa-chevron-down drop-icon"></i>
-</div>
+    </div>
       <div class="cat-dropdown">
         <a href="#">Kids Birthday</a>
         <a href="#">Adult Birthday</a>
@@ -1200,7 +1393,7 @@ body {
       <div class="cat-pill">
   Decorations
   <i class="fa-solid fa-chevron-down drop-icon"></i>
-</div>
+  </div>
       <div class="cat-dropdown">
         <a href="#">Balloon Decor</a>
         <a href="#">Room Decor</a>
@@ -1263,7 +1456,76 @@ body {
       </div>
     </div>
 
-  </nav>
+  </nav> -->
+<!-- PREMIUM CATEGORY STRAP (DESKTOP ONLY) -->
+<nav class="premium-category-bar">
+
+  <div class="premium-categories">
+
+    <div class="premium-item">
+      Anniversary <i class="fa-solid fa-chevron-down"></i>
+      <div class="premium-dropdown">
+        <a href="#">Romantic Anniversary</a>
+        <a href="#">Surprise Setup</a>
+      </div>
+    </div>
+
+    <div class="premium-item">
+      Birthdays <i class="fa-solid fa-chevron-down"></i>
+      <div class="premium-dropdown">
+        <a href="#">Kids Birthday</a>
+        <a href="#">Adult Birthday</a>
+      </div>
+    </div>
+
+    <div class="premium-item">
+      Gifts <i class="fa-solid fa-chevron-down"></i>
+      <div class="premium-dropdown">
+        <a href="#">Flowers</a>
+        <a href="#">Gift Hampers</a>
+      </div>
+    </div>
+
+    <div class="premium-item">
+      Candlelight Dinners <i class="fa-solid fa-chevron-down"></i>
+      <div class="premium-dropdown">
+        <a href="#">Rooftop</a>
+        <a href="#">Private Dining</a>
+      </div>
+    </div>
+
+    <div class="premium-item">
+      Decorations <i class="fa-solid fa-chevron-down"></i>
+      <div class="premium-dropdown">
+        <a href="#">Balloon Decor</a>
+        <a href="#">Theme Decor</a>
+      </div>
+    </div>
+
+    <div class="premium-item">
+      Festivals <i class="fa-solid fa-chevron-down"></i>
+      <div class="premium-dropdown">
+        <a href="#">Diwali</a>
+        <a href="#">Christmas</a>
+      </div>
+    </div>
+
+    <div class="premium-item">
+     <a href="/PARTYONE-PHP/public/kids.php" class="premium-item no-dropdown"> Kid's Celebrations</a> <i class="fa-solid fa-chevron-down"></i>
+      
+      <!-- <div class="premium-dropdown">
+        <a href="#">Magic Show</a>
+        <a href="#">Fun Games</a>
+      </div> -->
+    </div>
+
+    <div class="premium-item highlight">
+      Corporate Events
+    </div>
+
+  </div>
+
+</nav>
 
   <!-- ================= MOBILE SIDE MENU ================= -->
 <div class="mobile-menu" id="mobileMenu">
@@ -1441,7 +1703,7 @@ function closeLogin() {
   <div class="po-city-grid">
 
     <div class="po-city-item" data-city="Allahabad" onclick="setCity('Allahabad')">
-      <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAweqB28CNIbTdMbxHRmFtp7eF72MfmSzn0NCtJcA0KbM7MxHKNzGfHhDL9RALsBzwQ52k6SFY9alJw22cvSgRqSHYVjhmSZbTjYsF15deZ4kNr_70yS5nSU7PJBIJviY_r6sRDwU8=w675-h390-n-k-no" alt="Allahabad">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyXt6E8Zydm2QNjKI_pqUM-1EITBXcV6Ac3Q&s" alt="Allahabad">
       <span>Allahabad</span>
     </div>
 

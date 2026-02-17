@@ -704,6 +704,68 @@
   </div>
 </section>
 <!-- ================= END PRODUCT SECTION ================= -->
+<section class="wof-section">
+  <div class="wof-container">
+
+    <div class="wof-header">
+      <h2>Wall of Fames</h2>
+      <p>
+        “Memory is the diary that we all carry about with us”
+        <span>Oscar Wilde</span>
+      </p>
+    </div>
+
+    <div class="wof-grid">
+
+      <!-- LEFT COLUMN -->
+      <div class="wof-card left-1">
+        <img src="https://dubai.jusst4you.com/assets/img/couples/0C7A0829.webp">
+      </div>
+
+      <div class="wof-card left-2">
+        <img src="https://dubai.jusst4you.com/assets/img/couples/04.webp">
+      </div>
+
+      <div class="wof-card left-3">
+        <img src="https://dubai.jusst4you.com/assets/img/couples/proposaldubai.com%20proposal%20boutique%20luxury%20proposal%20emotions%20events%20aura%20events%20dubai%20uae%20(14).webp">
+      </div>
+
+      <!-- CENTER -->
+      <div class="wof-card center-big">
+        <img src="https://dubai.jusst4you.com/assets/img/couples/0C7A7348.webp">
+      </div>
+
+      <div class="wof-card center-bottom-1">
+        <img src="https://dubai.jusst4you.com/assets/img/couples/493A8617.webp">
+      </div>
+
+      <div class="wof-card center-bottom-2">
+        <img src="https://dubai.jusst4you.com/assets/img/couples/DAY%203%20-%200C7A5675.webp">
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div class="wof-card right-1">
+        <img src="https://dubai.jusst4you.com/assets/img/couples/0C7A7952.webp">
+      </div>
+
+      <div class="wof-card right-2">
+        <img src="https://dubai.jusst4you.com/assets/img/couples/6%20(1).webp">
+      </div>
+
+      <div class="wof-card right-3">
+        <img src="https://dubai.jusst4you.com/assets/img/couples/proposaldubai.com%20experiencesandevents.ae%20dubai%20uae%20luxury%20proposal%20proposal%20boutique%20aura%20events%20emotions%20events%20pre%20wedding%20shoot%20sunrise%20beach%20jumeirah%20(13).webp">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
 <!-- ================= CELEBRATION STORIES ================= -->
 <section class="celebration-stories">
 
