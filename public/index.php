@@ -1226,7 +1226,7 @@
 <!-- ================= END DISCOVERY LINKS SECTION ================= -->
 
 <!-- CITY POPUP (INDEX ONLY) -->
-<div id="cityPopup" class="popup-overlay">
+<!-- <div id="cityPopup" class="popup-overlay">
   <div class="popup-box">
     <div class="popup-header">
       <h2>SELECT YOUR CITY</h2>
@@ -1251,7 +1251,7 @@
     </div>
   </div>
 </div>
-
+ -->
 
 
 <script src="../assets/js/city-popup.js"></script>

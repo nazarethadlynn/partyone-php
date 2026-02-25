@@ -1881,7 +1881,7 @@ document.querySelectorAll('.book-btn').forEach(btn => {
 <!-- PAGE END MARKER -->
 <div id="pageEndMarker"></div>
 
-
+<script src="../assets/js/city-popup.js"></script>
 </body>
 </html>
 

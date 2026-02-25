@@ -729,71 +729,67 @@ body {
 
 
 
-
-
-
-
-
-
-
-
 /* =========================================
-   ULTRA PREMIUM CATEGORY STRAP
+   PREMIUM CATEGORY STRAP – FINAL FIXED
 ========================================= */
 
 .premium-category-bar {
   width: 100%;
-  background: #471010;
-  border-top: 1px solid rgba(0,0,0,0.04);
-  border-bottom: 1px solid rgba(0,0,0,0.06);
+  background: #111827;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 
-/* Container */
 .premium-categories {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 12px 32px;
-
   display: flex;
   align-items: center;
   gap: 42px;
 }
 
-/* Category Item */
+@media (min-width: 769px) {
+  .premium-categories {
+    width: 100%;
+    padding: 16px 32px;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+  }
+}
+
+/* ===== CATEGORY ITEM ===== */
 .premium-item {
   position: relative;
   font-size: 15px;
   font-weight: 500;
-  color: #f2e7e7;
+  color: #e5e7eb;
   cursor: pointer;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 6px;
-
   transition: all 0.25s ease;
+  text-decoration: none; /* IMPORTANT */
 }
 
-/* Chevron icon */
-.premium-item i {
-  font-size: 11px;
-  opacity: 0.6;
-  transition: transform 0.25s ease;
+/* REMOVE LINK DEFAULT COLORS */
+.premium-item:link,
+.premium-item:visited,
+.premium-item:active {
+  color: #e5e7eb;
+  text-decoration: none;
 }
 
 /* Hover effect */
 .premium-item:hover {
-  color: #d71fce;
+  color: #ffffff;
 }
 
-/* Elegant underline animation */
+/* Underline animation */
 .premium-item::after {
   content: "";
   position: absolute;
-  bottom: -6px;
+  bottom: -8px;
   left: 0;
   width: 0%;
   height: 2px;
-  background: #d71fce;
+  background: #3b82f6;
   transition: width 0.3s ease;
 }
 
@@ -801,62 +797,105 @@ body {
   width: 100%;
 }
 
-/* Rotate icon on hover */
+/* Chevron icon */
+.premium-item i {
+  font-size: 11px;
+  opacity: 0.6;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
 .premium-item:hover i {
   transform: rotate(180deg);
+  opacity: 1;
 }
 
-/* Highlight (Corporate Events) */
-.premium-item.highlight {
-  color: #8b5cf6;
-  font-weight: 600;
+/* Hide mobile */
+@media (max-width: 768px) {
+  .premium-category-bar {
+    display: none;
+  }
 }
 
-.premium-item.highlight::after {
-  background: #8b5cf6;
+
+/* ================= CENTERED PREMIUM DROPDOWN ================= */
+
+.premium-item {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 
-/* ================= DROPDOWN ================= */
+/* ================= RESPONSIVE SAFE DROPDOWN ================= */
 
 .premium-dropdown {
   position: absolute;
-  top: 34px;
-  left: 0;
+  top: calc(100% + 12px);
+
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+
+  width: 160px;                 /* 🔥 Reduced fixed width */
+  max-width: 90vw;              /* 🔥 Prevent overflow */
+  min-width: 170px;             /* Prevent too small */
+
+  padding: 8px 0;
 
   background: #ffffff;
-  min-width: 220px;
+  border-radius: 9px;
+  border: 1px solid rgba(0,0,0,0.06);
 
-  border-radius: 14px;
-  box-shadow: 0 25px 60px rgba(0,0,0,0.12);
-  padding: 10px 0;
+  box-shadow:
+    0 18px 40px rgba(0,0,0,0.12),
+    0 6px 14px rgba(0,0,0,0.05);
 
   opacity: 0;
   visibility: hidden;
-  transform: translateY(10px);
-  transition: all 0.25s ease;
+
+  transition: all 0.22s ease;
   z-index: 9999;
+
+  overflow: hidden;             /* prevent content overflow */
 }
 
-/* Dropdown links */
+/* Pointer */
+.premium-dropdown::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 10px;
+  height: 10px;
+  background: white;
+  border-left: 1px solid rgba(0,0,0,0.06);
+  border-top: 1px solid rgba(0,0,0,0.06);
+}
+
+/* Links */
 .premium-dropdown a {
   display: block;
-  padding: 12px 18px;
-  font-size: 14px;
+  padding: 10px 16px;          /* 🔥 smaller padding */
+  font-size: 13.5px;           /* 🔥 slightly smaller text */
+  font-weight: 500;
   color: #111827;
   text-decoration: none;
-  transition: background 0.2s ease;
+  transition: 0.2s ease;
 }
 
-.premium-dropdown a:hover {
-  background: #f9fafb;
+.premium-dropdown a:not(:last-child) {
+  border-bottom: 1px solid #f3f4f6;
 }
 
-/* Show dropdown */
+
+
+/* Show */
 .premium-item:hover .premium-dropdown {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
+  transform: translateX(-50%) translateY(0);
 }
+
 
 /* Hide on mobile */
 @media (max-width: 768px) {
@@ -868,18 +907,8 @@ body {
 
 
 
-/* Remove dropdown arrow spacing for direct link */
-.premium-item.no-dropdown {
-  text-decoration: none;
-  color: #f2e7e7;
-  font-weight: 500;
-  position: relative;
-}
 
-/* Hover effect */
-.premium-item.no-dropdown:hover {
-  color:  #d71fce;
-}
+
 
 
 
@@ -1277,6 +1306,13 @@ body {
 }
 
 
+.po-all-cities {
+  display: none;
+}
+
+.po-all-cities.show-all {
+  display: block;
+}
 
 
 
@@ -1510,16 +1546,13 @@ body {
       </div>
     </div>
 
+ 
     <div class="premium-item">
-     <a href="/PARTYONE-PHP/public/kids.php" class="premium-item no-dropdown"> Kid's Celebrations</a> <i class="fa-solid fa-chevron-down"></i>
-      
-      <!-- <div class="premium-dropdown">
-        <a href="#">Magic Show</a>
-        <a href="#">Fun Games</a>
-      </div> -->
-    </div>
-
-    <div class="premium-item highlight">
+      <a href="/PARTYONE-PHP/public/kids.php" class="premium-item no-dropdown">
+           Kid's Celebrations
+      </a>
+    </div> 
+     <div class="premium-item ">
       Corporate Events
     </div>
 
@@ -1869,8 +1902,7 @@ function closeLogin() {
   </div>
 </div>
 
-
-<script src="/PARTYONE-PHP/assets/js/city-popup.js" defer></script>
+<script src="../assets/js/city-popup.js"></script>
 
 </body>
 </html>
